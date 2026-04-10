@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aurelon Universe — Gates. Corruption. The Cycle Continues.</title>
+<meta name="description" content="The Crosslands campaign setting and A Breaking: Of Ashes and Light novel. A universe of gates, corruption, and the civilizations that rise and fall between them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4985a;
+  --gold-light: #d4a847;
+  --gold-dim: #8a6d3b;
+  --bone: #e8dcc8;
+  --parchment: #f5f0e6;
+  --dark: #0d0b09;
+  --dark-mid: #1a1612;
+  --dark-surface: #231f1a;
+  --red-vein: #6b2020;
+  --text-primary: #d4c8b4;
+  --text-secondary: #9a8e7e;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--dark);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.noise {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  background: radial-gradient(ellipse at center top, rgba(196,152,90,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at center bottom, rgba(107,32,32,0.06) 0%, transparent 50%),
+              var(--dark);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.hero-star {
+  width: 6px; height: 6px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 20px var(--gold-light), 0 0 60px rgba(212,168,71,0.3);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 20px var(--gold-light), 0 0 60px rgba(212,168,71,0.3); }
+  50% { box-shadow: 0 0 30px var(--gold-light), 0 0 80px rgba(212,168,71,0.5); }
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title .the { font-size: clamp(1rem, 3vw, 1.5rem); font-weight: 400; display: block; margin-bottom: 0.25rem; }
+.hero-title .main { font-size: clamp(2rem, 7vw, 4rem); font-weight: 700; display: block; }
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  color: var(--gold-dim);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  background: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(196,152,90,0.1);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(196,152,90,0.15);
+}
+
+.btn-primary {
+  background: rgba(196,152,90,0.1);
+  border-color: var(--gold);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0;
+}
+
+/* SECTIONS */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.text-dim { color: var(--text-secondary); }
+
+/* PRODUCTS */
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+@media (min-width: 700px) {
+  .products { grid-template-columns: 1fr 1fr; }
+}
+
+.product-card {
+  border: 1px solid rgba(196,152,90,0.15);
+  padding: 2.5rem 2rem;
+  background: rgba(196,152,90,0.02);
+  transition: border-color 0.3s ease;
+}
+
+.product-card:hover {
+  border-color: rgba(196,152,90,0.3);
+}
+
+.product-type {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.product-card .subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.product-card .btn {
+  margin-top: 1.5rem;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+
+.product-status {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid;
+  margin-top: 1.5rem;
+}
+
+.status-available { border-color: rgba(120,160,90,0.4); color: #98b472; }
+.status-coming { border-color: rgba(196,152,90,0.3); color: var(--gold-dim); }
+
+/* PROPHECY */
+.prophecy-section {
+  background: radial-gradient(ellipse at center, rgba(107,32,32,0.04) 0%, transparent 70%);
+  border-top: 1px solid rgba(196,152,90,0.08);
+  border-bottom: 1px solid rgba(196,152,90,0.08);
+}
+
+.prophecy-text {
+  font-style: italic;
+  text-align: center;
+  max-width: 550px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  line-height: 2;
+}
+
+/* SIGNUP */
+.signup-section {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.signup-form {
+  display: flex;
+  gap: 0;
+  margin-top: 2rem;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form input[type="email"] {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  background: var(--dark-surface);
+  border: 1px solid rgba(196,152,90,0.2);
+  border-right: none;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.signup-form input[type="email"]::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.signup-form input[type="email"]:focus {
+  border-color: var(--gold-dim);
+}
+
+.signup-form button {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  background: rgba(196,152,90,0.1);
+  border: 1px solid rgba(196,152,90,0.3);
+  color: var(--gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.signup-form button:hover {
+  background: rgba(196,152,90,0.2);
+  border-color: var(--gold);
+}
+
+.signup-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid rgba(196,152,90,0.08);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(154,142,126,0.5);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .signup-form { flex-direction: column; }
+  .signup-form input[type="email"] { border-right: 1px solid rgba(196,152,90,0.2); border-bottom: none; }
+  .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-star"></div>
+  <h1 class="hero-title">
+    <span class="the">The</span>
+    <span class="main">Aurelon Universe</span>
+  </h1>
+  <p class="hero-subtitle">Gates &middot; Corruption &middot; The Cycle Continues</p>
+  <p class="hero-tagline">A universe of ancient gates, patient corruption, and the civilizations that rise and fall between them.</p>
+  <div class="hero-buttons">
+    <a href="#products" class="btn btn-primary">Explore</a>
+    <a href="#signup" class="btn">Stay Informed</a>
+  </div>
+  <div class="scroll-hint">&darr;</div>
+</header>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section>
+  <div class="section-label">The Universe</div>
+  <h2>A house with no doors. A fire that remembers.</h2>
+  <p>Somewhere beyond what the eye can reach, a universe sits inside a globe on a desk. Inside it, twelve planets orbit a false star. Civilizations rise. The corruption finds them. They fall. The cycle turns. It has always turned.</p>
+  <p>The Aurelon universe spans novels, campaign settings, and the spaces between — a shared cosmology where every story is connected by gates that open between worlds, a corruption that learns from everything it consumes, and a cycle that is older than anything living inside it.</p>
+  <p class="text-dim">The walls are thinner now. The hand that built them trembles.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCTS -->
+<div id="products">
+  <section style="max-width:900px;padding-bottom:2rem;">
+    <div class="section-label">Available Now</div>
+  </section>
+  <div class="products">
+    <div class="product-card">
+      <div class="product-type">Campaign Setting</div>
+      <h3>The Crosslands</h3>
+      <div class="subtitle">A Core Setting for the Aurelon Universe</div>
+      <p>A complete 5th Edition compatible campaign setting. 240 pages of world, lore, new races, a new class, a full bestiary, corruption mechanics, and a bonus campaign for levels 1-12. Set twenty years before the novel on a world connected to others by ancient gates.</p>
+      <span class="product-status status-available">Available</span><br>
+      <a href="#" class="btn">Buy on DriveThruRPG</a>
+    </div>
+    <div class="product-card">
+      <div class="product-type">Novel</div>
+      <h3>A Breaking</h3>
+      <div class="subtitle">Of Ashes and Light &middot; Book One</div>
+      <p>The sky cracked open at midnight. The blacksmith burned. A boy walked out of the ashes carrying an axe that wasn't his and something cold behind his ribs that shouldn't be there. He's not a chosen one. He's the crack.</p>
+      <a href="#" class="btn" style="margin-top:1.5rem;display:inline-block;">Read Free Chapters</a><br>
+      <span class="product-status status-coming">Coming 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROPHECY TEASER -->
+<section class="prophecy-section">
+  <div class="section-label" style="text-align:center;">From the Prophecy of the Unbound</div>
+  <div class="prophecy-text">
+    <p>Before the light there was a hand,<br>
+    and the hand built a house with no doors.<br>
+    Inside the house the hand lit a fire<br>
+    that was too much,<br>
+    that broke.</p>
+    <p style="margin-top:2rem;font-size:0.9rem;color:rgba(154,142,126,0.4);">39 lines. Every one true. None understood.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SIGNUP -->
+<section id="signup" class="signup-section">
+  <div class="section-label">Join the Universe</div>
+  <h2>The gates are open.</h2>
+  <p class="text-dim">Get updates on new releases, free content, and behind-the-scenes worldbuilding. No spam. Only signal.</p>
+  
+  <!-- REPLACE THIS FORM WITH YOUR MAILERLITE EMBED CODE -->
+  <div class="signup-form">
+    <input type="email" placeholder="your@email.com">
+    <button type="submit">Subscribe</button>
+  </div>
+  <p class="signup-note">Your email stays with us. We don't share, sell, or do anything weird with it.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Royal Road</a>
+    <a href="#">DriveThruRPG</a>
+    <a href="#">Discord</a>
+    <a href="#">TikTok</a>
+    <a href="#">X / Twitter</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Jason Wilson. The Aurelon Universe. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
