@@ -670,9 +670,10 @@ class GameUI {
 
     infoEl.innerHTML = html;
 
-    // Update Undo button state — disabled when there's nothing to take back.
+    // Update Undo button state — disabled when there's nothing to take
+    // back, or when the player is dead (death does not unwind).
     if (this.undoBtn) {
-      const canUndo = e._undoStack && e._undoStack.length > 0;
+      const canUndo = e._undoStack && e._undoStack.length > 0 && !e.gameOver;
       this.undoBtn.disabled = !canUndo;
     }
 
@@ -725,6 +726,11 @@ class GameUI {
 
     // Show restart
     this.restartBtn.style.display = 'block';
+
+    // Lock undo — engine refuses too, but the button should look dead.
+    if (this.undoBtn) {
+      this.undoBtn.disabled = true;
+    }
 
     if (type === 'death') {
       this.restartBtn.textContent = 'The dark takes you. Begin again.';
