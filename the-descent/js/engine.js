@@ -748,8 +748,8 @@ The walls look different. The light tastes different. The light has a taste now.
     if (/^(?:open|close|shut)(?:\s+.+)?$/.test(trimmed)) {
       const target = trimmed.replace(/^(open|close|shut)(?:\s+|$)/, '');
       this._emit('output', target
-        ? `Nothing here opens that way. The world below is not built to be opened with hands.`
-        : `Nothing here is the kind of thing that opens. Or, if it is, you cannot tell which.`,
+        ? `Stone holds where stone has held for centuries. Your hands find no seam.`
+        : `You look for hinges. Edges. A latch. Nothing.`,
         'narration');
       this._presentRoomChoices(room);
       return;
@@ -757,14 +757,14 @@ The walls look different. The light tastes different. The light has a taste now.
 
     // ─── Push / pull / press — usually refusal ───
     if (/^(?:push|pull|press|shove|tug)(?:\s+.+)?$/.test(trimmed)) {
-      this._emit('output', `Nothing here moves the way pushing or pulling would move it.`, 'narration');
+      this._emit('output', `Stone. Bone. Nothing here is hinged. Nothing slides.`, 'narration');
       this._presentRoomChoices(room);
       return;
     }
 
     // ─── Wait / rest / pause — burn a turn intentionally ───
     if (/^(?:wait|rest|pause|stand still|do nothing)$/.test(trimmed)) {
-      this._emit('output', `You wait. The room waits with you. Time moves the way time has always moved here — slowly, and without commentary.`, 'narration');
+      this._emit('output', `You wait. The room waits with you. A drip somewhere. Your own breath. Then nothing again.`, 'narration');
       this._tickTimers();
       if (this.gameOver) return;
       this._tickNpcs();
@@ -835,7 +835,7 @@ The walls look different. The light tastes different. The light has a taste now.
 
     // ─── Atmospheric refusals — combat, eat/drink, wear, tie, sleep ───
     if (/^(?:attack|hit|kill|fight|punch|kick|stab|strike|slay|murder)(?:\s+.*)?$/.test(trimmed)) {
-      this._emit('output', `There is nothing here to fight. The dark is not hostile in the way that can be answered with hostility.`, 'narration');
+      this._emit('output', `There is nothing here to fight. The dark wears no face. Your fists pass through it without resistance.`, 'narration');
       this._presentRoomChoices(room);
       return;
     }
@@ -865,7 +865,7 @@ The walls look different. The light tastes different. The light has a taste now.
       return;
     }
     if (/^(?:break|smash|destroy)(?:\s+.*)?$/.test(trimmed)) {
-      this._emit('output', `Nothing here would break in a way that helped.`, 'narration');
+      this._emit('output', `What you might break would not give you anything you could use.`, 'narration');
       this._presentRoomChoices(room);
       return;
     }
@@ -972,7 +972,7 @@ The world thins around you, and parts. The cycle accepts that you have read what
 
 The walls do not change. The names do not move.
 
-But somewhere inside you, the symbol-beside-each-name comes into focus the way a face in a crowd does when you finally see who it is. The pattern they wrote was not a list. It was a single act, performed by every name on this wall: an act of witnessing. The carvers laid down their names because they had seen what the cycle wanted to forget.
+But somewhere inside you, the symbol-beside-each-name sharpens. A pattern that has been there the whole time, until your eye learns to see it. The names are not a list. They are a single act, performed by every name on this wall: an act of witnessing. The carvers laid down their names because they had seen what the cycle wanted to forget.
 
 The wall has shown you what it was meant to show.`, 'narration');
       // Don't return true — let the standard parser also process the input
@@ -1123,7 +1123,7 @@ The shape that shaped you taught you how a name like his must be spoken — ever
     if (lower !== lower.split('').reverse().join('')) {
       this._emit('output', `The name does not turn back upon itself.
 
-He is the witness who did not become the witnessed. What names him must reflect what he is — read the same forward as backward, the way a cycle reads the same at its end as at its beginning. The room does not punish the attempt. The room is still listening.`, 'narration');
+He is the witness who did not become the witnessed. What names him must reflect what he is — read the same forward as backward, ending and beginning indistinguishable, a closed circle. The room does not punish the attempt. The room is still listening.`, 'narration');
       return true;
     }
 
@@ -1461,13 +1461,13 @@ Both paths end at the same gate. The second one ends with a conversation.
       }
     }
     const defaults = {
-      smell: 'You take a long breath in. The air smells of stone and old time, the way the air below the surface always smells.',
-      sniff: 'You take a long breath in. The air smells of stone and old time, the way the air below the surface always smells.',
+      smell: 'You take a long breath in. Wet stone. Cold mineral. Something sweet beneath. The sweetness is iron.',
+      sniff: 'You take a long breath in. Wet stone. Cold mineral. Something sweet beneath. The sweetness is iron.',
       listen: 'You stand still and listen. Nothing in particular calls back.',
       hear: 'You stand still and listen. Nothing in particular calls back.',
-      touch: 'You reach out. The walls are what walls are. Cold or warm, smooth or rough — your hand learns nothing your eyes have not already learned.',
-      feel: 'You reach out. The walls are what walls are. Cold or warm, smooth or rough — your hand learns nothing your eyes have not already learned.',
-      taste: 'You do not taste anything. The air has no flavour worth naming.'
+      touch: 'You reach out. Cold stone, gritted with old dust. Your palm comes back gritted with the same.',
+      feel: 'You reach out. Cold stone, gritted with old dust. Your palm comes back gritted with the same.',
+      taste: 'You touch your tongue to your teeth. Copper. Iron. The faint chalk of the air.'
     };
     this._emit('output', defaults[sense] || defaults.smell, 'narration');
   }
