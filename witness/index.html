@@ -1,1 +1,466 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Witness — Aurelon</title>
+  <meta name="description" content="If you reached an ending of The Descent, submit your name here.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!--
+    DEPLOYMENT INSTRUCTIONS
+    -----------------------
+    1. Edit the two const URLs in the <script> block at the bottom of this
+       file: WORKER_URL (your Cloudflare Worker) and DISCORD_URL (your
+       Aurelon Discord invite link).
+    2. Save this file as witness.html (or witness/index.html) in your
+       aurelonuniverse repository, alongside the rest of your site.
+    3. Push. GitHub Pages will serve it at aurelonuniverse.com/witness or
+       aurelonuniverse.com/witness.html depending on the path you chose.
+    4. Test it: open the URL, paste a real claim ID from a game playthrough,
+       confirm the "Verified" panel appears with the run details.
+  -->
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230a0a0a' rx='8'/><circle cx='32' cy='32' r='22' fill='none' stroke='%23c9a84c' stroke-width='2'/><circle cx='32' cy='27' r='5' fill='%23c9a84c'/><rect x='29.5' y='29' width='5' height='12' fill='%23c9a84c'/></svg>">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elev: #1a1a1a;
+      --border: #2a2622;
+      --hairline: #3a3632;
+      --text: #e8e0d0;
+      --text-dim: #8a8478;
+      --text-faint: #5a5448;
+      --gold: #c9a84c;
+      --gold-dim: #8a7438;
+      --error: #c0584c;
+      --link: #5a8aa0;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(ellipse at 50% 40%, #1a1a1a 0%, #0a0a0a 55%, #000 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.65;
+      min-height: 100vh;
+      padding: 60px 20px 80px;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .sigil {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 12px;
+      color: var(--text-dim);
+      font-weight: 400;
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-size: 42px;
+      letter-spacing: 14px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 0 0 24px;
+    }
+    .hairline {
+      width: 220px;
+      height: 1px;
+      background: var(--hairline);
+      margin: 0 auto 28px;
+    }
+    .lede {
+      font-style: italic;
+      color: var(--text-dim);
+      max-width: 480px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+    .lede em { color: var(--gold); font-style: italic; }
+
+    section {
+      background: rgba(20, 18, 14, 0.5);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    section h2 {
+      font-size: 14px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      font-weight: 400;
+      margin: 0 0 18px;
+      font-style: italic;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin: 18px 0 6px;
+    }
+    label .hint {
+      font-style: italic;
+      color: var(--text-faint);
+      letter-spacing: 0;
+      font-size: 12px;
+      margin-left: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold-dim);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    button {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 28px;
+      font-family: inherit;
+      font-size: 15px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    button:hover:not(:disabled) {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: var(--hairline);
+      color: var(--text-faint);
+    }
+    .button-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .button-secondary {
+      border-color: var(--hairline);
+      color: var(--text-dim);
+    }
+    .button-secondary:hover:not(:disabled) {
+      background: var(--bg-elev);
+      color: var(--text);
+    }
+
+    .verify-panel {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 2px solid transparent;
+      font-size: 14px;
+      transition: border-color 0.2s;
+      min-height: 1em;
+    }
+    .verify-panel.checking { border-left-color: var(--text-dim); color: var(--text-dim); font-style: italic; }
+    .verify-panel.verified { border-left-color: var(--gold); }
+    .verify-panel.error { border-left-color: var(--error); color: var(--error); }
+    .verify-panel .ending {
+      color: var(--gold);
+      letter-spacing: 4px;
+      font-size: 16px;
+    }
+    .verify-panel .meta {
+      color: var(--text-dim);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .success {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success h2 {
+      letter-spacing: 8px;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .success p { font-style: italic; color: var(--text-dim); }
+    .success .author-line {
+      margin-top: 28px;
+      font-style: normal;
+      color: var(--text);
+    }
+
+    a { color: var(--link); }
+    a:hover { color: var(--text); }
+
+    .what-is {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-faint);
+      font-style: italic;
+    }
+    .what-is summary {
+      cursor: pointer;
+      letter-spacing: 4px;
+      padding: 8px;
+      color: var(--text-dim);
+    }
+    .what-is summary:hover { color: var(--text); }
+    .what-is[open] summary { color: var(--gold); }
+    .what-is .body {
+      max-width: 520px;
+      margin: 16px auto 0;
+      text-align: left;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      body { padding: 30px 14px 60px; font-size: 16px; }
+      h1 { font-size: 30px; letter-spacing: 8px; }
+      section { padding: 22px 18px; }
+      .button-row button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <svg class="sigil" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#c9a84c" stroke-width="2"/>
+      <circle cx="32" cy="26" r="6" fill="#c9a84c"/>
+      <rect x="29" y="28" width="6" height="14" fill="#c9a84c"/>
+    </svg>
+    <p class="eyebrow">AURELON</p>
+    <h1>WITNESS</h1>
+    <div class="hairline"></div>
+    <p class="lede">If you reached an ending of <em>The Descent</em>, your claim is real and the cycle remembers. Submit it here, and the author will be in touch.</p>
+  </header>
+
+  <!-- Form -->
+  <form id="witness-form" novalidate>
+
+    <section>
+      <h2>— Your claim —</h2>
+
+      <label for="claimId">Claim ID
+        <span class="hint">(printed in the game after your run)</span>
+      </label>
+      <input type="text" id="claimId" name="claimId" placeholder="e.g. WARDEN-3-LU8K9R3" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" required>
+
+      <div id="verify-panel" class="verify-panel"></div>
+    </section>
+
+    <section>
+      <h2>— Who you are —</h2>
+
+      <label for="email">Email
+        <span class="hint">(so the author can reply)</span>
+      </label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="discordHandle">Discord handle
+        <span class="hint">(optional — if you'd like a witness role)</span>
+      </label>
+      <input type="text" id="discordHandle" name="discordHandle" placeholder="@yourhandle" autocomplete="off">
+    </section>
+
+    <section>
+      <h2>— What you say —</h2>
+
+      <label for="proposedName">Proposed character name
+        <span class="hint">(optional — only the first reader of each ending names a character)</span>
+      </label>
+      <input type="text" id="proposedName" name="proposedName" maxlength="64" autocomplete="off">
+
+      <label for="message">Message
+        <span class="hint">(optional — tell the author about yourself, ask about the lore, or anything else)</span>
+      </label>
+      <textarea id="message" name="message" maxlength="5000" rows="6"></textarea>
+    </section>
+
+    <div class="button-row">
+      <button type="submit" id="submit-btn" disabled>Submit my claim</button>
+      <button type="button" class="button-secondary" id="discord-btn">Talk to the author first</button>
+    </div>
+
+  </form>
+
+  <!-- Success state (revealed after submission) -->
+  <section id="success-panel" class="success hidden">
+    <h2>SUBMITTED</h2>
+    <p>The cycle has heard you. Your claim has been received.</p>
+    <p class="author-line">The author will be in touch within a few days. If you'd like to discuss the cycle in the meantime, the witness circle is here:<br>
+      <a id="success-discord" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </p>
+  </section>
+
+  <details class="what-is">
+    <summary>WHAT IS THIS</summary>
+    <div class="body">
+      <p>The Descent is a free text adventure set in the world of <strong>Aurelon</strong> — a sampler of <em>The Breaking</em>, the first novel cycle.</p>
+      <p>It has four named endings. The first ten readers of each ending preread the unpublished cycle. The first reader of each ending names a character in the books.</p>
+      <p>This page is where claims are made. The cycle keeps track. The author reads every submission.</p>
+      <p>If you haven't played: <a href="/the-descent">begin the descent</a>.</p>
+    </div>
+  </details>
+
+</div>
+
+<script>
+  // ─────────────────────────────────────────────────────────────
+  // CONFIGURATION — edit these two URLs before deploying
+  // ─────────────────────────────────────────────────────────────
+  const WORKER_URL = 'https://the-descent-claims.deaviantchild1990.workers.dev';
+  const DISCORD_URL = 'https://discord.gg/WdqrJRg4Qn';
+  // ─────────────────────────────────────────────────────────────
+
+  const $ = (id) => document.getElementById(id);
+  const claimIdInput = $('claimId');
+  const verifyPanel = $('verify-panel');
+  const submitBtn = $('submit-btn');
+  const form = $('witness-form');
+  const successPanel = $('success-panel');
+  const discordBtn = $('discord-btn');
+  const successDiscord = $('success-discord');
+
+  successDiscord.href = DISCORD_URL;
+  successDiscord.textContent = DISCORD_URL.replace(/^https?:\/\//, '');
+
+  let verifiedClaim = null;
+  let verifyTimer = null;
+
+  function setVerifyPanel(state, html) {
+    verifyPanel.className = `verify-panel ${state}`;
+    verifyPanel.innerHTML = html || '';
+  }
+
+  function endingTitle(ending) {
+    return ({
+      warden: 'WARDEN',
+      cultist: 'CULTIST',
+      vrethkai_with_mind: "VRETH'KAI-WITH-MIND",
+      sleeping_god: 'SLEEPING GOD'
+    })[ending] || ending;
+  }
+
+  async function verifyClaimId(rawId) {
+    const id = rawId.trim().toUpperCase();
+    if (!id) {
+      setVerifyPanel('', '');
+      verifiedClaim = null;
+      submitBtn.disabled = true;
+      return;
+    }
+    setVerifyPanel('checking', 'Checking the cycle…');
+    try {
+      const r = await fetch(`${WORKER_URL}/api/verify?claimId=${encodeURIComponent(id)}`);
+      const data = await r.json();
+      if (!data || !data.ok) {
+        setVerifyPanel('error', `Unknown claim ID. Make sure you've copied it exactly as printed in the game.`);
+        verifiedClaim = null;
+        submitBtn.disabled = true;
+        return;
+      }
+      verifiedClaim = data;
+      const isFirst = data.rank === 1;
+      const firstNote = isFirst ? ' &nbsp;·&nbsp; <span style="color:#c9a84c">FIRST CLAIM</span>' : '';
+      setVerifyPanel('verified', `
+        <div class="ending">${endingTitle(data.ending)} &nbsp;·&nbsp; rank #${data.rank}${firstNote}</div>
+        <div class="meta">
+          Identity: ${data.identity || '—'} &nbsp;·&nbsp;
+          Turn ${data.turn} &nbsp;·&nbsp;
+          Fragments ${data.fragments}/20 &nbsp;·&nbsp;
+          Shards ${data.shards}/3
+          ${data.fullVrethkaiEscape ? '&nbsp;·&nbsp; Full Vreth\'kai escape' : ''}
+        </div>
+      `);
+      submitBtn.disabled = false;
+    } catch (err) {
+      setVerifyPanel('error', `Could not reach the cycle right now. Try again in a moment, or write to the author directly.`);
+      verifiedClaim = null;
+      submitBtn.disabled = true;
+    }
+  }
+
+  claimIdInput.addEventListener('input', (e) => {
+    clearTimeout(verifyTimer);
+    verifyTimer = setTimeout(() => verifyClaimId(e.target.value), 400);
+  });
+  claimIdInput.addEventListener('blur', (e) => {
+    clearTimeout(verifyTimer);
+    verifyClaimId(e.target.value);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!verifiedClaim) {
+      setVerifyPanel('error', 'Verify your claim ID before submitting.');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    const payload = {
+      claimId: claimIdInput.value.trim().toUpperCase(),
+      email: $('email').value.trim(),
+      discordHandle: $('discordHandle').value.trim(),
+      proposedName: $('proposedName').value.trim(),
+      message: $('message').value.trim()
+    };
+
+    try {
+      const r = await fetch(`${WORKER_URL}/api/witness`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json();
+      if (!data.ok) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit my claim';
+        setVerifyPanel('error', data.error || 'Submission failed. Try again, or write to the author.');
+        return;
+      }
+      // Reveal success panel, hide form
+      form.classList.add('hidden');
+      successPanel.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit my claim';
+      setVerifyPanel('error', 'Could not reach the cycle right now. Try again in a moment.');
+    }
+  });
+
+  discordBtn.addEventListener('click', () => {
+    window.open(DISCORD_URL, '_blank', 'noopener,noreferrer');
+  });
+</script>
+
+</body>
+</html>
