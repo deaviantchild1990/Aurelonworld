@@ -1025,7 +1025,7 @@ The wall has shown you what it was meant to show.`, 'narration');
 
 The walls hear it. The floor hears it. He hears it.
 
-He stirs. He does not yet wake. Whether the cycle accepts the name is not yet known — the cycle takes its time about such things, and the cycle has time. But you have done what you came to do. The sound has been made. The shape has been spoken.
+He stirs. He does not yet wake. Whether the cycle accepts the name is not yet known. The cycle takes its time. The cycle has time. But you have done what you came to do. The sound has been made. The shape has been spoken.
 
 — THE SLEEPING GOD —
 (First-player completion: your name will be carried out of the dark and weighed against the cosmology of *Aurelon: The Crosslands*. If it holds, it becomes the deity's true name in canon. The author will be in touch.)`, 'narration');
@@ -1044,14 +1044,14 @@ He stirs. He does not yet wake. Whether the cycle accepts the name is not yet kn
 
 The chamber accepts the pause. The walls do not forget what you almost said. The shape stays half-spoken in the air, neither in the world nor out of it.
 
-You return to the surface with the name unfinished, the way a sentence stops at a comma. The cycle will keep waiting. So will he.
+You return to the surface with the name unfinished. The cycle will keep waiting. So will he.
 
 — THE DESCENT (paused at naming) —
-You have reached the deepest gate and chosen to ask before answering. To complete the naming, write to the author about the cycle and the shape his name should hold. The conversation is the rest of the puzzle.
+You have reached the deepest gate and chosen to ask before answering. To complete the naming, write to the author about the cycle. The conversation is the rest of the puzzle.
 
 Reach out: ${this.authorContact}
 
-When you and the author have agreed on a name, it will be canonized on your behalf — without requiring a second descent.`, 'narration');
+When you and the author have agreed on a name, it will be canonized on your behalf. You will not need to descend a second time.`, 'narration');
         // Submit a deferred claim — same payload as a committed name but
         // flagged so the author's Discord queue distinguishes it.
         this._submitClaim('sleeping_god', { deferred: true });
@@ -1133,9 +1133,11 @@ He is the witness who did not become the witnessed. What names him must reflect 
     this._namingConfirmation = trimmed;
     this._emit('output', `You shape the name in your mouth: **${trimmed}**.
 
-The cycle has not yet heard it. The chamber is patient. You may speak it now and let it carry, or you may step back and write to the author about the cycle first — about what shape his name should hold, about what the eight carvings have meant since the carvers laid them down.
+The cycle has not yet heard it. The chamber is patient.
 
-Both paths end with the same gate. Only the second one ends with a conversation.
+You can speak it now. You can step back and write to the author first.
+
+Both paths end at the same gate. The second one ends with a conversation.
 
 > Type **\`speak\`** to commit the name now.
 > Type **\`wait\`** to step back and write to the author first.
