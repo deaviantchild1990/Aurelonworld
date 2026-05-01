@@ -1414,10 +1414,30 @@ There is a path up. Several paths. Not all of them go where they seem.`,
 
       examineTargets: {
         'sunlight': 'Thin and grey. The sun above this place is also the sun you fell from. You did not know how much you missed it.',
-        'paths': 'Three obvious routes. The central trunk rises straight. The eastern branch hangs heavy. The western root hooks back on itself.',
+        'paths': 'Three obvious routes. The central trunk rises straight. The eastern branch reaches out broad. The western root hooks back on itself.',
         'central trunk': 'Thick and steady. The bark is worn smooth where hands have climbed before yours.',
-        'eastern branch': 'The wood looks dry. Older than the rest. A hand-width crack runs along it where it joins the trunk.',
-        'western root': 'It curls back into the canopy and disappears. Where it goes is not the surface.'
+        'eastern branch': 'Solid. The branch holds weight without bowing. The bark is rough where something has gripped it — repeatedly, in the same places.',
+        'western root': 'It curls back into the canopy and disappears. Where it goes is not the surface.',
+        'canopy': 'Dense above. Higher up, the green opens out into something paler — vines woven into a hollow, big enough to hold a body.'
+      },
+
+      hints: [
+        'Above you is not empty. Standing too long will end you.',
+        'Read the paths, but read fast. One has been climbed by hands like yours. The other two have not.',
+        'Take the central trunk. Do not linger.'
+      ],
+
+      timer: {
+        turns: 5,
+        onExpire: 'death',
+        warningOnEnter: 'The vines above you ripple. Nothing has moved them.',
+        warning: 'Above you, the light through the canopy has changed. Something is between you and the sun.',
+        warningAt: 2,
+        deathText: `It was already in the canopy with you.
+
+You did not see what it was. You did not need to.
+
+You forget your name. You forget you had one.`
       },
 
       actions: [
