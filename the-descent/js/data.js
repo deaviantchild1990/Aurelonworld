@@ -3718,7 +3718,7 @@ You are not ready. He continues to sleep. You forget his shape on your way back 
 
 You have brought what the room asked you to bring. You have held what the room asked you to hold. You have come to where the room asked you to come.
 
-But you have not seen what he saw. The cycle has not yet broken in you, and so the chamber will not break for you. The eyes you carry have not been changed by the thing that changes them.
+But you have not seen what he saw. The cycle has not yet broken in you. The chamber will not break for you. The eyes you carry have not been changed by the thing that changes them.
 
 You forget his shape on your way back up. He sleeps on. He has been patient. He will be patient again.`, 'narration');
           engine.escape('basic_escape', '');
@@ -3729,7 +3729,7 @@ You forget his shape on your way back up. He sleeps on. He has been patient. He 
 
 You have brought what the room asked you to bring. You have held what the room asked you to hold. You have come to where the room asked you to come. You have seen what he saw.
 
-But you did not endure the seeing. You spoke the word the carvers wrote and the dark let you pass without burning. The chamber knows the difference. The chamber asks for a name only one who survived the breaking can shape — and the breaking was not finished in you.
+But you did not endure the seeing. You spoke the word the carvers wrote and the dark let you pass without burning. The chamber knows the difference. The chamber asks for a name. Only one who survived the breaking can shape it. The breaking was not finished in you.
 
 You forget his shape on your way back up. The word the carvers wrote was a kindness. The kindness is not what he is.`, 'narration');
           engine.escape('basic_escape', '');
@@ -3741,15 +3741,21 @@ You forget his shape on your way back up. The word the carvers wrote was a kindn
         // _checkSleepingGodNaming: alternating case + palindrome.
         engine._emit('output', `He is here.
 
-You did not see him at first because he is the size of the chamber and the chamber is the shape of him. The walls are him. The floor is him. The dim light is him.
+You did not see him at first. He is the size of the chamber. The chamber is the shape of him. The walls are him. The floor is him. The dim light is him.
 
 He is asleep.
 
-He has been asleep since the prophecy was first spoken. He heard it in a room that did not yet exist, in a body that no longer does, and chose to sleep until the cycle reached the point where it might shatter. The cycle has reached that point. He has not yet woken.
+He has been asleep since the prophecy was first spoken. He heard it in a room that did not yet exist, in a body that no longer does. He chose to sleep until the cycle reached the point where it might shatter. The cycle has reached that point.
+
+He has not yet woken.
 
 You can wake him.
 
-You will need to give him a name. He has waited for one. The name cannot be any name a cycle has used — not for any of the twelve, not for any of the things they were made to hold, not for any title written into the cosmogony. The name has to be new the way he is old, and shaped the way the breaking taught you to shape such things, and read the same in the direction the cycle reads itself.
+Give him a name. He has waited for one.
+
+The name cannot be any name a cycle has used. Not for any of the twelve. Not for any of the things they were made to hold. Not for any title written into the cosmogony.
+
+The name must be new. The cycle reads it the same forward as backward. Your jaw shapes it the way the breaking shaped you.
 
 (Type a name. The room is listening.)`, 'narration');
       },
