@@ -111,7 +111,7 @@
       <span class="tutorial-modal-title">The Descent</span>
     </header>
     <div class="tutorial-modal-body">
-      <p><em>A free text adventure set in the world of</em> <strong>Aurelon</strong> — <em>a sampler of the world that</em> The Breaking <em>(the first novel cycle) and</em> Aurelon: The Crosslands <em>(the campaign setting) are set in.</em></p>
+      <p><em>A free text adventure. A sampler of the world of</em> <strong>Aurelon</strong>. <em>The world that</em> The Breaking <em>and</em> Aurelon: The Crosslands <em>are set in.</em></p>
 
       <p class="intro-section-label">— The world you are inside of —</p>
       <p>The sky has been grey for months. A cycle is failing. Things from outside the world have begun reaching in — the <em>Vreth'kai</em>, fragments of an old hunger. People are still living below all of this. Most of them, anyway.</p>
@@ -124,16 +124,16 @@
       <p>The buttons in the corner are your tools:</p>
       <p class="tut-icons">
         <span class="tut-icon">♪</span> ambient sound (off by default)<br>
-        <span class="tut-icon">?</span> a hint for the room — escalates from vague to specific. The hardest endings give only the lightest hint.<br>
+        <span class="tut-icon">?</span> a hint for the room. Escalates from vague to specific. The hardest endings give only the lightest hint.<br>
         <span class="tut-icon">☰</span> what you carry, and which prophecy fragments you have read. Click any fragment to read it again.<br>
         <span class="tut-icon">↶</span> take back the last turn (or type <code>undo</code>). Even works after death.<br>
         <span class="tut-icon">⟲</span> abandon this run and start fresh.
       </p>
 
       <p class="intro-section-label">— What to expect —</p>
-      <p><em>You will die more than once.</em> Death is permadeath, but every turn auto-saves and you can always undo the last one. Closing the page does not lose your progress.</p>
-      <p><em>Read carefully.</em> The prose is most of the reward. Almost everything you find is canonical text from <em>The Breaking</em> — the prophecy fragments most of all. Twenty fragments are scattered through the dark.</p>
-      <p><em>There are many ways out.</em> Some easier, some you will need many runs to even find. The four hardest endings will earn you a place in the unpublished books — the first reader to reach each one names a character.</p>
+      <p><em>You will die more than once.</em> Death is permadeath. Every turn auto-saves. You can always undo the last one. Closing the page does not lose your progress.</p>
+      <p><em>Read carefully.</em> The prose is most of the reward. Almost everything you find is canonical text from <em>The Breaking</em> — the prophecy fragments most of all. Twenty are scattered through the dark.</p>
+      <p><em>There are many ways out.</em> Some are easier. Some you will need many runs to find. The four hardest will earn you a place in the unpublished books. The first reader to reach each one names a character.</p>
       <p>Type <code>intro</code> at any time to read this again, or <code>tutorial</code> for a quick command reference.</p>
     </div>
     <footer class="tutorial-modal-footer">
