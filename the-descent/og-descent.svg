@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!--
+    Open Graph image — The Descent
+    1200 × 630, the standard OG aspect ratio (1.91:1).
+
+    Aesthetic: pure typography + linework. The descent is rendered as a
+    set of widening horizontal lines fading from gold into shadow — a
+    schematic depth-chart suggesting layered descent without illustrating
+    it. Reads "this is a text game" without saying so.
+
+    Convert to PNG before deploying — most social platforms render PNG
+    more reliably. Keep the SVG as the editable source.
+  -->
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#161616"/>
+      <stop offset="60%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Hairline frame inside safe area -->
+  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#1f1d1a" stroke-width="1"/>
+
+  <!-- ─── Eyebrow: AURELON ─── -->
+  <text x="600" y="146"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="18" letter-spacing="22" font-weight="400"
+    fill="#7a7468" text-anchor="middle">AURELON</text>
+
+  <!-- Thin gold rule above the title -->
+  <line x1="540" y1="178" x2="660" y2="178" stroke="#c9a84c" stroke-width="0.75" opacity="0.7"/>
+
+  <!-- ─── Main title ─── -->
+  <text x="600" y="262"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="68" letter-spacing="20" font-weight="400"
+    fill="#e8e0d0" text-anchor="middle">THE DESCENT</text>
+
+  <!-- ─── The descent itself: widening, fading horizontal lines.
+       Each successive line is wider, lower, and dimmer — a depth chart
+       reading visually as steps into the dark. ─── -->
+  <g stroke-linecap="square">
+    <line x1="540" y1="320" x2="660" y2="320" stroke="#c9a84c" stroke-width="1.25"/>
+    <line x1="510" y1="345" x2="690" y2="345" stroke="#a88f3c" stroke-width="1.0"/>
+    <line x1="475" y1="370" x2="725" y2="370" stroke="#7d6b30" stroke-width="0.9"/>
+    <line x1="435" y1="395" x2="765" y2="395" stroke="#574a25" stroke-width="0.8"/>
+    <line x1="390" y1="420" x2="810" y2="420" stroke="#3a321b" stroke-width="0.7"/>
+    <line x1="340" y1="445" x2="860" y2="445" stroke="#252015" stroke-width="0.65"/>
+  </g>
+
+  <!-- ─── Italic gold tagline — three lines.
+       The third line lists the four archetypes (watcher / fire / becoming /
+       god) which map to the four named endings without naming the mechanics
+       directly. Doubles as a soft onboarding hint that there are four
+       distinct identity-bearing paths. ─── -->
+  <text x="600" y="478"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22" font-style="italic"
+    fill="#c9a84c" text-anchor="middle">There are ten ways out.</text>
+  <text x="600" y="506"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22" font-style="italic"
+    fill="#c9a84c" text-anchor="middle">Four are still unnamed.</text>
+  <text x="600" y="540"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22" font-style="italic" letter-spacing="1"
+    fill="#c9a84c" text-anchor="middle">A watcher. A fire. A becoming. A god.</text>
+
+  <!-- ─── Footer ─── -->
+  <text x="600" y="582"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="12" letter-spacing="6" font-weight="400"
+    fill="#5a5448" text-anchor="middle">A  FREE  TEXT  ADVENTURE  ·  AURELONUNIVERSE.COM</text>
+</svg>
