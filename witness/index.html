@@ -285,6 +285,177 @@
       border: none;
     }
 
+    /* ─── Namers (the first reader of each ending — most prominent) ─── */
+    #namers-heading {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .namers-intro {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-faint);
+      font-style: italic;
+      margin: 0 auto 22px;
+      max-width: 460px;
+    }
+    .namers-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 50px;
+    }
+    @media (min-width: 600px) {
+      .namers-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .namer-card {
+      border: 1px solid var(--border);
+      padding: 22px 18px 18px;
+      background: rgba(20, 18, 14, 0.5);
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .namer-card.claimed {
+      border-color: rgba(201, 168, 76, 0.4);
+      background: rgba(201, 168, 76, 0.04);
+    }
+    .namer-card.special-sleeping.claimed {
+      border-color: var(--gold);
+      box-shadow: 0 0 24px rgba(201, 168, 76, 0.08);
+    }
+    .namer-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      min-height: 10px;
+    }
+    .namer-eyebrow:empty { margin-bottom: 0; min-height: 0; }
+    .namer-title {
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin: 0 0 12px;
+      font-weight: 400;
+    }
+    .namer-claimant {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 4px;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      min-height: 1.2em;
+    }
+    .namer-card:not(.claimed) .namer-claimant {
+      color: var(--text-faint);
+      font-size: 24px;
+    }
+    .namer-meta {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.5;
+      min-height: 1.5em;
+    }
+    .namer-card.claimed .namer-meta {
+      color: var(--gold-dim);
+      font-style: normal;
+    }
+    .namer-named-character {
+      display: block;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .namer-date {
+      display: block;
+      color: var(--text-faint);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-style: normal;
+    }
+
+    /* ─── Archive (chronological list of every claim) ─── */
+    #archive-section {
+      margin-top: 50px;
+    }
+    #archive-heading {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .archive-intro {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-faint);
+      font-style: italic;
+      margin: 0 auto 22px;
+      max-width: 480px;
+    }
+    .archive-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .archive-list li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 9px 4px;
+      border-bottom: 1px dotted rgba(58, 54, 50, 0.5);
+      font-size: 13px;
+      align-items: baseline;
+    }
+    .archive-list li:last-child { border-bottom: none; }
+    .archive-list .archive-date {
+      color: var(--text-faint);
+      font-size: 11px;
+      min-width: 70px;
+      font-variant-numeric: tabular-nums;
+    }
+    .archive-list .archive-ending {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      min-width: 80px;
+      font-style: italic;
+    }
+    .archive-list .archive-rank {
+      color: var(--gold-dim);
+      font-size: 12px;
+      font-style: italic;
+      min-width: 28px;
+    }
+    .archive-list .archive-handle { color: var(--text); }
+    .archive-list .archive-handle.anonymous {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    .archive-list .archive-country {
+      color: var(--text-faint);
+      font-size: 10px;
+      margin-left: auto;
+      letter-spacing: 1px;
+    }
+    .archive-empty {
+      text-align: center;
+      font-style: italic;
+      color: var(--text-faint);
+      padding: 18px;
+    }
+
     @media (max-width: 600px) {
       body { padding: 30px 14px 60px; font-size: 16px; }
       h1 { font-size: 30px; letter-spacing: 8px; }
@@ -367,47 +538,24 @@
     </p>
   </section>
 
-  <!-- ─── WITNESS LOG — public leaderboard, fed by /api/log ─── -->
-  <section id="log-section" style="margin-top: 60px;">
-    <h2>— The witness log —</h2>
-    <p style="font-size: 14px; color: var(--text-dim); font-style: italic; margin-bottom: 24px;">
-      Those who have descended far enough to be remembered. The first ten of each ending preread; the first names a character.
-    </p>
-
-    <div id="log-sleeping-god-banner" class="hidden" style="
-      border: 1px solid var(--gold);
-      padding: 18px 20px;
-      margin-bottom: 28px;
-      text-align: center;
-      background: rgba(201, 168, 76, 0.04);
-    ">
-      <div style="font-size: 11px; letter-spacing: 6px; color: var(--gold-dim); margin-bottom: 8px;">THE SLEEPING GOD HAS BEEN NAMED</div>
-      <div id="log-sg-name" style="font-size: 22px; letter-spacing: 4px; color: var(--gold); font-style: italic;"></div>
-    </div>
-
-    <div id="log-grid" style="display: grid; grid-template-columns: 1fr; gap: 22px;">
-      <div class="log-column" data-ending="warden">
-        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">WARDEN</div>
-        <ol class="log-list"></ol>
-      </div>
-      <div class="log-column" data-ending="cultist">
-        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">CULTIST</div>
-        <ol class="log-list"></ol>
-      </div>
-      <div class="log-column" data-ending="vrethkai_with_mind">
-        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">VRETH'KAI&middot;WITH&middot;MIND</div>
-        <ol class="log-list"></ol>
-      </div>
-      <div class="log-column" data-ending="sleeping_god">
-        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">SLEEPING GOD</div>
-        <ol class="log-list"></ol>
-      </div>
-    </div>
-
-    <div id="log-empty" style="text-align: center; font-style: italic; color: var(--text-faint); margin-top: 20px;" class="hidden">
-      No witnesses yet. Be the first.
-    </div>
-  </section>
+  <!-- ─── Link to the dedicated log page where the canon is recorded ─── -->
+  <p style="text-align:center;margin-top:60px;">
+    <a href="/witness/log" style="
+      display:inline-block;
+      padding:14px 28px;
+      border:1px solid var(--gold-dim);
+      color:var(--gold);
+      text-decoration:none;
+      letter-spacing:4px;
+      font-size:13px;
+      transition:background 0.15s,color 0.15s,border-color 0.15s;
+    " onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)';" onmouseout="this.style.background='';this.style.borderColor='var(--gold-dim)';">
+      View the full witness log &rarr;
+    </a>
+  </p>
+  <p style="text-align:center;font-size:13px;color:var(--text-faint);font-style:italic;margin-top:12px;">
+    The cycle remembers every reader who has reached a named ending.
+  </p>
 
   <details class="what-is">
     <summary>WHAT IS THIS</summary>
@@ -552,82 +700,204 @@
   });
 
   // ─── Witness log ───
-  // Fetches the per-ending leaderboards from the Worker and renders them
-  // below the form. Silent on failure — the form still works without it.
+  // Fetches the full claim log from the Worker and populates THREE sections:
+  //   1. Namers — the rank-1 first-claimer per ending, prominent cards
+  //   2. First Ten — per-ending leaderboards, ranks 1-10
+  //   3. Full Archive — every claim, chronological (most recent first)
+  // Silent on failure — the form still works without any of it.
+
+  const ENDING_TITLES = {
+    warden: { archetype: 'The Watcher', realName: 'The Warden', label: 'WARDEN' },
+    cultist: { archetype: 'The Fire', realName: 'The Cultist', label: 'CULTIST' },
+    vrethkai_with_mind: { archetype: 'The Becoming', realName: "Vreth'kai With Mind", label: 'VRETH’KAI' },
+    sleeping_god: { archetype: 'The God', realName: 'The Sleeping God', label: 'SLEEPING GOD' }
+  };
+
+  function fmtDateShort(ms) {
+    if (!ms) return '';
+    return new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function fmtDateCompact(ms) {
+    if (!ms) return '';
+    return new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function renderNamers(data) {
+    // Sleeping God canonical name banner — only shown when canonized.
+    if (data.sleepingGodNamed && data.sleepingGodName) {
+      $('log-sleeping-god-banner').classList.remove('hidden');
+      $('log-sg-name').textContent = data.sleepingGodName;
+    }
+
+    document.querySelectorAll('.namer-card').forEach(card => {
+      const ending = card.dataset.ending;
+      const cfg = ENDING_TITLES[ending];
+      const eyebrowEl = card.querySelector('.namer-eyebrow');
+      const titleEl = card.querySelector('.namer-title');
+      const claimantEl = card.querySelector('.namer-claimant');
+      const metaEl = card.querySelector('.namer-meta');
+      const items = data[ending] || [];
+      const first = items.find(i => i.rank === 1);
+      if (!first) return;
+
+      // Sleeping God: only reveal when the name has been canonized by the
+      // author. Queued-but-unapproved claims leave the card untouched.
+      if (ending === 'sleeping_god') {
+        if (!(data.sleepingGodNamed && data.sleepingGodName)) return;
+        card.classList.add('claimed');
+        eyebrowEl.textContent = cfg.archetype;
+        titleEl.textContent = cfg.realName;
+        claimantEl.textContent = data.sleepingGodName;
+        const namedByLine = first.discordHandle ? `named by ${first.discordHandle}` : 'named by a witness';
+        const dateLine = first.serverTime ? `<span class="namer-date">${fmtDateShort(first.serverTime)}</span>` : '';
+        metaEl.innerHTML = `<span class="namer-named-character">${namedByLine}</span>${dateLine}`;
+        return;
+      }
+
+      // Warden / Cultist / Vreth'kai — flip on first valid claim.
+      card.classList.add('claimed');
+      eyebrowEl.textContent = cfg.archetype;
+      titleEl.textContent = cfg.realName;
+      claimantEl.textContent = first.discordHandle
+        || (first.identity ? `the ${first.identity}` : 'a witness');
+      const proposedLine = first.proposedName
+        ? `<span class="namer-named-character">named ${first.proposedName}</span>`
+        : `<span style="font-style:italic;">name to be chosen</span>`;
+      const dateLine = first.serverTime ? `<span class="namer-date">${fmtDateShort(first.serverTime)} · ${first.country || ''}</span>` : '';
+      metaEl.innerHTML = `${proposedLine}${dateLine}`;
+    });
+  }
+
+  function renderFirstTen(data) {
+    let totalClaims = 0;
+    document.querySelectorAll('.log-column').forEach(col => {
+      const ending = col.dataset.ending;
+      const list = col.querySelector('.log-list');
+      list.innerHTML = '';
+      const items = (data[ending] || []).slice(0, 10);
+      totalClaims += items.length;
+
+      if (items.length === 0) {
+        const li = document.createElement('li');
+        li.className = 'empty';
+        li.textContent = '— Unclaimed. —';
+        list.appendChild(li);
+        return;
+      }
+
+      items.forEach(item => {
+        const li = document.createElement('li');
+
+        const rank = document.createElement('span');
+        rank.className = 'rank';
+        rank.textContent = `#${item.rank}`;
+        li.appendChild(rank);
+
+        const handle = document.createElement('span');
+        if (item.discordHandle) {
+          handle.className = 'handle';
+          handle.textContent = item.discordHandle;
+        } else if (item.identity) {
+          handle.className = 'handle anonymous';
+          handle.textContent = `the ${item.identity}`;
+        } else {
+          handle.className = 'handle anonymous';
+          handle.textContent = '(unwitnessed)';
+        }
+        li.appendChild(handle);
+
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        const metaParts = [];
+        if (item.country) metaParts.push(item.country);
+        if (item.serverTime) metaParts.push(fmtDateShort(item.serverTime));
+        meta.textContent = metaParts.join('  ·  ');
+        li.appendChild(meta);
+
+        if (item.proposedName) {
+          const proposed = document.createElement('span');
+          proposed.className = 'proposed-name';
+          proposed.textContent = `proposed name: ${item.proposedName}`;
+          li.appendChild(proposed);
+        }
+
+        list.appendChild(li);
+      });
+    });
+
+    if (totalClaims === 0) {
+      $('log-empty').classList.remove('hidden');
+    }
+  }
+
+  function renderArchive(data) {
+    // Combine every claim across all four endings, sort chronologically
+    // descending so the most recent descents appear at the top.
+    const all = [];
+    Object.keys(ENDING_TITLES).forEach(ending => {
+      (data[ending] || []).forEach(item => all.push({ ...item, ending }));
+    });
+    all.sort((a, b) => (b.serverTime || 0) - (a.serverTime || 0));
+
+    const listEl = $('archive-list');
+    listEl.innerHTML = '';
+
+    if (all.length === 0) {
+      $('archive-empty').classList.remove('hidden');
+      return;
+    }
+
+    all.forEach(item => {
+      const li = document.createElement('li');
+      const cfg = ENDING_TITLES[item.ending] || { label: item.ending.toUpperCase() };
+
+      const date = document.createElement('span');
+      date.className = 'archive-date';
+      date.textContent = fmtDateCompact(item.serverTime);
+      li.appendChild(date);
+
+      const ending = document.createElement('span');
+      ending.className = 'archive-ending';
+      ending.textContent = cfg.label;
+      li.appendChild(ending);
+
+      const rank = document.createElement('span');
+      rank.className = 'archive-rank';
+      rank.textContent = item.rank ? `#${item.rank}` : '';
+      li.appendChild(rank);
+
+      const handle = document.createElement('span');
+      if (item.discordHandle) {
+        handle.className = 'archive-handle';
+        handle.textContent = item.discordHandle;
+      } else if (item.identity) {
+        handle.className = 'archive-handle anonymous';
+        handle.textContent = `the ${item.identity}`;
+      } else {
+        handle.className = 'archive-handle anonymous';
+        handle.textContent = '(unwitnessed)';
+      }
+      li.appendChild(handle);
+
+      if (item.country) {
+        const country = document.createElement('span');
+        country.className = 'archive-country';
+        country.textContent = item.country;
+        li.appendChild(country);
+      }
+
+      listEl.appendChild(li);
+    });
+  }
+
   async function loadLog() {
     try {
       const r = await fetch(`${WORKER_URL}/api/log`, { cache: 'no-store' });
       if (!r.ok) return;
       const data = await r.json();
-
-      // Sleeping God canonical name banner
-      if (data.sleepingGodNamed && data.sleepingGodName) {
-        $('log-sleeping-god-banner').classList.remove('hidden');
-        $('log-sg-name').textContent = data.sleepingGodName;
-      }
-
-      let totalClaims = 0;
-      document.querySelectorAll('.log-column').forEach(col => {
-        const ending = col.dataset.ending;
-        const list = col.querySelector('.log-list');
-        list.innerHTML = '';
-        const items = (data[ending] || []).slice(0, 10);
-        totalClaims += items.length;
-
-        if (items.length === 0) {
-          const li = document.createElement('li');
-          li.className = 'empty';
-          li.textContent = '— Unclaimed. —';
-          list.appendChild(li);
-          return;
-        }
-
-        items.forEach(item => {
-          const li = document.createElement('li');
-
-          const rank = document.createElement('span');
-          rank.className = 'rank';
-          rank.textContent = `#${item.rank}`;
-          li.appendChild(rank);
-
-          const handle = document.createElement('span');
-          if (item.discordHandle) {
-            handle.className = 'handle';
-            handle.textContent = item.discordHandle;
-          } else if (item.identity) {
-            handle.className = 'handle anonymous';
-            handle.textContent = `the ${item.identity}`;
-          } else {
-            handle.className = 'handle anonymous';
-            handle.textContent = '(unwitnessed)';
-          }
-          li.appendChild(handle);
-
-          const meta = document.createElement('span');
-          meta.className = 'meta';
-          const metaParts = [];
-          if (item.country) metaParts.push(item.country);
-          if (item.serverTime) {
-            const d = new Date(item.serverTime);
-            metaParts.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
-          }
-          meta.textContent = metaParts.join('  ·  ');
-          li.appendChild(meta);
-
-          if (item.proposedName) {
-            const proposed = document.createElement('span');
-            proposed.className = 'proposed-name';
-            proposed.textContent = `proposed name: ${item.proposedName}`;
-            li.appendChild(proposed);
-          }
-
-          list.appendChild(li);
-        });
-      });
-
-      if (totalClaims === 0) {
-        $('log-empty').classList.remove('hidden');
-      }
+      renderNamers(data);
+      renderFirstTen(data);
+      renderArchive(data);
     } catch (e) {
       // Silent — log is enhancement, not core flow
     }
