@@ -274,6 +274,137 @@ p {
 .status-available { border-color: rgba(120,160,90,0.4); color: #98b472; }
 .status-coming { border-color: rgba(196,152,90,0.3); color: var(--gold-dim); }
 
+/* HALL OF WITNESSES */
+.hall-of-witnesses {
+  background: radial-gradient(ellipse at center, rgba(196,152,90,0.04) 0%, transparent 70%);
+  border-top: 1px solid rgba(196,152,90,0.08);
+  border-bottom: 1px solid rgba(196,152,90,0.08);
+  max-width: none;
+  padding: 6rem 2rem;
+}
+
+.witness-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .witness-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1100px) {
+  .witness-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+.witness-card {
+  display: block;
+  border: 1px solid rgba(196,152,90,0.2);
+  padding: 2.2rem 1.5rem 2rem;
+  text-decoration: none;
+  text-align: center;
+  background: rgba(13,11,9,0.5);
+  transition: all 0.3s ease;
+  min-height: 220px;
+}
+
+.witness-card:hover {
+  border-color: var(--gold);
+  background: rgba(196,152,90,0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(196,152,90,0.06);
+}
+
+.witness-card.claimed {
+  border-color: rgba(196,152,90,0.5);
+  background: rgba(196,152,90,0.04);
+}
+
+.witness-card.special-sleeping {
+  border-color: rgba(212,168,71,0.4);
+}
+
+.witness-card.special-sleeping.claimed {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 32px rgba(212,168,71,0.08);
+}
+
+.witness-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.75rem;
+  min-height: 0.75rem;
+}
+
+/* Empty eyebrow takes no space — the archetype only appears when a card
+   has been claimed and the JS reveals "what this ending was once known as." */
+.witness-eyebrow:empty {
+  margin-bottom: 0;
+  min-height: 0;
+}
+
+.witness-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.witness-divider {
+  width: 36px;
+  height: 1px;
+  background: rgba(196,152,90,0.3);
+  margin: 0 auto 1.2rem;
+}
+
+.witness-claimant {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  min-height: 1.5em;
+}
+
+.witness-card:not(.claimed) .witness-claimant {
+  color: var(--gold-dim);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+}
+
+.witness-meta {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  min-height: 2.5em;
+  padding: 0 0.5rem;
+}
+
+.witness-card.claimed .witness-meta {
+  color: var(--gold-dim);
+}
+
+.witness-named-character {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
 /* PROPHECY */
 .prophecy-section {
   background: radial-gradient(ellipse at center, rgba(107,32,32,0.04) 0%, transparent 70%);
@@ -410,7 +541,8 @@ footer {
   <p class="hero-subtitle">Gates &middot; Corruption &middot; The Cycle Continues</p>
   <p class="hero-tagline">A universe of ancient gates, patient corruption, and the civilizations that rise and fall between them.</p>
   <div class="hero-buttons">
-    <a href="#products" class="btn btn-primary">Explore</a>
+    <a href="/the-descent" class="btn btn-primary">Play The Descent</a>
+    <a href="#products" class="btn">Explore</a>
     <a href="#signup" class="btn">Stay Informed</a>
   </div>
   <div class="scroll-hint">&darr;</div>
@@ -432,9 +564,18 @@ footer {
 <!-- PRODUCTS -->
 <div id="products">
   <section style="max-width:900px;padding-bottom:2rem;">
-    <div class="section-label">In Development</div>
+    <div class="section-label">Available &amp; In Development</div>
   </section>
   <div class="products">
+    <div class="product-card">
+      <div class="product-type">Free Text Adventure</div>
+      <h3>The Descent</h3>
+      <div class="subtitle">A Sampler of The Breaking</div>
+      <p>The world above is dying. You fell into the dark. There are ten ways out &mdash; four of them are still unnamed. The first ten readers of each ending preread the unpublished cycle. The first names a character.</p>
+      <p style="font-size:0.85rem;color:rgba(154,142,126,0.8);font-style:italic;margin-top:1rem;">Already descended? <a href="/witness" style="color:var(--gold);text-decoration:underline;">Submit your claim &rarr;</a></p>
+      <a href="/the-descent" class="btn">Begin the Descent</a>
+      <span class="product-status status-available">Playable Now</span>
+    </div>
     <div class="product-card">
       <div class="product-type">Campaign Setting</div>
       <h3>The Crosslands</h3>
@@ -451,6 +592,57 @@ footer {
     </div>
   </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- HALL OF WITNESSES -->
+<section class="hall-of-witnesses">
+  <div class="section-label" style="text-align:center;">The Hall of Witnesses</div>
+  <h2 style="text-align:center;">The First Names</h2>
+  <p class="text-dim" style="text-align:center;max-width:560px;margin:0 auto 3rem;font-size:1rem;">
+    The first reader to reach each named ending names a character in the books. Their name is held here, in canon, for as long as the cycle remembers.
+  </p>
+
+  <div class="witness-grid">
+
+    <a href="/witness" class="witness-card" data-ending="warden">
+      <div class="witness-eyebrow"></div>
+      <h3 class="witness-title">The Watcher</h3>
+      <div class="witness-divider"></div>
+      <div class="witness-claimant">&mdash;</div>
+      <div class="witness-meta">Unclaimed. Awaiting the watcher.</div>
+    </a>
+
+    <a href="/witness" class="witness-card" data-ending="cultist">
+      <div class="witness-eyebrow"></div>
+      <h3 class="witness-title">The Fire</h3>
+      <div class="witness-divider"></div>
+      <div class="witness-claimant">&mdash;</div>
+      <div class="witness-meta">Unclaimed. Awaiting the burning.</div>
+    </a>
+
+    <a href="/witness" class="witness-card" data-ending="vrethkai_with_mind">
+      <div class="witness-eyebrow"></div>
+      <h3 class="witness-title">The Becoming</h3>
+      <div class="witness-divider"></div>
+      <div class="witness-claimant">&mdash;</div>
+      <div class="witness-meta">Unclaimed. Awaiting the changed.</div>
+    </a>
+
+    <a href="/witness" class="witness-card special-sleeping" data-ending="sleeping_god">
+      <div class="witness-eyebrow"></div>
+      <h3 class="witness-title">The God</h3>
+      <div class="witness-divider"></div>
+      <div class="witness-claimant">&mdash;</div>
+      <div class="witness-meta">Unwoken. The chamber is patient.</div>
+    </a>
+
+  </div>
+
+  <p style="text-align:center;margin-top:3rem;font-size:0.85rem;letter-spacing:0.1em;">
+    <a href="/witness" style="color:var(--gold-dim);text-decoration:none;font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:0.25em;border-bottom:1px solid rgba(196,152,90,0.3);padding-bottom:2px;">View the full witness log &rarr;</a>
+  </p>
+</section>
 
 <div class="divider"></div>
 
@@ -473,9 +665,9 @@ footer {
 <section id="about">
   <div class="section-label">About the Author</div>
   <h2>Jason Wilson</h2>
-  <p>Novelist and tabletop storyteller. Fifteen years building and running campaigns in the Aurelon setting — two long-running chronicles, dozens of shorter games, and a rotating cast of around thirty players whose questions and choices shaped the cosmology long before it became a book.</p>
-  <p>A Breaking: Of Ashes and Light is the culmination of those years: the characters he couldn't play as Dungeon Master, and the story that couldn't be finished at the table.</p>
-  <p class="text-dim">He lives in Kentucky.</p>
+  <p>Novelist and tabletop storyteller. I've spent fifteen years building and running campaigns in the Aurelon setting — two long-running chronicles, dozens of shorter games, and a rotating cast of around thirty players whose questions and choices shaped the cosmology long before it became a book.</p>
+  <p>A Breaking: Of Ashes and Light is the culmination of those years: the characters I couldn't play as Dungeon Master, and the story that couldn't be finished at the table.</p>
+  <p class="text-dim">I live in Kentucky.</p>
 </section>
 
 <div class="divider"></div>
@@ -1211,9 +1403,92 @@ footer {
 
 </section>
 
+<!-- HALL OF WITNESSES — auto-populates from the Worker's /api/log endpoint.
+     Empty cards are the default; once a real first-claim exists for an
+     ending, that card flips to "claimed" with the witness handle and (for
+     rank 1) the proposed character name. For Sleeping God specifically,
+     once the canonical name is approved, it appears here permanently. -->
+<script>
+(function() {
+  const WORKER_URL = 'https://the-descent-claims.deaviantchild1990.workers.dev';
+
+  // Each card defaults to its archetype as the title (rendered in HTML).
+  // When a real claim arrives, the JS demotes the archetype to a small
+  // eyebrow and reveals the real ending name as the title — that swap is
+  // the canonical reveal moment for the homepage.
+  const ENDINGS = {
+    warden: {
+      archetype: 'The Watcher',
+      realName: 'The Warden'
+    },
+    cultist: {
+      archetype: 'The Fire',
+      realName: 'The Cultist'
+    },
+    vrethkai_with_mind: {
+      archetype: 'The Becoming',
+      realName: "Vreth'kai With Mind"
+    },
+    sleeping_god: {
+      archetype: 'The God',
+      realName: 'The Sleeping God'
+    }
+  };
+
+  fetch(WORKER_URL + '/api/log', { cache: 'no-store' })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (!data) return;
+      Object.keys(ENDINGS).forEach(function(ending) {
+        const card = document.querySelector('.witness-card[data-ending="' + ending + '"]');
+        if (!card) return;
+        const eyebrowEl = card.querySelector('.witness-eyebrow');
+        const titleEl = card.querySelector('.witness-title');
+        const claimantEl = card.querySelector('.witness-claimant');
+        const metaEl = card.querySelector('.witness-meta');
+        const items = data[ending] || [];
+        const first = items.find(function(i) { return i.rank === 1; });
+        if (!first) return;
+
+        // Sleeping God only reveals when the name has been canonized by
+        // the author. A queued-but-unapproved claim leaves the card
+        // visually unclaimed and the archetype "The God" stays as title.
+        if (ending === 'sleeping_god') {
+          if (!(data.sleepingGodNamed && data.sleepingGodName)) return;
+
+          card.classList.add('claimed');
+          eyebrowEl.textContent = ENDINGS[ending].archetype;
+          titleEl.textContent = ENDINGS[ending].realName;
+          claimantEl.textContent = data.sleepingGodName;
+          metaEl.innerHTML = first.discordHandle
+            ? '<span class="witness-named-character">named by ' + first.discordHandle + '</span>'
+            : '<span class="witness-named-character">named by a witness</span>';
+          return;
+        }
+
+        // Warden / Cultist / Vreth'kai — flip on the first valid claim,
+        // demote archetype to eyebrow, surface the real ending name.
+        card.classList.add('claimed');
+        eyebrowEl.textContent = ENDINGS[ending].archetype;
+        titleEl.textContent = ENDINGS[ending].realName;
+
+        const handle = first.discordHandle
+          || (first.identity ? 'the ' + first.identity : 'a witness');
+        claimantEl.textContent = handle;
+        metaEl.innerHTML = first.proposedName
+          ? '<span class="witness-named-character">named ' + first.proposedName + '</span>'
+          : '<span style="font-style:italic;">name to be chosen</span>';
+      });
+    })
+    .catch(function() { /* silent — archetype-only cards are the default */ });
+})();
+</script>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
+    <a href="/the-descent">The Descent</a>
+    <a href="/witness">Witness Log</a>
     <a href="https://discord.gg/gH6BmC7ymn">Discord</a>
     <a href="https://www.tiktok.com/@aurelonuniverse?lang=en">TikTok</a>
     <a href="https://x.com/AurelonUniverse">X / Twitter</a>
