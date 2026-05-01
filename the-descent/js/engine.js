@@ -537,7 +537,10 @@ class GameEngine {
     if (!rawTrimmed) return;
     const trimmed = rawTrimmed.toLowerCase();
 
-    // Built-in undo command — works in any state, even after death.
+    // Built-in undo for misclicks before death. Death itself does not
+    // unwind — once dead, the only way out is restart. (Without that gate,
+    // every random-death puzzle collapses into "press each option until
+    // one survives.")
     if (trimmed === 'undo' || trimmed === 'oops') {
       this.undo();
       return;
@@ -1183,17 +1186,20 @@ Both paths end at the same gate. The second one ends with a conversation.
 
   /**
    * Restore the most recent undo snapshot. Returns true if successful.
-   * Useful for the "I just died, take it back" beat as well as casual
-   * "I clicked the wrong choice" recovery.
+   * Recovers from a misclick before death. Death itself is not unwindable
+   * — random-death puzzles depend on it (otherwise the player just clicks
+   * each option and undoes until one survives).
    */
   undo() {
+    if (this.gameOver) {
+      this._emit('output', 'There is no taking that back.', 'system');
+      return false;
+    }
     if (this._undoStack.length === 0) {
       this._emit('output', 'There is nothing to take back.', 'system');
       return false;
     }
     const state = this._undoStack.pop();
-    this.gameOver = false;
-    this.gameOverReason = null;
     this.loadState(state, true);
     return true;
   }
