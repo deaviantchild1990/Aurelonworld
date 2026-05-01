@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -237,6 +236,55 @@
 
     .hidden { display: none !important; }
 
+    /* ─── Witness log ─── */
+    #log-section h2 {
+      color: var(--gold-dim);
+      letter-spacing: 4px;
+      font-size: 13px;
+    }
+    .log-column { padding-bottom: 4px; }
+    .log-column .log-list {
+      list-style: none;
+      padding: 0 0 0 16px;
+      margin: 0;
+      border-left: 1px solid var(--hairline);
+    }
+    .log-column .log-list li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: baseline;
+      border-bottom: 1px dotted rgba(58, 54, 50, 0.5);
+    }
+    .log-column .log-list li:last-child { border-bottom: none; }
+    .log-column .log-list .rank {
+      color: var(--gold);
+      font-weight: bold;
+      min-width: 32px;
+      font-style: italic;
+      font-size: 15px;
+    }
+    .log-column .log-list .handle { color: var(--text); }
+    .log-column .log-list .handle.anonymous { color: var(--text-dim); font-style: italic; }
+    .log-column .log-list .meta { color: var(--text-faint); font-size: 12px; }
+    .log-column .log-list .proposed-name {
+      color: var(--gold-dim);
+      font-style: italic;
+      font-size: 13px;
+      flex-basis: 100%;
+      margin-left: 42px;
+      margin-top: -4px;
+    }
+    .log-column .log-list .empty {
+      font-style: italic;
+      color: var(--text-faint);
+      padding: 8px 0;
+      border: none;
+    }
+
     @media (max-width: 600px) {
       body { padding: 30px 14px 60px; font-size: 16px; }
       h1 { font-size: 30px; letter-spacing: 8px; }
@@ -317,6 +365,48 @@
     <p class="author-line">The author will be in touch within a few days. If you'd like to discuss the cycle in the meantime, the witness circle is here:<br>
       <a id="success-discord" href="#" target="_blank" rel="noopener noreferrer"></a>
     </p>
+  </section>
+
+  <!-- ─── WITNESS LOG — public leaderboard, fed by /api/log ─── -->
+  <section id="log-section" style="margin-top: 60px;">
+    <h2>— The witness log —</h2>
+    <p style="font-size: 14px; color: var(--text-dim); font-style: italic; margin-bottom: 24px;">
+      Those who have descended far enough to be remembered. The first ten of each ending preread; the first names a character.
+    </p>
+
+    <div id="log-sleeping-god-banner" class="hidden" style="
+      border: 1px solid var(--gold);
+      padding: 18px 20px;
+      margin-bottom: 28px;
+      text-align: center;
+      background: rgba(201, 168, 76, 0.04);
+    ">
+      <div style="font-size: 11px; letter-spacing: 6px; color: var(--gold-dim); margin-bottom: 8px;">THE SLEEPING GOD HAS BEEN NAMED</div>
+      <div id="log-sg-name" style="font-size: 22px; letter-spacing: 4px; color: var(--gold); font-style: italic;"></div>
+    </div>
+
+    <div id="log-grid" style="display: grid; grid-template-columns: 1fr; gap: 22px;">
+      <div class="log-column" data-ending="warden">
+        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">WARDEN</div>
+        <ol class="log-list"></ol>
+      </div>
+      <div class="log-column" data-ending="cultist">
+        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">CULTIST</div>
+        <ol class="log-list"></ol>
+      </div>
+      <div class="log-column" data-ending="vrethkai_with_mind">
+        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">VRETH'KAI&middot;WITH&middot;MIND</div>
+        <ol class="log-list"></ol>
+      </div>
+      <div class="log-column" data-ending="sleeping_god">
+        <div class="log-heading" style="font-size: 12px; letter-spacing: 6px; color: var(--gold); margin-bottom: 12px;">SLEEPING GOD</div>
+        <ol class="log-list"></ol>
+      </div>
+    </div>
+
+    <div id="log-empty" style="text-align: center; font-style: italic; color: var(--text-faint); margin-top: 20px;" class="hidden">
+      No witnesses yet. Be the first.
+    </div>
   </section>
 
   <details class="what-is">
@@ -460,6 +550,90 @@
   discordBtn.addEventListener('click', () => {
     window.open(DISCORD_URL, '_blank', 'noopener,noreferrer');
   });
+
+  // ─── Witness log ───
+  // Fetches the per-ending leaderboards from the Worker and renders them
+  // below the form. Silent on failure — the form still works without it.
+  async function loadLog() {
+    try {
+      const r = await fetch(`${WORKER_URL}/api/log`, { cache: 'no-store' });
+      if (!r.ok) return;
+      const data = await r.json();
+
+      // Sleeping God canonical name banner
+      if (data.sleepingGodNamed && data.sleepingGodName) {
+        $('log-sleeping-god-banner').classList.remove('hidden');
+        $('log-sg-name').textContent = data.sleepingGodName;
+      }
+
+      let totalClaims = 0;
+      document.querySelectorAll('.log-column').forEach(col => {
+        const ending = col.dataset.ending;
+        const list = col.querySelector('.log-list');
+        list.innerHTML = '';
+        const items = (data[ending] || []).slice(0, 10);
+        totalClaims += items.length;
+
+        if (items.length === 0) {
+          const li = document.createElement('li');
+          li.className = 'empty';
+          li.textContent = '— Unclaimed. —';
+          list.appendChild(li);
+          return;
+        }
+
+        items.forEach(item => {
+          const li = document.createElement('li');
+
+          const rank = document.createElement('span');
+          rank.className = 'rank';
+          rank.textContent = `#${item.rank}`;
+          li.appendChild(rank);
+
+          const handle = document.createElement('span');
+          if (item.discordHandle) {
+            handle.className = 'handle';
+            handle.textContent = item.discordHandle;
+          } else if (item.identity) {
+            handle.className = 'handle anonymous';
+            handle.textContent = `the ${item.identity}`;
+          } else {
+            handle.className = 'handle anonymous';
+            handle.textContent = '(unwitnessed)';
+          }
+          li.appendChild(handle);
+
+          const meta = document.createElement('span');
+          meta.className = 'meta';
+          const metaParts = [];
+          if (item.country) metaParts.push(item.country);
+          if (item.serverTime) {
+            const d = new Date(item.serverTime);
+            metaParts.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+          }
+          meta.textContent = metaParts.join('  ·  ');
+          li.appendChild(meta);
+
+          if (item.proposedName) {
+            const proposed = document.createElement('span');
+            proposed.className = 'proposed-name';
+            proposed.textContent = `proposed name: ${item.proposedName}`;
+            li.appendChild(proposed);
+          }
+
+          list.appendChild(li);
+        });
+      });
+
+      if (totalClaims === 0) {
+        $('log-empty').classList.remove('hidden');
+      }
+    } catch (e) {
+      // Silent — log is enhancement, not core flow
+    }
+  }
+
+  loadLog();
 </script>
 
 </body>
