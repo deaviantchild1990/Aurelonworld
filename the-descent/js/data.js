@@ -105,8 +105,242 @@ const GAME_DATA = {
       id: 'spore_filter',
       name: 'Spore Filter',
       description: 'The hollow reed wrapped in a fold of cloth, bound with a strip of bark. Held to the mouth and breathed through, it strips the air of what the air should not be carrying.'
+    },
+    {
+      id: 'fishing_rod',
+      name: 'Old Fishing Rod',
+      description: `A rod of pale wood, taller than a man. The grip is wrapped in sinew that has been re-wrapped several times. The reel is half-rotten and turns only one way. The hook is hand-shaped, set wrong in the line, set wrong on purpose.
+
+Tied to the grip is a small leather pouch. Inside: a dozen more hooks, all hand-made, all the same shape. Whoever owned this rod came down ready to lose hooks.
+
+Scratched into the butt of the rod: a tally. Five marks. The sixth was started and not finished.`
     }
   ],
+
+  // ═══════════════════════════════════════════
+  // FISHING — pool of normal catches and per-room special fish
+  // (Used by engine.js cast/wait/pull state machine. The Fisher
+  //  ending requires all three special flags to be set, then
+  //  any basic_escape route triggers the named ending.)
+  // ═══════════════════════════════════════════
+  fishing: {
+    // Rooms where the rod will respond to `cast`. Each defines a normal
+    // pool the room draws from for the first 3 catches, plus the special
+    // fish the 4th catch always produces (sets the corresponding flag).
+    rooms: {
+      dripping_gallery: {
+        ambient: 'You crouch at the edge of the pool. The water has been still long enough to have learned stillness.',
+        normalCatchesNeeded: 3,
+        special: {
+          catchId: 'scale',
+          name: 'The Scale',
+          text: `The line lifts as if pulling against nothing. You pull with it.
+
+A scale comes up. Single. Larger than your hand. Thicker than fish-scale should be. Held to the light, the pattern continues into the scale itself. Not on it. In it.
+
+The scale is warm. It does not stop being warm.
+
+You set it carefully on the stone beside you. You consider whether the fish that lost it is still in the pool. You decide not to fish this water again.`
+        }
+      },
+      weeping_wall: {
+        ambient: 'You hold the rod in the thin sheet of water that runs over the carving. The water is too thin for fishing. You wait anyway.',
+        normalCatchesNeeded: 3,
+        special: {
+          catchId: 'sentence',
+          name: 'The Sentence',
+          text: `The line in this water has nothing to catch. There is nothing here to fish. You wait anyway.
+
+After the third turn the water does what water does not do — it stops. For one moment the carved words beneath the sheet are dry. You read what the water has been hiding.
+
+Then the water resumes.
+
+You are carrying the sentence now. The shape of it has lodged behind your teeth and will not be put down.`
+        }
+      },
+      // The Drowned Way is special: the player is underwater with limited
+      // breath, so a single deterministic cast produces the special fish.
+      // No normal-catch grinding here — one shot, one catch.
+      drowned_way: {
+        ambient: 'You hold the rod in slack water. Your breath is held. The current does not pull at the line because the basin has nothing left to be pulled toward.',
+        normalCatchesNeeded: 0,
+        oneShot: true,
+        special: {
+          catchId: 'stone',
+          name: 'The Stone',
+          text: `The line stops moving. The water around it keeps moving. The line is being held.
+
+You pull and what comes up is a stone with a hole bored through it, and through the hole, a length of human hair that is still attached to something below.
+
+You cut the line above the stone. The stone you keep. You do not look at the water again until you are gone.`
+        }
+      }
+    },
+    // 12 normal catches. The engine picks one at random per successful pull
+    // in a room that hasn't yet hit normalCatchesNeeded. Each entry stands
+    // alone — no overlap, no stacking. Voice: deadpan, body-grounded.
+    pool: [
+      `A blind cavefish. Pale. Transparent enough to see what it has eaten. You release it. It does not swim away immediately — as though it is waiting to be sure you meant it.`,
+
+      `An eyeless trout. Wrong size for the depth. Three times the size it has any right to be. Its skin is loose where the eyes should be. You set it back. The water swallows it without ceremony.`,
+
+      `Something with too many joints. Small. Wrong. The joints bend in directions joints do not bend.
+
+You release it. It does not swim away. It walks.`,
+
+      `A coin. Green with age. Older than the carvings on the wall. The face stamped on it is a face you know.
+
+The face is yours.`,
+
+      `A bone, half-decayed. Small. The teeth marks on it match the teeth in your jaw. You put it back in the water carefully. You do not put it where you found it.`,
+
+      `A page from a book that was never written. Wet, but legible. The handwriting is yours. You do not read what you wrote.`,
+
+      `Hair. A great quantity of it, long and dark, weighted at the end with something you do not pull up far enough to see.
+
+You cut your line above the weight. The hook stays with whatever has it. The pouch on the rod gives up another.`,
+
+      `A child's wooden boat. Perfectly preserved. Inside, in pencil, a name has been written in a child's hand. The name is yours.
+
+You set the boat back in the water carefully. You do not break it.`,
+
+      `A fish that does not move when caught. Not because it is dead. Because it has decided not to. The hook is in its mouth. The fish is patient. After a moment you remove the hook and put the fish back. It stays where you put it.`,
+
+      `Nothing. The hook returns wet and empty. The waiting was the catch.`,
+
+      `A second hook, already used, already abandoned by someone else. The line attached to it is rotted to nothing. You tie the new hook onto your own line above your own hook. The line is heavier now. The line catches no better.`,
+
+      `The water itself, pulled up in a thin sheet that holds its shape long enough for you to see your face in it.
+
+You drop it back. You do not look closely.`
+    ],
+    // Pulled-too-early prose. The hook returns empty and the rod takes a
+    // small fragility hit. Picked at random for variety.
+    emptyPulls: [
+      `You pull. The hook comes back wet and empty. Whatever was deciding has decided against you.`,
+      `The line jerks free. The hook returns. The hook is bare.`,
+      `Too soon. The line answers your pull and gives you nothing back.`,
+      `The hook surfaces empty. The water has not finished agreeing.`
+    ],
+    // Lost-bite prose — the player waited too long.
+    escaped: [
+      `The line goes slack. Whatever was there has left it. You have been patient with the wrong patience.`,
+      `The pull at the line stops. The water keeps what it had been about to give.`,
+      `The line drifts free again. The bite is gone. You waited longer than the bite was willing to.`
+    ],
+    // State-transition prose. Picked from the array for that state when the
+    // engine emits a wait response. Variants are intentionally subtle —
+    // some cues read clearer than others, and a careful reader learns the
+    // shape of each state by repetition rather than by keyword-matching.
+    states: {
+      drifting: [
+        `The line drifts. The water has not noticed it.`,
+        `The float sits where you left it. Nothing is reading it.`,
+        `The line goes nowhere. You wait with it.`,
+        `The hook hangs in dark water. The water keeps doing what water does.`,
+        `Nothing. The line is line. The water is water.`,
+        `The float bobs once with the current and then is still again.`,
+        `The line sits in the water. The water has not decided to do anything with it.`
+      ],
+      brushed: [
+        `Something passes near the line. Not interested. Not yet.`,
+        `The line trembles once. The water resumes its waiting.`,
+        `A weight tests the hook and lets go.`,
+        `Something moves at the edge of where the line goes. The float twitches. Then nothing.`,
+        `A presence near the hook. It does not commit.`,
+        `The line shifts in the water. Something has noticed. Something has not decided.`,
+        `The float dips half an inch and rises. Curiosity, not hunger.`
+      ],
+      tugged: [
+        `The line trembles. Then again. Something is deciding.`,
+        `The line bends slow. Whatever is on the end of it is heavier than expected.`,
+        `The float dips. Then dips again. Pull, or do not pull.`,
+        `The line tugs once — a real pull, then nothing. Then a real pull again.`,
+        `Something has the hook. The line bends. Whether it stays is up to whatever has it.`,
+        `The float goes under. Comes back. Goes under again. The third time it stays under.`,
+        `A weight that wasn't there is there now. It is moving the line in slow circles.`
+      ],
+      set: [
+        `The line tightens. Something has agreed. Pull now.`,
+        `The line goes taut and stays. You will not get a second moment.`,
+        `Set. The line will hold. Pull.`,
+        `The line is on. A weight at the end of it that means business.`,
+        `The hook is taken. The fish has accepted itself into your hand. Pull.`,
+        `Now. The line is yours to land or to lose.`,
+        `The float is gone. The line is straight down. Pull.`
+      ]
+    },
+    // Slip prose — the bite was real but the player pulled at the wrong
+    // intensity, or got unlucky. Cast clears, no fragility cost. The fish
+    // takes the hook with it sometimes; not always.
+    slipped: [
+      `The line slips. The hook goes with whatever you almost had. The pouch gives up another.`,
+      `The hook comes back light. The fish takes the freedom you offered it.`,
+      `The line goes loose. Whatever you were about to land has decided not to be landed.`,
+      `The pull gives. The fish was stronger than your timing. The water keeps it.`
+    ],
+    // Fight phase — after a successful pull, the engine emits one of these
+    // prompts. The player must respond with `pull` (force the fish in) or
+    // `release` (let some line out, gentle the fish to surface). The hint
+    // word in each prompt telegraphs the answer to a careful reader.
+    //
+    // Heuristic: heavy / down / runs / steady / breathing / bows = release.
+    //            light / fast / upward / thrashes / jerks / taut = pull.
+    //            still / waiting / accepted / easy = pull (calm = forcible).
+    fightPrompts: [
+      {
+        text: `The line is on. The fish dives. Heavy. Downward. The rod bends toward the water.`,
+        expected: 'release'
+      },
+      {
+        text: `The line jerks upward, fast and light. The fish is small and angry and rising.`,
+        expected: 'pull'
+      },
+      {
+        text: `The line runs sideways. The fish is heading for cover.`,
+        expected: 'release'
+      },
+      {
+        text: `The line goes still. The fish has stopped fighting. It is waiting for you.`,
+        expected: 'pull'
+      },
+      {
+        text: `The line bows hard. Then bows the other way. The fish is confused. Or you are.`,
+        expected: 'release'
+      },
+      {
+        text: `The line jerks once and then lies easy. Whatever is on it has accepted itself.`,
+        expected: 'pull'
+      },
+      {
+        text: `The line trembles steady. Heavy. Slow. Something at the other end is breathing into it.`,
+        expected: 'release'
+      },
+      {
+        text: `The line snaps taut. Slack. Taut again. The fish is testing the rod.`,
+        expected: 'pull'
+      },
+      {
+        text: `The line holds. The fish holds. Neither of you is moving. Whoever moves first wins.`,
+        expected: 'pull'
+      },
+      {
+        text: `The fish dives and keeps diving. The reel screams against the going.`,
+        expected: 'release'
+      }
+    ],
+    // Wrong-fight-response prose. The fish escapes; cast clears, no fragility.
+    fightFail: [
+      `Wrong. The line gives where it should have held, or holds where it should have given. The fish is gone.`,
+      `The fish takes the chance you gave it. The line comes back light.`,
+      `Off. The fish read your hand before you read the line. The water keeps it.`,
+      `You misread the bend. The fish slips. The hook returns with nothing on it.`
+    ],
+    // Rod fragility — starts at 15. Empty pulls cost 2. Successful catches
+    // cost 1. Special fish catches cost 0 (the rod doesn't mind those).
+    initialFragility: 15,
+    breakText: `The rod gives. Not loudly. The wood you have been pulling against this whole time was the wood it always was, and now it is wood that has finished. The line goes with it. The water keeps the rod and the line and the hook and whatever you were about to know.`
+  },
 
   // ═══════════════════════════════════════════
   // NPCs (roaming, conversable)
@@ -374,8 +608,14 @@ The sound is steady. Patient. It has been doing this for a very long time.`,
         'walls': 'Smooth where the water runs. Rough where it doesn\'t. Natural stone — nothing carved here.',
         'pool': 'You can hear it more than see it. Water collecting in a depression in the floor. It overflows somewhere, moving further into the dark.',
         'ceiling': 'Too high to see clearly. The dripping comes from up there. How far up, you can\'t tell.',
+        'rod': 'A rod of pale wood leans against the rock at the edge of the pool. Someone left it. Someone left it deliberately, propped where the next person to find the pool would see it.',
+        'tally': 'Five marks scratched into the butt of the rod. The sixth was started and not finished.',
+        'pouch': 'A small leather pouch tied to the grip. Inside it, a dozen hand-made hooks. The previous fisher came down expecting to lose hooks. They were right.',
+        'hooks': 'A dozen of them, in the pouch tied to the grip. Each one shaped by the same hand. The line on the rod can be re-tied with one as fast as you can think to do it.',
         'lintel': 'No lintel of stone — but where the passage from the Hollow narrows, scratched into the wall just before the dripping begins, a single letter. **D**.'
       },
+
+      items: ['fishing_rod'],
 
       exits: {
         east: { roomId: 'the_hollow', label: 'Back to the Hollow' },
@@ -897,6 +1137,9 @@ You made it out.`;
             endText = `\n\nBehind you, the ground shudders. The entrance collapses — not falling, but folding. The seal holds.\n\nNothing will follow you out. You made certain of that.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n— THE WARDEN OF THE GATE —\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
           }
           engine.escape('warden', endText);
+        } else if (ending === 'fisher') {
+          endText = `\n\nYou came up holding three things you did not have when you went down. A scale, larger than your hand. A stone with a hole bored through it. The shape of a sentence you read once when the water stopped running.\n\nThe world above did not change. The wind moves the grass. The sky is grey. None of this is different from when you fell.\n\nBut you came back with what you came back with. What you did has a name. That name has not been written yet.\n\n— THE FISHER —\n(You have earned the right to name a fisher NPC in *The Breaking*. Someone hard people speak of quietly — the one you would want at your side when the world ends slowly.)`;
+          engine.escape('fisher', endText);
         } else {
           endText = `\n\nYou stand in the grey light and breathe. The wind moves the grass. The world is still dying. You are still in it.\n\nYou found ${fragments} of 20 prophecy fragments. You carry ${shards} of 3 relic shards.\n\nThe dark is behind you. For now.`;
           engine.escape('basic_escape', endText);
