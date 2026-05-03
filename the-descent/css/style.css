@@ -374,6 +374,17 @@ body::before {
 .frag-empty { background: #1a1816; color: #2a2622; border: 1px solid #222; }
 .frag-found { background: #1a1810; color: var(--accent-gold); border: 1px solid #3a3020; }
 
+.catch-slot {
+  display: block;
+  padding: 4px 8px;
+  margin: 2px 0;
+  font-size: 11px;
+  border-radius: 3px;
+  font-style: italic;
+}
+.catch-empty { background: #1a1816; color: #2a2622; border: 1px solid #222; }
+.catch-found { background: #1a1810; color: var(--accent-gold); border: 1px solid #3a3020; }
+
 /* ─── CHOICES ─── */
 #choices {
   flex: 0 0 auto;
