@@ -14,6 +14,7 @@ class GameUI {
     this.inputForm = document.getElementById('input-form');
     this.inventoryEl = document.getElementById('inventory-panel');
     this.fragmentsEl = document.getElementById('fragments-panel');
+    this.catchesEl = document.getElementById('catches-panel');
     this.statusEl = document.getElementById('status-bar');
     this.restartBtn = document.getElementById('restart-btn');
     this.undoBtn = document.getElementById('undo-btn');
@@ -655,6 +656,11 @@ class GameUI {
       html += `<span class="status-shards">Shards: ${e.relicShards.size}/${e.totalShards}</span>`;
     }
 
+    if (e.fisherCatches && e.fisherCatches.size > 0) {
+      html += `<span class="status-sep">|</span>`;
+      html += `<span class="status-catches">Catches: ${e.fisherCatches.size}/${e.totalFisherCatches}</span>`;
+    }
+
     if (e.identity) {
       html += `<span class="status-sep">|</span>`;
       html += `<span class="status-identity">${e.identity.charAt(0).toUpperCase() + e.identity.slice(1)}</span>`;
@@ -686,8 +692,9 @@ class GameUI {
       this.hintBtn.disabled = !canHint;
     }
 
-    // Also update fragments panel
+    // Also update fragments and catches panels
     this._renderFragments();
+    this._renderCatches();
   }
 
   _renderFragments() {
@@ -706,6 +713,40 @@ class GameUI {
       html += `<div class="frag-slot ${found ? 'frag-found' : 'frag-empty'}" title="${tooltip}"${dataAttr}>${found ? id : '?'}</div>`;
     }
     this.fragmentsEl.innerHTML = html;
+  }
+
+  _renderCatches() {
+    if (!this.catchesEl) return;
+    const e = this.engine;
+    const caught = e.fisherCatches;
+    const total = e.totalFisherCatches || 3;
+    // Hidden until the player has at least one catch — surfacing the
+    // panel cold would spoil the existence of the mini-game.
+    if (!caught || caught.size === 0) {
+      this.catchesEl.style.display = 'none';
+      return;
+    }
+    this.catchesEl.style.display = '';
+    // Build the catch slot list from the fishing data so each slot's name
+    // and tooltip match what the player will (or has) caught.
+    const fishingData = (e.fishingData && e.fishingData.rooms) || {};
+    const slots = [];
+    for (const roomCfg of Object.values(fishingData)) {
+      if (roomCfg.special && roomCfg.special.catchId) {
+        slots.push({
+          catchId: roomCfg.special.catchId,
+          name: roomCfg.special.name || roomCfg.special.catchId
+        });
+      }
+    }
+    let html = `<div class="panel-header">Catches (${caught.size}/${total})</div>`;
+    for (const slot of slots) {
+      const found = caught.has(slot.catchId);
+      const display = found ? this._escapeHtml(slot.name) : '?';
+      const tooltip = found ? `${slot.name} — pulled from the dark water.` : 'Not yet caught.';
+      html += `<div class="catch-slot ${found ? 'catch-found' : 'catch-empty'}" title="${tooltip}">${display}</div>`;
+    }
+    this.catchesEl.innerHTML = html;
   }
 
   _escapeHtml(s) {
