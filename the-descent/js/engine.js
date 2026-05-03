@@ -37,6 +37,14 @@ class GameEngine {
     this.relicShards = new Set();  // 'shard_forest', 'shard_ruins1', 'shard_ruins3'
     this.totalShards = 3;
 
+    // --- Fisher catches ---
+    // Each special-fish room contributes a unique catchId to this set when
+    // its special fish is landed. Used by the UI tracker and the Fisher
+    // ending qualification check. Three catches across three water rooms
+    // unlocks the named ending.
+    this.fisherCatches = new Set();
+    this.totalFisherCatches = 3;
+
     // --- Identity ---
     this.identity = null;  // null, 'warden', 'scholar', 'seeker'
 
@@ -123,6 +131,9 @@ class GameEngine {
     this.config = gameData.config || {};
     this.combinations = gameData.combinations || [];
     this.npcsData = gameData.npcs || [];
+    // Fishing data — pool of catches and per-room special fish for the
+    // Fisher mini-game. Optional; engine no-ops if not provided.
+    this.fishingData = gameData.fishing || null;
 
     // Build prophecy index — maps fragment id (e.g. 'P3') to its data plus the
     // room it was discovered in, so the UI can render a fragment-viewer modal.
@@ -156,6 +167,7 @@ class GameEngine {
     this.prophecyFragments = new Set();
     this.prophecyOrder = [];
     this.relicShards = new Set();
+    this.fisherCatches = new Set();
     this.identity = null;
     this.flags = {};
     this.activeTimers = {};
@@ -203,6 +215,11 @@ class GameEngine {
     }
 
     this._pushUndo();
+    // Leaving a room with an active cast abandons the cast. The fish
+    // that almost decided to bite resumes its waiting alone.
+    if (this.flags.fishing && this.flags.fishing.active && this.currentRoom !== roomId) {
+      this.flags.fishing = null;
+    }
     this.previousRoom = this.currentRoom;
     this.currentRoom = roomId;
     const firstVisit = !this.visitedRooms.has(roomId);
@@ -634,6 +651,35 @@ The walls look different. The light tastes different. The light has a taste now.
    * alternating-case check.
    */
   _processStandardCommand(trimmed, room) {
+    // ─── FISHING — intercept commands while a cast is in progress ───
+    if (this._isFishingActive()) {
+      if (/^(?:wait|rest|pause|stand still|do nothing)$/.test(trimmed)) {
+        this._handleFishingWait();
+        return;
+      }
+      if (/^(?:pull|reel|reel in|set|hook|land it|land)(?:\s+(?:line|in|it|the line))?$/.test(trimmed)) {
+        this._handleFishingPull();
+        return;
+      }
+      if (/^(?:release|stop|give up|abandon|cancel|reel back|retrieve)(?:\s+(?:cast|line|the cast|the line))?$/.test(trimmed)) {
+        this._handleFishingRelease();
+        return;
+      }
+      // Any other input during a cast is a refusal (line is in water).
+      // Allow examine/look/inventory through harmlessly though.
+      if (!/^(?:look|examine|inspect|study|read|view|x|inventory|i|hint|hints|help|h|fragments|prophecy|smell|sniff|listen|hear|touch|feel|taste)/.test(trimmed)) {
+        this._emit('output', `Your line is in the water. Wait, pull, or release the cast first.`, 'narration');
+        this._presentRoomChoices(room);
+        return;
+      }
+    }
+
+    // ─── CAST — start a fishing cast in a water room (rod required) ───
+    if (/^cast(?:\s+(?:line|hook|in|the line))?$/.test(trimmed)) {
+      this._handleCast();
+      return;
+    }
+
     // --- Check room-specific text handlers ---
     if (room.textHandlers) {
       for (const handler of room.textHandlers) {
@@ -1941,6 +1987,297 @@ The first ten preread spots are taken, but the descent itself is its own reward 
   }
 
   // ─────────────────────────────────────────────
+  // FISHING (mini-game; produces Fisher ending if all 3 special fish caught)
+  // ─────────────────────────────────────────────
+
+  _isFishingActive() {
+    return !!(this.flags.fishing && this.flags.fishing.active);
+  }
+
+  _canFishHere() {
+    return !!(this.fishingData && this.fishingData.rooms && this.fishingData.rooms[this.currentRoom]);
+  }
+
+  _pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  // No-immediate-repeat picker for state-transition prose. Each state's
+  // last-shown index is tracked separately so consecutive waits in the
+  // same state never see the same line twice in a row. Resets per game.
+  _pickStateProse(stateName) {
+    const arr = (this.fishingData && this.fishingData.states && this.fishingData.states[stateName]) || [];
+    if (arr.length === 0) return '';
+    if (arr.length === 1) return arr[0];
+    if (!this._lastProseIdx) this._lastProseIdx = {};
+    let idx;
+    let attempts = 0;
+    do {
+      idx = Math.floor(Math.random() * arr.length);
+      attempts++;
+    } while (idx === this._lastProseIdx[stateName] && attempts < 8);
+    this._lastProseIdx[stateName] = idx;
+    return arr[idx];
+  }
+
+  _handleCast() {
+    if (!this.fishingData) {
+      this._emit('output', `You cast nothing into nothing. There is no rod in your hand.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    if (!this.hasItem('fishing_rod')) {
+      this._emit('output', `You have no rod. The water is waiting for one.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    if (!this._canFishHere()) {
+      this._emit('output', `There is no water here that will hold a hook.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    if (this._isFishingActive()) {
+      this._emit('output', `Your line is already in the water. Wait, pull, or release the cast.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    // Initialize fragility on first cast ever
+    if (typeof this.flags.rod_fragility !== 'number') {
+      this.flags.rod_fragility = this.fishingData.initialFragility || 15;
+    }
+    if (this.flags.rod_fragility <= 0) {
+      this._emit('output', `The rod is gone. The water is the water.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    const roomCfg = this.fishingData.rooms[this.currentRoom];
+    this.flags.fishing = {
+      active: true,
+      room: this.currentRoom,
+      state: 'drifting'
+    };
+    this._pushUndo();
+    this.turnCount++;
+    const prose = roomCfg.ambient + '\n\n' + this._pickStateProse('drifting');
+    this._emit('output', prose, 'narration');
+    this._tickTimers();
+    if (this.gameOver) return;
+    this._tickNpcs();
+    if (this.gameOver) return;
+    this._presentRoomChoices(this.rooms[this.currentRoom]);
+  }
+
+  _handleFishingWait() {
+    const f = this.flags.fishing;
+    // During the fight phase the player must commit — pull or release.
+    // Waiting is not an option once the fish is on the line and fighting.
+    if (f.state === 'fighting') {
+      this._emit('output', `The fish is on the line and fighting. Pull, or release. The fish will not wait.`, 'narration');
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    this._pushUndo();
+    this.turnCount++;
+    let prose = '';
+    if (f.state === 'drifting') {
+      if (Math.random() < 0.5) {
+        f.state = 'brushed';
+        prose = this._pickStateProse('brushed');
+      } else {
+        prose = this._pickStateProse('drifting');
+      }
+    } else if (f.state === 'brushed') {
+      if (Math.random() < 0.7) {
+        f.state = 'tugged';
+        prose = this._pickStateProse('tugged');
+      } else {
+        f.state = 'drifting';
+        prose = this._pickStateProse('drifting');
+      }
+    } else if (f.state === 'tugged') {
+      const r = Math.random();
+      if (r < 0.6) {
+        f.state = 'set';
+        prose = this._pickStateProse('set');
+      } else if (r < 0.9) {
+        prose = this._pickRandom(this.fishingData.escaped);
+        this.flags.fishing = null;
+      } else {
+        prose = `The line jerks once and goes slack. The hook has come back without what was on it.`;
+        this.flags.rod_fragility = Math.max(0, (this.flags.rod_fragility || 0) - 1);
+        this.flags.fishing = null;
+      }
+    } else if (f.state === 'set') {
+      // Bite escapes if you don't pull immediately
+      prose = this._pickRandom(this.fishingData.escaped);
+      this.flags.fishing = null;
+    }
+    this._emit('output', prose, 'narration');
+    this._maybeBreakRod();
+    this._tickTimers();
+    if (this.gameOver) return;
+    this._tickNpcs();
+    if (this.gameOver) return;
+    this._presentRoomChoices(this.rooms[this.currentRoom]);
+  }
+
+  _handleFishingPull() {
+    this._pushUndo();
+    this.turnCount++;
+    const f = this.flags.fishing;
+    if (f.state === 'drifting' || f.state === 'brushed') {
+      // Empty pull — too soon. Fragility hit.
+      this._emit('output', this._pickRandom(this.fishingData.emptyPulls), 'narration');
+      this.flags.rod_fragility = Math.max(0, (this.flags.rod_fragility || 0) - 2);
+      this.flags.fishing = null;
+      this._maybeBreakRod();
+    } else if (f.state === 'tugged' || f.state === 'set') {
+      // Catch attempt — chance of immediate slip, otherwise enter fight phase.
+      // Tugged is a riskier pull (line not fully set yet); set is safer.
+      const slipChance = f.state === 'tugged' ? 0.4 : 0.1;
+      if (Math.random() < slipChance) {
+        this._emit('output', this._pickRandom(this.fishingData.slipped), 'narration');
+        this.flags.fishing = null;
+      } else {
+        // Special-fish trigger check FIRST. Special fish skip the fight
+        // phase entirely — they are the moment, the prose carries itself.
+        const roomCfg = this.fishingData.rooms[f.room];
+        const catchKey = `fish_caught_${f.room}`;
+        const caughtSoFar = this.flags[catchKey] || 0;
+        const needed = roomCfg.normalCatchesNeeded || 0;
+        const oneShotSpecial = roomCfg.oneShot && roomCfg.special && !this.fisherCatches.has(roomCfg.special.catchId);
+        const normalRoomSpecial = !roomCfg.oneShot && caughtSoFar >= needed && roomCfg.special && !this.fisherCatches.has(roomCfg.special.catchId);
+        if (oneShotSpecial || normalRoomSpecial) {
+          this._emit('output', roomCfg.special.text, 'narration');
+          this.fisherCatches.add(roomCfg.special.catchId);
+          this._emit('output', `\n— Catch: ${roomCfg.special.name} (${this.fisherCatches.size}/${this.totalFisherCatches}) —`, 'system');
+          this.flags.fishing = null;
+          this._checkFisherProgress();
+        } else if (roomCfg.oneShot && roomCfg.special && this.fisherCatches.has(roomCfg.special.catchId)) {
+          // OneShot room already given its catch; no normal pool here.
+          this._emit('output', `Nothing more here. The water has given what it had.`, 'narration');
+          this.flags.fishing = null;
+        } else {
+          // Normal fish — enter fight phase. Pick a fight prompt; the
+          // player must read the cue and respond pull or release.
+          const prompt = this._pickRandom(this.fishingData.fightPrompts);
+          this.flags.fishing = {
+            active: true,
+            room: f.room,
+            state: 'fighting',
+            expectedResponse: prompt.expected
+          };
+          this._emit('output', prompt.text + `\n\n(Pull or release.)`, 'narration');
+        }
+      }
+    } else if (f.state === 'fighting') {
+      // Player typed `pull` during fight — resolve as pull response
+      this._resolveFightResponse('pull');
+      return;
+    }
+    this._tickTimers();
+    if (this.gameOver) return;
+    this._tickNpcs();
+    if (this.gameOver) return;
+    this._presentRoomChoices(this.rooms[this.currentRoom]);
+  }
+
+  _resolveFightResponse(playerAction) {
+    const f = this.flags.fishing;
+    if (!f || f.state !== 'fighting') return;
+    if (playerAction === f.expectedResponse) {
+      // Right answer — catch a normal fish from the pool
+      const fish = this._pickRandom(this.fishingData.pool);
+      this._emit('output', fish, 'narration');
+      const catchKey = `fish_caught_${f.room}`;
+      this.flags[catchKey] = (this.flags[catchKey] || 0) + 1;
+      this.flags.rod_fragility = Math.max(0, (this.flags.rod_fragility || 0) - 1);
+      this.flags.fishing = null;
+      this._maybeBreakRod();
+    } else {
+      // Wrong answer — fish escapes, no fragility cost, no catch credited
+      this._emit('output', this._pickRandom(this.fishingData.fightFail), 'narration');
+      this.flags.fishing = null;
+    }
+  }
+
+  _handleFishingRelease() {
+    const f = this.flags.fishing;
+    if (f && f.state === 'fighting') {
+      // During the fight phase, `release` is a real response (let line out)
+      this._pushUndo();
+      this.turnCount++;
+      this._resolveFightResponse('release');
+      this._tickTimers();
+      if (this.gameOver) return;
+      this._tickNpcs();
+      if (this.gameOver) return;
+      this._presentRoomChoices(this.rooms[this.currentRoom]);
+      return;
+    }
+    // Otherwise: abandon the cast (no penalty)
+    this._emit('output', `You retrieve the line. The water has not committed to anything. Neither have you.`, 'narration');
+    this.flags.fishing = null;
+    this._presentRoomChoices(this.rooms[this.currentRoom]);
+  }
+
+  // Legacy helper retained for completeness; not currently called by the
+  // pull/fight flow. Kept in case future rooms want a single-shot API.
+  _catchFish(roomId) {
+    const roomCfg = this.fishingData.rooms[roomId];
+    if (!roomCfg) {
+      this._emit('output', `Something. Nothing. The line returns wet.`, 'narration');
+      this.flags.fishing = null;
+      return;
+    }
+    const catchKey = `fish_caught_${roomId}`;
+    const caughtSoFar = this.flags[catchKey] || 0;
+    const needed = roomCfg.normalCatchesNeeded || 0;
+
+    if (roomCfg.oneShot) {
+      if (roomCfg.special && this.fisherCatches.has(roomCfg.special.catchId)) {
+        this._emit('output', `Nothing more here. The water has given what it had.`, 'narration');
+        this.flags.fishing = null;
+        return;
+      }
+      this._emit('output', roomCfg.special.text, 'narration');
+      this.fisherCatches.add(roomCfg.special.catchId);
+      this.flags.fishing = null;
+      this._checkFisherProgress();
+      return;
+    }
+
+    if (caughtSoFar >= needed && roomCfg.special && !this.fisherCatches.has(roomCfg.special.catchId)) {
+      this._emit('output', roomCfg.special.text, 'narration');
+      this.fisherCatches.add(roomCfg.special.catchId);
+      this.flags.fishing = null;
+      this._checkFisherProgress();
+      return;
+    }
+
+    const fish = this._pickRandom(this.fishingData.pool);
+    this._emit('output', fish, 'narration');
+    this.flags[catchKey] = caughtSoFar + 1;
+    this.flags.rod_fragility = Math.max(0, (this.flags.rod_fragility || 0) - 1);
+    this.flags.fishing = null;
+  }
+
+  _maybeBreakRod() {
+    if ((this.flags.rod_fragility || 0) <= 0 && this.hasItem('fishing_rod')) {
+      this._emit('output', this.fishingData.breakText, 'narration');
+      this.removeItem('fishing_rod');
+      this.flags.fishing = null;
+    }
+  }
+
+  _checkFisherProgress() {
+    if (this.fisherCatches.size === this.totalFisherCatches && !this.flags.fisher_complete_acknowledged) {
+      this.flags.fisher_complete_acknowledged = true;
+      this._emit('output', `\nThree pulls. The water has been generous to you. Whoever keeps that count has noted it.\n\nThe scale is in your pocket. The stone is in your pocket. The sentence is in your throat. You are carrying what you came for, even if you did not know you came for it.\n\n(Reach the surface to leave with what you have.)`, 'system');
+    }
+  }
+
+  // ─────────────────────────────────────────────
   // TIMERS
   // ─────────────────────────────────────────────
 
@@ -2023,7 +2360,8 @@ The first ten preread spots are taken, but the descent itself is its own reward 
    */
   _emitFunnel(endingId) {
     const named = endingId === 'warden' || endingId === 'cultist' ||
-                  endingId === 'vrethkai_with_mind' || endingId === 'sleeping_god';
+                  endingId === 'vrethkai_with_mind' || endingId === 'sleeping_god' ||
+                  endingId === 'fisher';
     let funnel;
     if (named) {
       funnel = `
@@ -2070,6 +2408,15 @@ Newsletter: https://aurelonuniverse.com.
         this.flags.seal_stone && this.flags.seal_song && this.flags.seal_blood &&
         this.flags.vrethkai_witnessed) {
       return 'warden';
+    }
+
+    // Fisher: caught all three special fish across the three water rooms.
+    // A lighter named ending than the four hardcore ones — earned through
+    // patience and exploration of the fishing mini-game rather than narrative
+    // commitment. Takes precedence over basic_escape, but Warden still wins
+    // if the player completed both arcs.
+    if (this.fisherCatches.size === this.totalFisherCatches) {
+      return 'fisher';
     }
 
     return 'basic_escape';
@@ -2171,6 +2518,7 @@ Newsletter: https://aurelonuniverse.com.
       prophecyFragments: [...this.prophecyFragments],
       prophecyOrder: [...this.prophecyOrder],
       relicShards: [...this.relicShards],
+      fisherCatches: [...this.fisherCatches],
       identity: this.identity,
       flags: { ...this.flags },
       activeTimers: timers,
@@ -2203,6 +2551,7 @@ Newsletter: https://aurelonuniverse.com.
     this.prophecyFragments = new Set(state.prophecyFragments || []);
     this.prophecyOrder = state.prophecyOrder || [];
     this.relicShards = new Set(state.relicShards || []);
+    this.fisherCatches = new Set(state.fisherCatches || []);
     this.identity = state.identity || null;
     this.flags = { ...(state.flags || {}) };
     this.activeTimers = state.activeTimers || {};
