@@ -329,6 +329,7 @@
       h1 { font-size: 26px; letter-spacing: 6px; }
     }
   </style>
+
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -385,6 +386,12 @@
       <div class="namer-claimant">&mdash;</div>
       <div class="namer-meta">Unwoken. The chamber is patient.</div>
     </div>
+    <div class="namer-card" data-ending="fisher">
+      <div class="namer-eyebrow"></div>
+      <h3 class="namer-title">The Fisher</h3>
+      <div class="namer-claimant">&mdash;</div>
+      <div class="namer-meta">Unclaimed. The water is patient.</div>
+    </div>
   </div>
 
   <!-- ──── 2. THE FIRST TEN ──── -->
@@ -407,6 +414,10 @@
     </div>
     <div class="log-column" data-ending="sleeping_god">
       <div class="log-heading">THE GOD</div>
+      <ol class="log-list"></ol>
+    </div>
+    <div class="log-column" data-ending="fisher">
+      <div class="log-heading">THE FISHER</div>
       <ol class="log-list"></ol>
     </div>
   </div>
@@ -440,7 +451,8 @@
     warden:             { archetype: 'The Watcher',  realName: 'The Warden' },
     cultist:            { archetype: 'The Fire',     realName: 'The Cultist' },
     vrethkai_with_mind: { archetype: 'The Becoming', realName: "Vreth'kai With Mind" },
-    sleeping_god:       { archetype: 'The God',      realName: 'The Sleeping God' }
+    sleeping_god:       { archetype: 'The God',      realName: 'The Sleeping God' },
+    fisher:             { archetype: 'The Fisher',   realName: 'The Fisher' }
   };
 
   function fmtDateShort(ms) {
