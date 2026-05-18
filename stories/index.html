@@ -107,6 +107,18 @@ h1.page-title {
   color: var(--text-secondary);
   font-style: italic;
   font-size: 1.05rem;
+  text-align: left;
+}
+.intro p {
+  margin-bottom: 1.1em;
+}
+.intro p:last-child {
+  margin-bottom: 0;
+}
+.intro p:first-child {
+  text-align: center;
+  color: var(--bone);
+  font-size: 1.15rem;
 }
 
 /* ─── STORY LIST ─── */
@@ -233,7 +245,11 @@ footer.page-footer a:hover {
   <header class="page-header">
     <div class="eyebrow"><a href="/">Aurelon</a></div>
     <h1 class="page-title">Stories</h1>
-    <p class="intro">Free short fiction set in the world of Aurelon. Standalone pieces from the cycles before, during, and after The Breaking. Each is its own story. None of them are the novels.</p>
+    <div class="intro">
+      <p>short fiction set in the world of Aurelon.</p>
+      <p>Some of these are lore events — moments the cosmology required, rendered into prose. Others began at the table, in fifteen years of campaigns that shaped the world long before it became a book. The players' choices became the cosmology's history. The cosmology's history became these stories.</p>
+      <p>Each is its own door. None of them are the novels. Read in any order.</p>
+    </div>
   </header>
 
   <div class="story-list">
