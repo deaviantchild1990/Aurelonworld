@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Convergence — Aurelon</title>
+<meta name="description" content="A free short story set in the world of Aurelon. Four mappers descend on a routine survey. The temple gives way to something older. The deeper they go, the more the architecture decides who stays.">
+<meta name="theme-color" content="#0d0b09">
+
+<!-- Open Graph / social card -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Convergence — Aurelon">
+<meta property="og:description" content="A free short story. Four mappers descend on a routine survey. The temple gives way to something older.">
+<meta property="og:site_name" content="Aurelon Universe">
+<meta property="og:url" content="https://aurelonuniverse.com/stories/the-convergence">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Convergence — Aurelon">
+<meta name="twitter:description" content="A free short story. Four mappers descend on a routine survey. The temple gives way to something older.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4985a;
+  --gold-light: #d4a847;
+  --gold-dim: #8a6d3b;
+  --bone: #e8dcc8;
+  --parchment: #f5f0e6;
+  --dark: #0d0b09;
+  --dark-mid: #1a1612;
+  --dark-surface: #231f1a;
+  --text-primary: #d4c8b4;
+  --text-secondary: #9a8e7e;
+  --text-faint: #6a604f;
+}
+
+html { background: var(--dark); }
+body {
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.75;
+  min-height: 100vh;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Faint vertical gradient to suggest depth without distraction */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(196,152,90,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(107,32,32,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 100px;
+}
+
+/* ─── HEADER ─── */
+header.story-header {
+  text-align: center;
+  margin-bottom: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(196,152,90,0.15);
+}
+
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.eyebrow a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.eyebrow a:hover { color: var(--gold); }
+
+h1.story-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.meta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+.meta span + span::before {
+  content: '·';
+  margin: 0 0.8em;
+  color: var(--gold-dim);
+}
+
+/* ─── STORY BODY ─── */
+.story-body p {
+  margin-bottom: 1.4em;
+  color: var(--text-primary);
+}
+
+.story-body p:first-of-type::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 3.6em;
+  float: left;
+  line-height: 0.85;
+  padding: 0.1em 0.12em 0 0;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.story-body em {
+  font-style: italic;
+  color: var(--bone);
+}
+
+/* Section breaks */
+.section-break {
+  display: block;
+  border: none;
+  margin: 2.4em auto;
+  text-align: center;
+  height: auto;
+  color: var(--gold-dim);
+  letter-spacing: 1.2em;
+  font-size: 1.1rem;
+}
+.section-break::after {
+  content: '✦ ✦ ✦';
+}
+
+/* The [ ] name placeholder — subtle treatment */
+.unnamed {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85em;
+  color: var(--gold-dim);
+  letter-spacing: 0.1em;
+  padding: 0 0.15em;
+}
+
+/* ─── CLOSING NOTE ─── */
+.closing-note {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(196,152,90,0.15);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.closing-note p {
+  margin-bottom: 1.4em;
+}
+.closing-note a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196,152,90,0.3);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.closing-note a:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+.signature {
+  text-align: right;
+  margin-top: 32px;
+  font-style: italic;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ─── FOOTER ─── */
+footer.story-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(196,152,90,0.1);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+footer.story-footer a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin: 0 14px;
+  transition: color 0.2s;
+}
+footer.story-footer a:hover {
+  color: var(--gold);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .container { padding: 40px 20px 60px; }
+  h1.story-title { font-size: 1.8rem; letter-spacing: 0.06em; }
+  .story-body p:first-of-type::first-letter { font-size: 3em; }
+  footer.story-footer { font-size: 0.65rem; letter-spacing: 0.2em; }
+  footer.story-footer a { display: block; margin: 8px 0; }
+}
+</style>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="container">
+
+  <header class="story-header">
+    <div class="eyebrow"><a href="/stories">Aurelon · Stories</a></div>
+    <h1 class="story-title">The Convergence</h1>
+    <div class="meta">
+      <span>A cycle story</span>
+      <span>~20 min read</span>
+    </div>
+  </header>
+
+  <article class="story-body">
+
+    <p>Kael marked the first cipher at the entrance. Standard notation. Route heading, depth estimate, air quality. He pressed the charcoal into the stone wall and felt the grain of it catch under his fingers. Cold stone. Dry. Old enough that the surface had gone smooth from nothing but time passing over it.</p>
+
+    <p>"Deeper than the brief suggested," Brenn said behind him. The team lead was crouched at the passage edge, running his fingers along the seam where worked stone met natural cavern. "This has been opened before. Sealed, then opened."</p>
+
+    <p>"How long ago?" Kael asked.</p>
+
+    <p>"Long."</p>
+
+    <p>Sera was already past them both, her lamp held low, the cipher rod tucked behind her ear. She moved with the efficiency of someone who had been mapping since before Kael was born. Her markings were faster than his, denser, packed with information he was still learning to read. She hummed when she worked. Low, tuneless, barely audible. She'd told him once it kept her hands steady.</p>
+
+    <p>The fourth was Davin. He stood at the rear, watching the passage they'd come through. Davin watched what was behind them. Always had. It was his job, technically, the rear-guard position in a standard four-stack, but Kael had noticed that Davin watched even when they were stopped. Even when there was nothing to watch. He'd lost a team before. Kael didn't know the details. Nobody talked about it and Davin least of all.</p>
+
+    <p>"First mark is set," Kael said.</p>
+
+    <p>Brenn stood. Brushed his hands on his thighs. "Good. Keep them clean, keep them tight. Standard interval. If we move past anything unusual, flag it with a secondary."</p>
+
+    <p>Kael nodded. He'd trained for two years for this. First deep run. The charcoal was warm in his hand from holding it too long.</p>
+
+    <p>They went in.</p>
+
+    <hr class="section-break">
+
+    <p>The upper levels were temple. Cut stone, deliberate angles, load-bearing arches designed by hands that understood weight. Sera marked structural notes at every junction. Brenn counted steps between turns. Kael kept the route ciphers going, pressing marks into the walls at intervals the Gate Authority manual prescribed: every thirty paces, every junction, every change in elevation.</p>
+
+    <p>Standard. Routine.</p>
+
+    <p>Three hours in, the temple stopped.</p>
+
+    <p>It didn't end. It stopped. The worked stone gave way to something older without transition. One step was carved limestone. The next was stone that had never been cut but had somehow been shaped. Grown into forms that served the same purpose as architecture without any tool having touched them.</p>
+
+    <p>Sera stopped walking. Her lamp held still.</p>
+
+    <p>"Brenn."</p>
+
+    <p>He was beside her in three steps. Kael watched them both crouch at the transition line, running fingers along the seam. There was no seam. The two materials grew into each other. The temple had been built on top of this, or against it, or around it.</p>
+
+    <p>"Organic substrate," Sera said. "Grown. Not carved."</p>
+
+    <p>"I can see that." Brenn's voice was flat.</p>
+
+    <p>"Do we mark this with standard notation?" Kael asked.</p>
+
+    <p>Sera looked at Brenn. Brenn looked at the passage ahead. The grown stone stretched into darkness that their lamps couldn't reach.</p>
+
+    <p>"Encode it," Brenn said. "Secondary cipher. This doesn't go in the route marks."</p>
+
+    <p>"Why?" Kael asked.</p>
+
+    <p>"Because I don't know what this is yet. And until I do, the next team that comes through doesn't need to know either."</p>
+
+    <p>Sera was already writing. Her cipher rod moved across the wall in patterns Kael could barely follow. Faster than standard. Different spacing. She was using the tertiary key, the one reserved for information that required Gate Authority clearance to decode.</p>
+
+    <p>Kael watched her and felt the cold of the stone seep up through his boots.</p>
+
+    <p>They went deeper.</p>
+
+    <p>The grown levels were different in ways that accumulated. The air was warmer. Wetter. It carried a smell underneath the mineral dampness that Kael couldn't name. Something biological. Something alive in a way he didn't have a framework for.</p>
+
+    <p>The walls pulsed.</p>
+
+    <p>Not visibly. He felt it through his fingertips when he pressed them to the surface to write his ciphers. A rhythm. Slow and deep. Like standing on a dock and feeling the swell move beneath you, except the swell was in the stone.</p>
+
+    <p>"Is the stone moving?" he asked.</p>
+
+    <p>Davin looked at him. They were side by side in the passage, Brenn and Sera twenty feet ahead at the next junction.</p>
+
+    <p>"Yes," Davin said.</p>
+
+    <p>"What is it?"</p>
+
+    <p>"Something breathing." Davin's eyes were on the passage behind them. His lamp tracked left, right, left. "Something big."</p>
+
+    <p>"Should we tell Brenn?"</p>
+
+    <p>"Brenn knows."</p>
+
+    <p>They kept going. The ciphers Kael pressed into the walls were thinner now. His charcoal was wearing down and the grown stone was harder than temple limestone. He had to press harder to leave marks, and the marks he left felt wrong against the surface. Like writing on skin.</p>
+
+    <p>Six hours. Seven. Brenn called a rest in a chamber where the ceiling domed high enough to stand straight. They ate cold rations in the blue-dark, their lamps turned low to save fuel. Nobody spoke for a while.</p>
+
+    <p>"We're past the briefing depth," Sera said.</p>
+
+    <p>"I know," Brenn said.</p>
+
+    <p>"Protocol says we mark a return point and come back with a second team."</p>
+
+    <p>"I know." Brenn was looking at the far wall. At the patterns in the grown stone. Veins of something paler running through it, catching the lamplight. All of them angled the same direction. Down and inward. Toward a center they hadn't reached yet. "One more level. The veins are converging. I want to see what they converge on."</p>
+
+    <p>Sera didn't argue. She encoded something on the wall above her head. Kael couldn't read it at speed. He caught one glyph: caution. Another: override.</p>
+
+    <p>Brenn was overriding protocol. Sera was recording that he'd done it.</p>
+
+    <p>The next level was where the pale veining thickened.</p>
+
+    <p>Kael noticed it first. The veins in the grown stone, which had been thin as thread in the upper levels, were now finger-width. Then wrist-width. They pulsed with the same rhythm he'd felt in the walls above, but here they were visible. Pale. Faintly luminescent. The light they gave off was pale and beautiful and sat in Kael's stomach like swallowed ice.</p>
+
+    <p>"Crystal," Sera said, touching one of the veins where it surfaced from the wall. "Or something like it. Not mineral. Structured."</p>
+
+    <p>"Don't touch it," Brenn said. Too late. Sera pulled her hand back. Her fingertips were dry. Unchanged. But she wiped them on her jacket anyway.</p>
+
+    <p>Kael marked the wall. Standard route cipher, secondary note, tertiary encoded detail. Three layers of information at one site. He'd never written a tertiary mark on his own before. The glyph felt heavier than the others.</p>
+
+    <p>Brenn died in the passage below.</p>
+
+    <p>It happened fast. A section of the grown stone gave way, or opened, or simply stopped being where it had been. The floor folded and Brenn's lamp pitched forward, the light swinging wild, and Kael saw his hand reach for the wall and find nothing. Then the sound he made when he landed. Short. Wet. By the time Sera and Kael reached the edge, he was still. The fall was twelve feet. Twelve feet shouldn't kill a man built like Brenn. But the pale veining below was dense, crystal-thick, and he'd landed chest-first on a ridge of it. The crystal jutted through his back between his shoulder blades. His hands were open at his sides. His lamp was still lit, resting in his palm, casting long shadows up through the hole they were looking down into.</p>
+
+    <p>Sera's humming stopped. She marked the wall beside the collapse. A single glyph. Kael knew that one. Loss. She added Brenn's operator code below it. Her hand was steady. Of course it was.</p>
+
+    <p>"We go back," she said.</p>
+
+    <p>"Yes," Kael said.</p>
+
+    <p>They never made it back.</p>
+
+    <hr class="section-break">
+
+    <p>Sera was two passages ahead of Kael and Davin, moving fast toward the route they'd marked coming down. She was nearly at the transition between grown stone and temple when the ceiling above her shifted. Not collapsed. Shifted. Rearranged itself in the space of a breath. The passage she'd been walking through was no longer a passage. The stone grew shut behind her and in front of her and Kael heard her voice, muffled, from the other side of what had been open air a moment ago.</p>
+
+    <p>He and Davin pressed their hands against the sealed wall. They could hear her. Barely. The grown stone was thick and still closing, still growing denser between them. She was knocking. Then she wasn't.</p>
+
+    <p>Davin pulled Kael's hand off the wall.</p>
+
+    <p>"We can't," he said.</p>
+
+    <p>"She's in there."</p>
+
+    <p>"We can't." His grip was firm. Not unkind. "We go down. Find another route up. The pattern might open again."</p>
+
+    <p>The passage stayed sealed.</p>
+
+    <hr class="section-break">
+
+    <p>They went down because down was the only direction the grown stone allowed. The passages behind them sealed, one by one, as if the architecture was herding them. Kael marked every wall he could reach. His ciphers were shaking now. The charcoal crumbled under too much pressure and he switched to the edge of his belt buckle, scratching marks into the stone because the stone needed to remember someone was here.</p>
+
+    <p>Davin stayed close. He watched behind them and beside them and above them. His lamp was running low.</p>
+
+    <p>"The crystal is thicker here," Kael said.</p>
+
+    <p>The veining was no longer veining. The pale material covered entire wall sections. Sheeted across the floor in places. The light it gave off made their lamps unnecessary, which was good, because Kael's had died an hour ago.</p>
+
+    <p>The light was warm. That was the thing he noticed. The crystal light was warm against his face. He felt it behind his eyes. In the back of his mouth. The colour of it landing inside him instead of on him.</p>
+
+    <p>"Don't look at it directly," Davin said.</p>
+
+    <p>"It's everywhere."</p>
+
+    <p>"I know. Don't look at it directly."</p>
+
+    <p>Kael kept his eyes on the floor. Kept his hands on the walls. Kept marking. But the marks were harder to focus on. The glyphs in his head were blurring at their edges. Standard notation felt far away. The tertiary cipher felt closer. Something about the pattern of it matched the crystal's rhythm and he could feel the correspondence in his fingers when he wrote.</p>
+
+    <p>"Kael."</p>
+
+    <p>"What."</p>
+
+    <p>"Your last three marks. Read them back to me."</p>
+
+    <p>Kael looked at the wall behind him. At the marks he'd made. The charcoal was gone. He was using his fingernail. When had he switched to his fingernail?</p>
+
+    <p>The marks were deeper than charcoal could make. They were cut into the crystal itself, and the crystal had accepted them without resistance.</p>
+
+    <p>He couldn't read them. The glyphs were his. His hand had made them. But the shapes were not standard notation. Not secondary. Not tertiary. They were something else. Something that fit the rhythm of the walls and the pulse of the stone and the warm light that was landing behind his eyes like it belonged there.</p>
+
+    <p>"I don't know what they say," he said. His voice sounded far away. Not scared. That was the wrong part. He should have been scared and he was not.</p>
+
+    <p>Davin's hand found his shoulder. Tight. The fingers digging in.</p>
+
+    <p>"We need to move. Now. Up. We need to find an up."</p>
+
+    <p>"There's more down here." Kael could feel it. Below them. The convergence Brenn had wanted to see. The place where the veining met. The place where the rhythm originated. It was close. He could feel it pulling at the underside of his feet.</p>
+
+    <p>"Kael. Look at me."</p>
+
+    <p>He looked. Davin's face was lit from below by the crystal light. Pale. Tight around the jaw. His eyes searching Kael's face for something. Kael didn't know what he was looking for until Davin found it and his expression changed.</p>
+
+    <p>"Your eyes," Davin said.</p>
+
+    <p>"What about them?"</p>
+
+    <p>Davin said nothing. He stepped back. One step. His hand left Kael's shoulder and found the wall behind him. He had seen this before. Whatever lived in this place had already decided about Davin, and what it decided was: not you.</p>
+
+    <p>Kael watched him step back. The movement was slow. Everything was slow now. The air between them was thick with the crystal light and it moved through Kael's lungs with each breath and each breath felt fuller than the last. More complete. Like his lungs were learning a new shape that held more, that could contain what the light carried.</p>
+
+    <p>His fingers were tingling. Not numb. Alive. More alive than they had been. He pressed them against the wall and felt the pulse of the stone and the pulse of the stone matched his heartbeat exactly. Not close. Exactly. Recognition.</p>
+
+    <p>"Kael. We're leaving. Follow me."</p>
+
+    <p>He turned toward Davin's voice. Davin was further away than before. Moving toward the passage behind them. The passage that had been sealed. It was open now. Open for Davin. Kael could see the grown stone contracting at its edges, widening to let one body through.</p>
+
+    <p>One body. Not two.</p>
+
+    <p>"Davin." His voice came out different. Deeper. The shape of the sound was wrong in his mouth. Not wrong. New.</p>
+
+    <p>Davin looked at him. One breath. The same look he must have worn the first time, in the place nobody talked about. The look of a man making a calculation he already knew the answer to.</p>
+
+    <p>Then Davin was running.</p>
+
+    <p>The sound of his boots on the grown stone echoed up the passage and the passage was closing behind him, sealing shut an arm's length behind his heels. Running and sealing. Running and sealing. The stone opened for him and closed against Kael and the message in it was clear. One goes. One stays.</p>
+
+    <p>Kael stood in the crystal light. He watched the last gap of the passage narrow around the sound of Davin's breathing and then there was only the stone and the pulse and the warmth that was filling his chest in place of something that had been there before. Something with a name.</p>
+
+    <p>The name was leaving. He could feel it going. Sliding out through the spaces between his ribs. Slow. Painless. The colour of the light was changing or his eyes were changing and the difference between those two things was becoming less than it had been.</p>
+
+    <p>His knees touched the floor. He hadn't decided to kneel. His body had found the posture that fit the rhythm and the rhythm was holding him there. Gentle. Patient. The crystal beneath his knees was warm. The crystal was growing up to meet him where he touched it, threading into his skin with the softness of roots finding soil. No pain. No resistance. Just the closing over.</p>
+
+    <p>The last thing was the cold.</p>
+
+    <p>Not the cold of the stone. A cold that came from inside. From the place where his name had been. The space it left behind was not empty. It was filling with something else. Something patient. Something that was the rhythm now, and the rhythm had been calling for a long time.</p>
+
+    <p>He marked the wall. The glyph was not a glyph. The wall accepted it anyway.</p>
+
+    <p>The silence after was vast.</p>
+
+    <hr class="section-break">
+
+    <p>Below the world, something that had been Kael opened its new eyes and looked down. Toward the convergence. Toward the warmth that breathed beneath everything.</p>
+
+    <p>It had so much time.</p>
+
+  </article>
+
+  <div class="closing-note">
+    <p><em>Davin came back. He was the only one. The Gate Authority sealed the route and rotated the protocol. The next team went anyway. They always do.</em></p>
+
+    <p><em>Above the doorways now: single letters scratched by hands that had time for one stroke before the dark closed. The doorways without letters are the ones the mappers reached but did not return from.</em></p>
+
+    <p><em><a href="/the-descent">The Descent</a> is a free text adventure set in the world of Aurelon. The temple Kael's team mapped is the temple the player descends through. The letters above the doorways were carved by mappers who knew they were dying.</em></p>
+
+    <p><em>The first ten readers to reach any named ending join the <a href="/witness">witness circle</a>, where the unpublished novel cycle is preread before public release.</em></p>
+
+    <p class="signature">— Deaviant</p>
+  </div>
+
+  <footer class="story-footer">
+    <a href="/stories">← All stories</a>
+    <a href="/the-descent">Play The Descent</a>
+    <a href="/witness">Witness program</a>
+    <a href="/">Aurelon</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
