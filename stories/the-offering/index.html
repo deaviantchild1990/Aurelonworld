@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Offering — Aurelon</title>
+<meta name="description" content="A free short story set in the world of Aurelon. Three companions descend into the dark. The dying thing beneath the temple makes them each an offer.">
+<meta name="theme-color" content="#0d0b09">
+
+<!-- Open Graph / social card -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Offering — Aurelon">
+<meta property="og:description" content="A free short story. Three companions descend into the dark. The dying thing beneath the temple makes them each an offer.">
+<meta property="og:site_name" content="Aurelon Universe">
+<meta property="og:url" content="https://aurelonuniverse.com/stories/the-offering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Offering — Aurelon">
+<meta name="twitter:description" content="A free short story. Three companions descend into the dark. The dying thing beneath the temple makes them each an offer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4985a;
+  --gold-light: #d4a847;
+  --gold-dim: #8a6d3b;
+  --bone: #e8dcc8;
+  --parchment: #f5f0e6;
+  --dark: #0d0b09;
+  --dark-mid: #1a1612;
+  --dark-surface: #231f1a;
+  --text-primary: #d4c8b4;
+  --text-secondary: #9a8e7e;
+  --text-faint: #6a604f;
+}
+
+html { background: var(--dark); }
+body {
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.75;
+  min-height: 100vh;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(196,152,90,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(107,32,32,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 100px;
+}
+
+/* ─── HEADER ─── */
+header.story-header {
+  text-align: center;
+  margin-bottom: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(196,152,90,0.15);
+}
+
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.eyebrow a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.eyebrow a:hover { color: var(--gold); }
+
+h1.story-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.meta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+.meta span + span::before {
+  content: '·';
+  margin: 0 0.8em;
+  color: var(--gold-dim);
+}
+
+/* ─── STORY BODY ─── */
+.story-body p {
+  margin-bottom: 1.4em;
+  color: var(--text-primary);
+}
+
+.story-body p:first-of-type::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 3.6em;
+  float: left;
+  line-height: 0.85;
+  padding: 0.1em 0.12em 0 0;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.story-body em {
+  font-style: italic;
+  color: var(--bone);
+}
+
+/* Section breaks */
+.section-break {
+  display: block;
+  border: none;
+  margin: 2.4em auto;
+  text-align: center;
+  height: auto;
+  color: var(--gold-dim);
+  letter-spacing: 1.2em;
+  font-size: 1.1rem;
+}
+.section-break::after {
+  content: '✦ ✦ ✦';
+}
+
+/* The leviathan's speech — italic block, slight emphasis */
+.story-body blockquote {
+  margin: 1.6em 0;
+  padding-left: 1.2em;
+  border-left: 2px solid rgba(196,152,90,0.25);
+  font-style: italic;
+  color: var(--bone);
+}
+.story-body blockquote p {
+  margin-bottom: 1em;
+  color: var(--bone);
+}
+.story-body blockquote p:last-child { margin-bottom: 0; }
+
+/* ─── CLOSING NOTE ─── */
+.closing-note {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(196,152,90,0.15);
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.closing-note p {
+  margin-bottom: 1.4em;
+}
+.signature {
+  margin-top: 24px;
+  font-style: italic;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ─── FOOTER ─── */
+footer.story-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(196,152,90,0.1);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+footer.story-footer a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin: 0 14px;
+  transition: color 0.2s;
+}
+footer.story-footer a:hover {
+  color: var(--gold);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .container { padding: 40px 20px 60px; }
+  h1.story-title { font-size: 1.8rem; letter-spacing: 0.06em; }
+  .story-body p:first-of-type::first-letter { font-size: 3em; }
+  footer.story-footer { font-size: 0.65rem; letter-spacing: 0.2em; }
+  footer.story-footer a { display: block; margin: 8px 0; }
+}
+</style>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="container">
+
+  <header class="story-header">
+    <div class="eyebrow"><a href="/stories">Aurelon · Stories</a></div>
+    <h1 class="story-title">The Offering</h1>
+    <div class="meta">
+      <span>A cycle story</span>
+      <span>~25 min read</span>
+    </div>
+  </header>
+
+  <article class="story-body">
+
+    <p>The tunnel stank of rot and wet limestone. Valruth went first because Valruth always went first, his wings folded tight against his back, his bare feet silent on the stone. He was smaller than the torchlight suggested. Three feet of scaled muscle and conviction, his claws clicking once when he stopped at the junction and tilted his head to listen.</p>
+
+    <p>"Left," he said.</p>
+
+    <p>"How do you know?" Thorvald's voice filled the corridor behind them. It always filled whatever space it was in.</p>
+
+    <p>"Because right smells like piss." Valruth's snout wrinkled. "Something marked territory there. We go left."</p>
+
+    <p>"Could be treasure they're guarding."</p>
+
+    <p>"Could be a nest. Left."</p>
+
+    <p>Thorvald grunted and adjusted the axe across his shoulders. He wore furs even underground, even in the damp heat of a tunnel system that had been sealed for decades. His beard was braided with iron rings and he smelled of tallow and old sweat. He went where Valruth pointed because Valruth was usually right and because arguing with the kobold took longer than the walk itself.</p>
+
+    <p>Sable said nothing. She followed behind Thorvald, her whip coiled at her hip, her long ears pressed flat to keep from brushing the ceiling. She had tried to say something at the entrance about the stonework. About how the cuts were too clean for the age of the place. Neither of them had heard her, or if they had, they hadn't turned.</p>
+
+    <p>The left passage dropped steeply. The air changed. Colder, denser, carrying something underneath the limestone smell. Something organic and old.</p>
+
+    <p>Valruth's wings twitched.</p>
+
+    <p>"Something dead ahead," he said. "Big dead. Old dead."</p>
+
+    <p>"How old?" Thorvald asked.</p>
+
+    <p>"Old enough that it should have stopped smelling by now."</p>
+
+    <p>They found the spiders two hundred feet further down.</p>
+
+    <p>The nest filled a natural cavern, silk strung between stalactites in sheets so thick they caught the torchlight and held it. The bodies were the size of horses. Eight of them, visible. More moving in the upper dark where the silk was densest.</p>
+
+    <p>Thorvald was already moving. He hit the first one before Valruth could speak, his axe splitting chitin in a spray of black fluid. The thing screamed. The sound bounced off the cavern walls and multiplied and the rest of them came down from the silk in a wave.</p>
+
+    <p>Valruth stepped sideways. A leg the width of his body swept through the space he'd been standing in and hit stone. He was already past it, already inside the spider's reach, his greatsword off his back in a motion so practiced it looked casual. The blade was longer than he was tall. It should have been absurd. It was not. He took the leg at the second joint and the spider lurched sideways, screaming, and Valruth was already gone, already circling, letting two more commit to lunges that he sidestepped by inches. He cut one across the face. Not deep. Not killing. Drawing its attention, making it angry, making it chase him while Thorvald hacked at the big one's flank without knowing his back was exposed.</p>
+
+    <p>Two of the larger ones were circling behind the barbarian. Valruth let them come. He watched them close the distance, watched their legs gather for the strike, and then he was between them with his wings spread and his sword held low. He took the front legs off the first one in a single sweep and shouldered into the second, driving it sideways into the cavern wall where it tangled in its own silk. He could have killed them both in the first breath. He didn't. He let them flail, let them make noise, let Sable see where the joints were weakest before he finished them.</p>
+
+    <p>Sable's whip cracked. The sound was sharp and clean and cut through the noise of the fight. It wrapped around the foreleg of a spider coming at Thorvald's blind side and pulled. The joint bent wrong. Exactly where Valruth's cuts had shown her. The spider stumbled into its companion and both went down in a tangle of legs and silk.</p>
+
+    <p>Nobody said good work. Nobody looked at her.</p>
+
+    <p>They cleared the nest in minutes. Thorvald was bleeding from a gash across his forearm where he'd been too slow to pull back. He didn't bandage it. He wiped the black fluid from his axe on his furs and kept walking. Valruth cleaned his greatsword on a sheet of spider silk and slid it back into the harness between his wings. The blade vanished behind his small body.</p>
+
+    <p>"There were ten," Sable said, quietly, behind them. "I counted twelve legs in the upper silk that didn't come down."</p>
+
+    <p>Valruth heard her. He stopped. Turned his head. His golden eyes caught the torchlight and held it.</p>
+
+    <p>"Twelve legs is two spiders," he said. "They didn't come down because they're guarding eggs. We don't need eggs. We need what's below." He looked at her for a moment longer than he usually did. Then he turned and kept moving.</p>
+
+    <p>Sable's ears lifted slightly. She followed.</p>
+
+    <p>The goblins were three levels down. A camp, not a settlement. Bedrolls around a fire pit that had burned low, cooking implements made from scavenged metal, the smell of roasted cave-rat still in the air. Six of them, armed with short blades and frightened eyes.</p>
+
+    <p>Thorvald reached for his axe.</p>
+
+    <p>"No," Valruth said.</p>
+
+    <p>"They're in our way."</p>
+
+    <p>"They're eating dinner." Valruth walked into the firelight. The goblins scattered back, blades up, chattering in their own tongue. He spread his wings. Drew himself up to his full three feet. Spoke in a voice that carried despite its size.</p>
+
+    <p>"We are passing through. Keep your blades sheathed and your lives are your own. Draw on us and my associate will water his axe with you."</p>
+
+    <p>The goblins looked at Thorvald behind him. At the axe still dark with spider fluid. At the size of him and the size of the tunnel and the absence of anywhere to run.</p>
+
+    <p>They parted.</p>
+
+    <p>Valruth walked through their camp without taking anything. Sable followed, her ears low, her eyes on the goblins' blades. One of them, the smallest, met her gaze. It looked scared. She looked away first.</p>
+
+    <p>Thorvald shouldered through last. He kicked a cooking pot as he passed. It rang against the stone wall. The goblins flinched.</p>
+
+    <p>"Was that necessary?" Sable said.</p>
+
+    <p>"What?" Thorvald said, already past the camp, already not listening.</p>
+
+    <p>Three more levels. The air grew heavier with each descent. The smell underneath the stone grew stronger. Wet. Organic. Wrong in a way Sable couldn't name but felt in the back of her teeth. Her whip hummed at her hip. The magic in it responding to something below.</p>
+
+    <p>They were tired. Thorvald had stopped bragging about the spiders an hour ago. Valruth's wings were held tighter against his back, conserving warmth. Sable's feet hurt. Her shoulders ached from two fights where she'd pulled creatures off trajectories aimed at her companions. Nobody had mentioned those pulls.</p>
+
+    <p>The final chamber opened without warning. One moment the tunnel was narrow and low, the next it was not. The ceiling vanished into darkness above them. The floor spread outward in a circle of worked stone, ancient and deliberate, marking patterns that had been old when the temple above was built.</p>
+
+    <p>No one had been here in a long time. No one was coming.</p>
+
+    <p>In the center, the thing that had been rotting for ages and had not finished.</p>
+
+    <p>It filled the chamber. Not because of its size, though it was massive. It filled the space because the space was shaped around it. Tentacles spread across the floor in patterns that matched the stonework. Its body, swollen and pale and sheened with something that caught their torchlight and threw it back in colors they couldn't name. Eyes. Too many. Most closed. The ones that were open were watching them. Had been watching them since they entered the tunnel system three hours ago.</p>
+
+    <p>It was dying. Had been dying for longer than the goblins had been alive. Maybe longer than the temple above had been standing. The crystal in its chest pulsed with a slow rhythm, and each pulse pushed dark fluid through the tentacles and into the stone beneath it.</p>
+
+    <p>"That," Valruth said, very quietly, "is a leviathan."</p>
+
+    <p>Sable's whip was in her hand. She didn't remember drawing it.</p>
+
+    <p>"That's not possible," Thorvald said. "Leviathans are in the deep ocean. Everyone knows that."</p>
+
+    <p>"Everyone knows wrong." Valruth was watching the eyes. The ones that were open tracked him when he moved. He stepped left. The eyes followed. He stepped right. They followed. He could feel something pressing against the edge of his awareness. A weight that wanted in.</p>
+
+    <p>"It's corrupted," he said. His voice had changed. Quieter. The conviction still there but the performance of it gone. "The crystal in its chest. Look at the veining. That's not natural."</p>
+
+    <p>Sable looked. The crystal was pale, shot through with dark threads that pulsed in counterpoint to the larger rhythm. Where the threads touched the leviathan's flesh, the skin had hardened to something that was no longer organic. Chitin, maybe. Or stone. Or something between.</p>
+
+    <p>"Can we kill it?" Thorvald asked.</p>
+
+    <p>Valruth looked at the leviathan. At the eyes watching him. At the slow pulse of corruption spreading through it.</p>
+
+    <p>"Yes," he said. "And we should."</p>
+
+    <p>The fight was not what any of them expected. The leviathan was dying. Its strength was a fraction of what it had been. But a fraction of something that vast was still enough to crack stone and send Thorvald sliding twenty feet across the floor. Its tentacles moved with a speed that didn't match its size and Sable took a hit across the ribs that put her on her knees, her lungs empty, her ears ringing.</p>
+
+    <p>Valruth drew the greatsword. The blade caught the torchlight and held it. He went straight for the eyes.</p>
+
+    <p>The tentacles came for him and found nothing. He was where they expected and then was not, his wings carrying him over sweeps that would have crushed him. But he was not just dodging. He was cutting. Each pass through the tentacle field left something bleeding. He took the tip off one, hamstrung another at its base, opened a long shallow wound across the leviathan's flank that wept dark fluid. He moved through the creature's guard like he owned it. Playing. Testing. Finding the rhythm of the thing and then breaking it on purpose so his companions could see the gaps.</p>
+
+    <p>Thorvald saw one. His axe bit deep into the flesh near the base of a tentacle Valruth had just drawn wide, and the leviathan screamed. The sound was not sound. It was pressure. It squeezed the air from the chamber and Sable felt blood in her ears and still she stood and her whip found the tentacle that was reaching for Thorvald's back and she pulled.</p>
+
+    <p>They fought it for twenty minutes. Each of them bleeding. Each of them running on the last of what they had. Sable's whip found joints, weak points, the places where corruption had made the flesh brittle. Thorvald's axe opened wounds that Valruth had started. And Valruth kept its attention. Always its attention. The smallest thing in the room holding the gaze of the largest, his sword a blur of silver that never stopped moving, never stopped teaching them where to hit next.</p>
+
+    <p>It fell in pieces. First the tentacles stopped reaching. Then the body settled lower against the stone. Then the eyes, one by one, began to close.</p>
+
+    <p>Except two. Two stayed open. Fixed on all three of them.</p>
+
+    <p>And the leviathan spoke.</p>
+
+    <p>The voice came from the crystal in its chest. It filled the chamber. Found every space, every crack, every hollow in the stone and in them.</p>
+
+    <blockquote>
+      <p>You have killed what was already dying. You have spent yourselves on mercy you did not intend. I see what you are. I see what you want. I can give it.</p>
+    </blockquote>
+
+    <p>Valruth's wings flared. "Do not listen."</p>
+
+    <blockquote>
+      <p>The small one. The one who decides what is holy and what is heresy. You carry your god's authority like a blade you sharpened yourself. But you know. You have always known. The authority is borrowed. The conviction is yours but the power behind it is not. I can make it yours. Truly yours. No patron. No borrowed light. Just you, and the certainty that what you judge stays judged.</p>
+    </blockquote>
+
+    <p>Valruth was still. His greatsword hung at his side, dark with the creature's blood. His golden eyes were fixed on the two that watched him. He did not move for three breaths.</p>
+
+    <p>Then his wings folded down, slow, and he smiled. It was not a kind smile.</p>
+
+    <p>"My certainty has never needed your help," he said. "And my patron answers to me. Not the other way around."</p>
+
+    <blockquote>
+      <p>The one with the axe. You want to be remembered. You want the songs they sing to carry your name past your death. I can make your name outlast this mountain.</p>
+    </blockquote>
+
+    <p>Thorvald was breathing hard. His axe hung at his side. The blood on his face had mixed with sweat and something darker from the leviathan's fluid.</p>
+
+    <p>"Don't," Valruth said. Not a command. A warning.</p>
+
+    <blockquote>
+      <p>The one with the whip. You want to be heard. You want the words you speak to land in the ears of those around you. I can give you a voice that no one ignores.</p>
+    </blockquote>
+
+    <p>Sable felt it. The pull of it. The truth of it sitting in her chest. She looked at the crystal pulsing in the dead thing's ribs.</p>
+
+    <p>"It's corruption," Valruth said. He was looking at Sable. Only at Sable. "Whatever it gives, the crystal takes. Look at it. Look at what it did to the leviathan."</p>
+
+    <p>Sable looked at the creature beneath them. At the hardened flesh. At the dark threading through what had once been alive. She stepped back.</p>
+
+    <p>Thorvald stayed where he was.</p>
+
+    <p>"Thorvald." Valruth's voice was sharp.</p>
+
+    <p>The barbarian was walking forward. His axe forgotten on the ground behind him. His hands open at his sides. The two remaining eyes of the leviathan watched him approach. They did not blink.</p>
+
+    <blockquote>
+      <p>Yes. Come. Take what is offered. Be what you were always meant to be.</p>
+    </blockquote>
+
+    <p>Thorvald's hand touched the crystal.</p>
+
+    <p>The torchlight died. When it came back, Thorvald was standing with dark threads climbing his arm, his axe already in his hands, his eyes no longer his.</p>
+
+    <p>He swung.</p>
+
+    <p>Valruth was not where the axe fell. He was three feet to the left, his greatsword already in his hands, the blade angled to turn the next strike. The axe sparked off stone where he'd been standing.</p>
+
+    <p>"Sable, move!"</p>
+
+    <p>She moved. The second swing cut the air where her head had been. Thorvald was faster than he'd been. Stronger. The axe left furrows in the stone floor with each miss and he did not tire between them.</p>
+
+    <p>Valruth met the third swing with the flat of his blade. The impact drove him back, his feet sliding on the stone, but the axe didn't reach Sable. He rolled under the fourth, came up inside Thorvald's guard, and drove the pommel of the greatsword into the barbarian's knee. Thorvald buckled. Valruth hit him again, the flat of the blade across the back of both legs. Every strike was flat-bladed. Measured to hurt, to slow, to buy time. He was fighting a friend.</p>
+
+    <p>But Thorvald stood back up. Whatever the crystal had given him ate the pain before it landed. He swung again, faster, and Valruth caught the axe on his blade and the force of it drove him to one knee. For the first time in the fight, Valruth's arms shook.</p>
+
+    <p>Sable's whip cracked.</p>
+
+    <p>It wrapped around Thorvald's wrist. The magic in it pulsed, bright, and his arm stopped mid-swing. He turned. Those eyes that were not his eyes found her. He pulled against the whip and she braced, both feet planted, her shoulders burning, her teeth clenched.</p>
+
+    <p>He pulled harder. She slid forward. An inch. Two.</p>
+
+    <p>Valruth spoke the word. The prayer. The light that came from his palm was golden and clean and it struck Thorvald in the spine and the barbarian's body seized. Every muscle locked at once.</p>
+
+    <p>Sable did not think. She closed the distance in three strides. Her free hand found the knife at her belt. Small. Meant for rope and rations and nothing else.</p>
+
+    <p>She put it through Thorvald's throat.</p>
+
+    <p>He looked at her.</p>
+
+    <p>The eyes were his. Just for a breath. Confused. Frightened. Young, under the braids and the iron rings and the furs. He looked at her and she looked back and neither of them moved.</p>
+
+    <p>Then the dark threads pulsed once beneath his skin and went still. Thorvald fell. The chamber was quiet.</p>
+
+    <p>Sable stood over him. Blood on her hand. The knife still in it.</p>
+
+    <p>Valruth landed beside her. His wings folded. He looked at the body. Then at her. He put his small clawed hand on her forearm and left it there for three seconds, and then he turned to the leviathan.</p>
+
+    <p>The creature was dead. Fully dead, now. The two remaining eyes had closed. Its body was settling, deflating, the last of whatever had kept it animate leaving through the wounds they'd opened. The crystal in its chest still pulsed. Slower. Dimmer. But present.</p>
+
+    <p>"We should leave it," Valruth said.</p>
+
+    <p>Sable was already moving toward it. She couldn't have said why. Her feet carried her across the stone floor and her hand was reaching before the thought to reach had finished forming. The crystal came free from the dead flesh with a sound like a joint separating. It was warm. The size of her fist. Pale, shot through with dark threading. It pulsed in her palm with a rhythm that matched nothing in the room.</p>
+
+    <p>It matched her.</p>
+
+    <p>"Sable." Valruth's voice behind her. Sharp. "Put it down."</p>
+
+    <p>She tried. Her fingers tightened instead of opening. The crystal's surface was softening under her grip, growing warm, growing wet, and her fingertips were sinking into it. Past the surface. Into the warmth beneath.</p>
+
+    <p>"Valruth." Her voice came out strange. Far away from herself.</p>
+
+    <p>She pulled. Her arm pulled. Her shoulder pulled. Nothing moved. The warmth was climbing her wrist. Past the wrist. Up her forearm in a wave that felt like being lowered into hot water. She could see her own skin disappearing into the crystal's surface, her hand gone, her wrist gone, the boundary between her body and the pale stone dissolving.</p>
+
+    <p>"Sable!" He was running. She could hear his claws on the stone.</p>
+
+    <p>The warmth reached her elbow. Her shoulder. She tried to scream and felt the sound thin out, stretch, pull sideways into a register she couldn't hear anymore. Her body was folding. Compressing. The room was growing larger or she was growing smaller and the crystal was closing over her. Swallowing without force. Without sound.</p>
+
+    <p>The last thing she saw from the outside was Valruth's face. His golden eyes wide. His claws reaching for her. His mouth open around her name.</p>
+
+    <p>Then she was inside.</p>
+
+    <p>The world was pale. Curved. Warm. She pressed her palms against the surface and it was smooth and hard and would not give. She could see the chamber through it, warped, like looking through deep water. She could see Valruth, small and sharp and standing where she had been standing. She hit the surface. Hit it again. Opened her mouth.</p>
+
+    <p>"Valruth. Valruth, I can't get out. I can't. Valruth."</p>
+
+    <p>Her voice came out muffled. Distant. But there.</p>
+
+    <p>He crossed the distance in two steps. His claws wrapped around the crystal. He pulled. He prayed. He spoke the words that had broken enchantments before, that had turned curses, that had shattered things his patron deemed unholy. The crystal held. Unchanged. Warm in his hands and silent against his faith.</p>
+
+    <p>Inside, Sable pressed her palms against the surface. He could see her. Every detail of her. Her long ears flat against her head. Her eyes, wide and wet. Her mouth forming his name over and over.</p>
+
+    <p>He sat with her for a long time. Tried everything he knew. Called on every word his patron had given him. Nothing answered. The crystal was patient. His faith was not.</p>
+
+    <p>Thorvald's body cooled behind him. The leviathan's flesh was already collapsing into something that stank of brine and decay. The torches were burning low.</p>
+
+    <p>Valruth stood. He looked at the crystal in his hands. At the face inside it. She was watching him. Waiting.</p>
+
+    <p>He pulled a length of cord from his pack. Wrapped it around the crystal, knotted it twice, and hung it around his neck. It rested against his scaled chest, warm, pulsing with her heartbeat.</p>
+
+    <p>"I will find a way," he said. To her. To the face pressed against the inside of the crystal.</p>
+
+    <p>She banged once on the surface. He felt the vibration against his sternum.</p>
+
+    <p>He left Thorvald where he fell. Climbed back through the levels alone. Past the goblin camp, empty now, abandoned in the hours since they'd passed. Past the spider nest, the surviving two still guarding eggs in the upper dark. Through the long tunnels that stank of limestone and rot. His wings ached. His legs were heavy. The crystal bounced against his chest with every step.</p>
+
+    <p>He emerged into night air. The forest above the dungeon entrance was quiet. Insects and wind and nothing else. He walked until his legs wouldn't carry him further and then he built a fire in a clearing between two old oaks.</p>
+
+    <p>The flames settled. The forest breathed around him.</p>
+
+    <p>"Valruth."</p>
+
+    <p>Her voice, small and far away, from the crystal at his chest.</p>
+
+    <p>He looked down. Inside the pale surface, barely visible in the firelight, her face. Watching him.</p>
+
+    <p>"I'm here," he said.</p>
+
+    <p>"I know." A pause. Her palms flat against the inside. "I killed him."</p>
+
+    <p>"Yes."</p>
+
+    <p>"He was going to kill you."</p>
+
+    <p>"Yes."</p>
+
+    <p>Another pause. The fire cracked. Something moved in the canopy above and went still.</p>
+
+    <p>"You'll find a way?" Her voice smaller now.</p>
+
+    <p>Valruth wrapped one clawed hand around the crystal. Held it against his chest. His wings folded tighter against his back. His golden eyes watched the fire.</p>
+
+    <p>"I will burn every library between here and the sea if I have to," he said. "I will ask every holy thing I have ever insulted. I will drag my patron from whatever comfortable silence he rests in and I will demand he answer me. And if none of them can help, I will find someone who can."</p>
+
+    <p>Inside the crystal, Sable pressed her forehead against the surface. He felt the warmth of it shift.</p>
+
+    <p>"Okay," she said. Quiet. The way she always said things. But this time, he was the only one in the room.</p>
+
+    <p>This time, he heard her.</p>
+
+  </article>
+
+  <div class="closing-note">
+    <p><em>A cycle story from the world of Aurelon.</em></p>
+    <p class="signature">— Deaviant</p>
+  </div>
+
+  <footer class="story-footer">
+    <a href="/stories">← All stories</a>
+    <a href="/the-descent">Play The Descent</a>
+    <a href="/witness">Witness program</a>
+    <a href="/">Aurelon</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
