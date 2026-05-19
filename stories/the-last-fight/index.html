@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Fight — Aurelon</title>
+<meta name="description" content="A free short story set in the world of Aurelon. The savage god, the partner who shaped the small things, the world that fell — and the long sleep that followed.">
+<meta name="theme-color" content="#0d0b09">
+
+<!-- Open Graph / social card -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Last Fight — Aurelon">
+<meta property="og:description" content="A free short story. The savage god, the partner who shaped the small things, the world that fell.">
+<meta property="og:site_name" content="Aurelon Universe">
+<meta property="og:url" content="https://aurelonuniverse.com/stories/the-last-fight">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Last Fight — Aurelon">
+<meta name="twitter:description" content="A free short story. The savage god, the partner who shaped the small things, the world that fell.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4985a;
+  --gold-light: #d4a847;
+  --gold-dim: #8a6d3b;
+  --bone: #e8dcc8;
+  --parchment: #f5f0e6;
+  --dark: #0d0b09;
+  --dark-mid: #1a1612;
+  --dark-surface: #231f1a;
+  --text-primary: #d4c8b4;
+  --text-secondary: #9a8e7e;
+  --text-faint: #6a604f;
+}
+
+html { background: var(--dark); }
+body {
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.75;
+  min-height: 100vh;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Faint vertical gradient to suggest depth without distraction */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(196,152,90,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(107,32,32,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 100px;
+}
+
+/* ─── HEADER ─── */
+header.story-header {
+  text-align: center;
+  margin-bottom: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(196,152,90,0.15);
+}
+
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.eyebrow a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.eyebrow a:hover { color: var(--gold); }
+
+h1.story-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.meta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+.meta span + span::before {
+  content: '·';
+  margin: 0 0.8em;
+  color: var(--gold-dim);
+}
+
+/* ─── STORY BODY ─── */
+.story-body p {
+  margin-bottom: 1.4em;
+  color: var(--text-primary);
+}
+
+.story-body p:first-of-type::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 3.6em;
+  float: left;
+  line-height: 0.85;
+  padding: 0.1em 0.12em 0 0;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.story-body em {
+  font-style: italic;
+  color: var(--bone);
+}
+
+/* Section breaks */
+.section-break {
+  display: block;
+  border: none;
+  margin: 2.4em auto;
+  text-align: center;
+  height: auto;
+  color: var(--gold-dim);
+  letter-spacing: 1.2em;
+  font-size: 1.1rem;
+}
+.section-break::after {
+  content: '✦ ✦ ✦';
+}
+
+/* The [ ] name placeholder — subtle treatment */
+.unnamed {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85em;
+  color: var(--gold-dim);
+  letter-spacing: 0.1em;
+  padding: 0 0.15em;
+}
+
+/* ─── CLOSING NOTE ─── */
+.closing-note {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(196,152,90,0.15);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.closing-note p {
+  margin-bottom: 1.4em;
+}
+.closing-note a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196,152,90,0.3);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.closing-note a:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+.signature {
+  text-align: right;
+  margin-top: 32px;
+  font-style: italic;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ─── FOOTER ─── */
+footer.story-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(196,152,90,0.1);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+footer.story-footer a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin: 0 14px;
+  transition: color 0.2s;
+}
+footer.story-footer a:hover {
+  color: var(--gold);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .container { padding: 40px 20px 60px; }
+  h1.story-title { font-size: 1.8rem; letter-spacing: 0.06em; }
+  .story-body p:first-of-type::first-letter { font-size: 3em; }
+  footer.story-footer { font-size: 0.65rem; letter-spacing: 0.2em; }
+  footer.story-footer a { display: block; margin: 8px 0; }
+}
+</style>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="container">
+
+  <header class="story-header">
+    <div class="eyebrow"><a href="/stories">Aurelon · Stories</a></div>
+    <h1 class="story-title">The Last Fight</h1>
+    <div class="meta">
+      <span>A short story</span>
+      <span>~15 min read</span>
+    </div>
+  </header>
+
+  <article class="story-body">
+
+    <p>The dragon was hunting below them.</p>
+
+    <p>She watched it from the cliff's edge, her feet bare against the warm stone, and he stood behind her with his arms folded across his chest. The beast moved through the canopy without sound. Three hundred feet of scaled muscle threading between trees that had been old when the first mortal cities rose and fell. It had been stalking the herd for two days. He knew because he had watched it begin. He had watched it circle, patient, choosing. The strike would come soon.</p>
+
+    <p>"There," she said.</p>
+
+    <p>He looked where she was looking. Below the dragon. A clutch of brushquail, small and dull-feathered, pressed flat against the forest floor in the shadow of a root system. The dragon's passage overhead had pinned them there. Frozen. Heartbeats visible in their throats.</p>
+
+    <p>"They will survive this," she said. "I made them small enough."</p>
+
+    <p>He grunted. She had. He had thought of the dragon, of the silence of its approach, of the decades he had spent shaping that lineage toward that silence in flight. She had been working on the brushquail for longer. Their feathers, the dull mottled brown of fallen leaves. Their freeze-instinct. The flat body-shape that tucked into root-shadow. She had been paring them down for centuries, refining the smallest shape that could survive what he made above. The dragon and the brushquail were both their work. His pressure, her architecture of survival beneath it.</p>
+
+    <p>The dragon struck. The canopy split open in a line of green and gold. Something large screamed once below the treeline and then went silent. The brushquail scattered into the underbrush, alive, fast, hearts still hammering.</p>
+
+    <p>She turned to him. Her eyes held the same expression they always held after one of his beasts fed and the small things she had shaped ran free beneath it.</p>
+
+    <p>"Look what we did," she said. Quiet. To him. To the brushquail running free below.</p>
+
+    <p>He did not answer. He was looking past her. Past the forest. Past the ocean that ran silver at the continent's edge where his leviathans moved in the deep.</p>
+
+    <p>She watched him look. The set of his jaw when he was reading the world for threats. She had seen that face a thousand times across a thousand ages and it still made her chest ache. The seriousness of him. The weight he carried without being asked. She wanted to put her hand on his face and say something small and useless and true. She did not. There would be time.</p>
+
+    <p>Something had changed.</p>
+
+    <p>The air had not moved, but the quality of stillness had shifted. A pressure from nowhere. The birds below the cliff had stopped calling. All of them. At once.</p>
+
+    <p>She felt it too. Her hand reached for him without looking. Her fingers found his forearm. She did not grip. She rested them there.</p>
+
+    <p>He covered her hand with his. One breath. The forest below them still held everything they had spent ages building. He could feel the weight of it between their fingers. All of it, all at once, about to be asked for.</p>
+
+    <p>The dragon in the canopy below lifted its head. Its wings came up. It left the kill uneaten.</p>
+
+    <hr class="section-break">
+
+    <p>He called them.</p>
+
+    <p>The summons went out through the marrow of the world and the world answered. Dragons rose from roosts across the continent, bursting through canopy, through cliff-face, through cloud banks that parted around their passage. The leviathans surfaced in the deep waters. Their forms broke the ocean's skin in lines of black and grey and pale green, tentacles spreading wide, drawing themselves up from the depths they had rested in for decades. The forest shook at its roots. The oldest trees, the ones whose root systems networked half a continent, began to shift their weight.</p>
+
+    <p>He stood at the center of it. His beasts converging on him from every direction. He held the world in his fist.</p>
+
+    <p>The sky cracked.</p>
+
+    <p>A seam opened in the blue above the continent. Dark light bled through it, the colour of the false star, beautiful and wrong. Tendrils reached down from the crack. They fell like rain made of something heavier than water, dark threads unspooling toward the canopy, toward the ocean, toward the mountains. Where they touched the ground the earth went black and still. Where they touched the trees the bark hardened to obsidian. They kept falling. More cracks opened. The sky was splitting along fault lines nobody had known were there.</p>
+
+    <p>The dragons felt it first. Three of the largest turned mid-flight and climbed hard toward the cracks. Their fire met the tendrils and the tendrils took the fire. Did not burn. Did not break. The dark light bled around the flame and kept falling.</p>
+
+    <p>Then the tendrils began to thicken. To assemble. The dark light coalescing into shapes as it fell. Pulling crystal out of the air, out of nothing, sheathing itself in bodies that were not bodies until they touched the ground. By the time the first of them landed, they were solid. Crystal-skinned. Pale. Long in the body and wrong in every joint. They moved with the stuttering gait of things that did not yet understand what they were wearing.</p>
+
+    <p>They were learning fast.</p>
+
+    <p>He hit the first wave at a dead run. His fist struck one of the pale things and it broke apart in a spray of chitin and dark crystal and the pieces dissolved before they touched the earth. He struck another. Another. The ground buckled under him and cracked outward for a mile in every direction and the crack swallowed dozens of them, crystal bodies tumbling into the fissure.</p>
+
+    <p>More fell from the sky. Larger ones now, wrong at every joint, their limbs too long, their bodies articulated at angles that made his beasts flinch. They moved through the falling dark light and where they landed they spread. The crystal growths radiating outward from their feet, eating the soil, eating the stone. His dragons hit them from above. Fire on crystal. Some shattered. Most did not. A dragon, one of his largest, caught one of the crystal-skinned in its jaws and the creature's limbs folded around the dragon's neck at impossible angles and the dragon screamed once and fell. Then another. Then five more. The sky was filling with falling bodies and falling dragons and the sound of both was the sound of a world being unmade piece by piece.</p>
+
+    <p>She was beside him. She had not retreated. She moved through the battle with both hands open. A young dragon was falling, crystal latched to its wing-joint, eyes going dim. She was at its side before it hit the ground. Her hand on its ribs. Fire came back into its throat. Faint, then strong. Its eyes cleared. She was giving it the last of itself.</p>
+
+    <p>The wrong-jointed creature came from behind her. One of the larger ones, longer in the limb, its body articulated at angles that should not have let it move that fast. Its arm found her ribs. A single point of crystal driven through.</p>
+
+    <p>She did not turn. She did not pull away from the dragon beneath her hands. She finished the work. The fire in the dragon's throat burned full and bright and the dragon's eyes opened completely. The clarity she had given it now total. It saw. Not the sky. Not the falling cracks. It saw the wrong-jointed thing behind her with its limb still in her side. The dragon's last fire poured from its open mouth into the creature that had wounded her. Crystal blackened and curled and folded inward. The wrong-jointed thing collapsed into a dark shape and was gone.</p>
+
+    <p>The dragon's fire ended. Its eyes closed. It died with its mouth open and its teeth bared and its last act something it had chosen.</p>
+
+    <p>She stood. Slowly. She was bleeding. Her side dark where the crystal had pierced. Where the drops of her essence hit the broken ground, small white flowers came up. Immediately. Growing from nothing, out of the dead soil, white petals opening in the space of a breath. Where the flowers grew, the crystal growths nearby pulled back. Not destroyed. Unable to advance through the bloom.</p>
+
+    <p>He saw it. All of it. The dragon's choice. The flowers in the ground. The blood on her side still falling.</p>
+
+    <p>He did not think. He moved through the wrong-jointed around her and they came apart. Unmade. The ground beneath him split and swallowed them. The air around her cleared. Sound dropped out near him. The world going silent in a sphere around his body because nothing could vibrate fast enough to keep up with what he was doing. He was erasing whatever was near her. Every crystal body within his reach became dust and the dust became nothing and he kept going until the space around her was empty for a hundred yards in every direction.</p>
+
+    <p>She did not look at him. She was already moving. A fox-shaped beast in the underbrush, one of hers, one she had been shaping since the early ages of this world. She found it pinned and panicking beneath a fallen trunk. She put her hands on its flank and its legs stopped shaking and it ran. Her blood dripped onto the trunk and a white blossom opened where it fell.</p>
+
+    <p>He understood what he was doing now. He was buying her time. She had chosen to spend what was left of her on the dying world, and he could not stop that. He could only hold the wrong-jointed off her while her giving lasted.</p>
+
+    <p>He kept moving. They were landing in the ocean now. The leviathans fought them in the deep water, tentacles crushing crystal bodies, but more came, always more, falling from a sky that was more crack than blue. One of the old ones, one he had made when this world was young, surfaced with three of the creatures latched to its head, their limbs driven through its skull, and the leviathan thrashed once and went still. The crystal spread across its skin in a wave. Gone. He felt it go. He had built that one's patience over centuries. The slow intelligence of something that could lie on the seabed for a year without moving, listening to the currents, choosing when to rise. He had spent more time on that one than on any of the dragons. The patience was gone now. The work of ages, gone in a breath.</p>
+
+    <p>He turned to the next wave and shattered a dozen of them. Twenty more filled the space. They were everywhere now, their bodies catching the dark light and throwing it back in pale flickers. The tendrils were thickening. The false star's light poured through the wounds in the sky and the creatures descended on it, endless, wrong, physical, climbing over each other to reach the ground.</p>
+
+    <p>He looked at her.</p>
+
+    <p>She was kneeling beside a shattered tree. A vine had grown up its side, and from the vine a single flower, white, open, trembling. She had her hands on the bark. The vine was growing under her touch, thickening, putting out new roots into the broken wood. She was making it hold. Her hands were paler than they had been. The wound in her side was still bleeding, still flowering wherever it fell. A trail of white blossoms marked the path she had walked through the battle. She did not stop.</p>
+
+    <p>He understood. She was not going to leave. She was going to keep making until there was nothing left to make from.</p>
+
+    <p>The gate was behind him. He could feel it. The fold in the world that would take him elsewhere. Safety. Silence. Survival.</p>
+
+    <p>He stayed.</p>
+
+    <hr class="section-break">
+
+    <p>She fell.</p>
+
+    <p>She had been bleeding since the wound and giving since the sky first cracked. Both losses pulling from the same well. The wound leaked her essence into the ground and the giving poured it into the dying world and between the two of them there was nothing left. She had known. He had known. She had kept working anyway.</p>
+
+    <p>He heard her voice. She was reaching toward something below them. A creature, small, caught in the crystal growth that was spreading across the broken ground. She was trying to reach it. Her hands were extended and what was left of her warmth was leaving her fingers and going into the small thing, trying to hold it in its own shape before the crystal took that shape away.</p>
+
+    <p>She heard him behind her. She did not turn. The small thing in the crystal was almost in her reach.</p>
+
+    <p>She did not finish.</p>
+
+    <p>Her body lost its architecture. Her knees went first. Then her hands, which had been extended, reaching, still giving. Then her weight. Where she fell, white flowers came up around her body in a ring. The creature below, whether it kept its shape or lost it, he never knew.</p>
+
+    <p>He was at her side. He did not remember crossing the distance. He was there. His knees in the flowers that had grown where she fell. His hands under her. She was still warm. Her essence was still hers, still held in the shape of her, not yet scattered.</p>
+
+    <p>Seconds. He had seconds.</p>
+
+    <p>The pale things were turning toward her. He could feel their attention shift. What she carried, what she was, drew them. The crystal on their bodies pulsed brighter when they faced her. They were already moving, climbing over the bodies of his fallen beasts. But at the edge of the bloom they stopped. The white flowers held them back. Her dying had made the space in which he could save her.</p>
+
+    <p>He could not think. What he did, he did on instinct. Without decision. Without plan. With the instinct of a being who has existed beside another being for so long that the boundary between them was already thin.</p>
+
+    <p>He reached for her.</p>
+
+    <hr class="section-break">
+
+    <p>He put his hands on her and pulled.</p>
+
+    <p>Her essence resisted for a moment. The simple physics of a self that has been separate for ages. She was her own shape. She had always been her own shape. He was asking that shape to fit inside his.</p>
+
+    <p>It hurt. He felt his ribs widen. Felt his chest open in a way that gods have a word for and mortals do not. She came into him. Whole. Her entire self moving through the barrier of his skin and settling behind his sternum in a space that had not existed until she needed it to.</p>
+
+    <p>The warmth that had radiated from her skin was now a warmth behind his ribs. He could feel her there. Present. Silent. Resting. A second weight inside him that changed the way his body balanced. He breathed and felt her move with the breath. He was two where he had been one and the two-ness was heavier than anything the battle had done to him.</p>
+
+    <p>He knelt there, holding what he held, and the battle raged above him. The wrong-jointed still falling. His beasts still dying. The sky more crack than blue.</p>
+
+    <p>He was wounded. The fight had already cut him deep. And the gathering had cost more than all of it. He could feel himself failing. His edges going soft. His body trying to rest before he could afford to rest.</p>
+
+    <p>He could fight on. Hold her inside him and fight until they took them both. That thought lasted a single breath.</p>
+
+    <p>He could return to the others. The council on the thirteenth world. They would try to help. They would try to pull her out of him, to give her form again, and they did not have the skill. They would break her trying. He knew this with the certainty of a being who had spent ages studying what bodies can hold and what they cannot.</p>
+
+    <p>Or.</p>
+
+    <p>He could disappear. Take her somewhere they would not reach. Somewhere the council would not look. Let himself heal across ages. Let the slow work of mending do what force could not. And when he was whole enough, when his body had knitted itself back together around the shape of her, he would bring her back.</p>
+
+    <p>He stood. The choice was already made. He could feel it in his legs, in the direction his body was turning. Away from the battle. Away from the world.</p>
+
+    <p>He looked once at what they had made together. The forest, burning. The ocean, dark. The mountains broken open. His dragons, the ones still alive, still fighting, still breathing fire into things that did not burn. They would die without him. He knew this. They knew this. One of the old ones turned its head toward him. Its eyes were calm.</p>
+
+    <p>"<span class="unnamed">[ ]</span>," he said. A word to the world. A promise or an apology. He did not know which.</p>
+
+    <p>He stepped through the gate. He felt the world he was leaving tear away beneath his feet, and then there was only the carrying, and then there was somewhere else.</p>
+
+    <hr class="section-break">
+
+    <p>He emerged on a world far from the one that fell.</p>
+
+    <p>A quiet world. Dense forest. Old stone beneath the roots. Civilizations had risen and fallen here, leaving layers in the earth. No one he knew had come to this world. No one would look for him here.</p>
+
+    <p>He was bleeding light from a wound in his side. The essence he carried inside him pulsed with a rhythm separate from his own. Two heartbeats in one body. He could feel her, faint and unformed, resting in the space between his lungs. Waiting.</p>
+
+    <p>He moved through the forest. The trees here were ancient and unknowing. They had never felt the passage of a god. They bent away from him on instinct. He went deeper. Past the treeline. Past the first ruins, the old stones of a civilization that had built temples here and then forgotten why. Past the second layer. The third.</p>
+
+    <p>He was looking for the deepest place. The threshold beneath all other thresholds. Where the stone was old enough that it no longer remembered being something else.</p>
+
+    <p>He found it.</p>
+
+    <p>A chamber at the bottom of everything. Stone walls that breathed with the slow geological patience of a world that had been turning for a million years before anything with eyes lived on its surface. Cool air. Silence so deep it had texture.</p>
+
+    <p><span class="unnamed">[ ]</span> laid himself down.</p>
+
+    <p>The motion was deliberate. He lowered his body to the stone floor. Carefully. With the weight of intent in every joint. He arranged himself. He curled inward around the warmth behind his ribs. Around her.</p>
+
+    <p>"I will heal," he said. To her. To the warmth that was her. His voice was a ruin of what it had been. "I will be whole enough. I will bring you back. We will make again. And the world we make will be worth being savage in."</p>
+
+    <p>The stone beneath him was already warming. His body was already slowing. His breathing lengthened. Deepened. Each exhale took longer than the last. The air in the chamber moved with him. In. Out. In. Out. Slower. The rhythm of a body that has decided to rest for longer than civilizations last.</p>
+
+    <p>Above him, the forest grew. Roots threaded down through the layers of old stone. Centuries passed and the trees thickened, their canopy closing over the ruins of the temples above. Cities would rise near this forest and call it holy without knowing why. Theologians would write about the breathing beneath the old stones and get the reason half-right. They would say a god sleeps here. They would be close. They would not know about her.</p>
+
+    <p>He did not stir. His wounds closed in increments smaller than years could measure. She rested in him, held, unfading, patient because the one holding her had promised not to let go.</p>
+
+    <p>Ages passed. The forest above grew old and forgot it was young once. The world turned and turned and turned.</p>
+
+    <p>He is still there. He is still breathing. She is still in him.</p>
+
+    <p>He will wake when he is ready.</p>
+
+  </article>
+
+  <div class="closing-note">
+    <p><em>The savage god whose name is <span class="unnamed">[ ]</span> sleeps beneath a forest on a world far from the one that fell. He sleeps still. His name belongs to whoever reaches him. The world that fell still holds small white flowers in the places where his partner bled. Nothing else has grown there for ages. The flowers remain.</em></p>
+
+    <p><em><a href="/the-descent">The Descent</a> is a free text adventure set in the world of Aurelon. It contains ten endings. One of them ends at his chamber. The first reader to reach it earns the right to name him.</em></p>
+
+    <p><em>The first ten readers to reach any named ending join the <a href="/witness">witness circle</a>, where the unpublished novel cycle is preread before public release.</em></p>
+
+    <p class="signature">— Deaviant</p>
+  </div>
+
+  <footer class="story-footer">
+    <a href="/stories">← All stories</a>
+    <a href="/the-descent">Play The Descent</a>
+    <a href="/witness">Witness program</a>
+    <a href="/">Aurelon</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
