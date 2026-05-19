@@ -516,11 +516,19 @@ class GameUI {
     // Auto-link URLs (http/https plus bare aurelonuniverse.com paths) — done
     // before <br> conversion so the regex sees clean URLs. Newlines and
     // spaces still bound the URL match.
+    //
+    // Sentence-ending punctuation (. , ! ? ; : ) ]) immediately after the URL
+    // is stripped from the link target and re-emitted outside the anchor, so
+    // prose like "Submit your claim at https://aurelonuniverse.com/witness."
+    // renders the period as grammar rather than as a 404-causing URL suffix.
     html = html.replace(
       /\b(https?:\/\/[^\s<>"]+|aurelonuniverse\.com\/?[^\s<>"]*)/g,
       (match) => {
-        const href = match.startsWith('http') ? match : 'https://' + match;
-        return `<a href="${href}" target="_blank" rel="noopener noreferrer">${match}</a>`;
+        const trailing = match.match(/[.,!?;:)\]]+$/);
+        const tail = trailing ? trailing[0] : '';
+        const url = tail ? match.slice(0, -tail.length) : match;
+        const href = url.startsWith('http') ? url : 'https://' + url;
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>${tail}`;
       }
     );
 
@@ -677,10 +685,17 @@ class GameUI {
     infoEl.innerHTML = html;
 
     // Update Undo button state — disabled when there's nothing to take
-    // back, or when the player is dead (death does not unwind).
+    // back, when the death is a permadeath (named-ending ritual failures
+    // and Vreth'kai transformation deaths), or when the run finished in
+    // a successful escape ending. Ordinary deaths CAN be unwound — the
+    // player snaps back to before the fatal action.
     if (this.undoBtn) {
-      const canUndo = e._undoStack && e._undoStack.length > 0 && !e.gameOver;
+      const canUndo = e._undoStack && e._undoStack.length > 0 &&
+        !(e.gameOver && (e.permadeath || e.gameOverReason !== 'death'));
       this.undoBtn.disabled = !canUndo;
+      this.undoBtn.title = e.permadeath
+        ? 'There is no return from this.'
+        : 'Take back the last turn (oops, undo)';
     }
 
     // Update Hint button state — disabled when no hints remain for this room.
@@ -768,9 +783,21 @@ class GameUI {
     // Show restart
     this.restartBtn.style.display = 'block';
 
-    // Lock undo — engine refuses too, but the button should look dead.
+    // Undo button: locked permanently for permadeath or escape endings,
+    // remains usable for ordinary deaths so the player can step back to
+    // before the fatal action and try a different choice.
     if (this.undoBtn) {
-      this.undoBtn.disabled = true;
+      const e = this.engine;
+      const lockUndo = e.permadeath || (type === 'escape');
+      if (lockUndo) {
+        this.undoBtn.disabled = true;
+        this.undoBtn.title = 'There is no return from this.';
+      } else {
+        // Ordinary death — undo remains available
+        const canUndo = e._undoStack && e._undoStack.length > 0;
+        this.undoBtn.disabled = !canUndo;
+        this.undoBtn.title = 'Take back the last turn (oops, undo)';
+      }
     }
 
     if (type === 'death') {
