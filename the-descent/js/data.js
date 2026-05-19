@@ -180,7 +180,7 @@ You cut the line above the stone. The stone you keep. You do not look at the wat
     // in a room that hasn't yet hit normalCatchesNeeded. Each entry stands
     // alone — no overlap, no stacking. Voice: deadpan, body-grounded.
     pool: [
-      `A blind cavefish. Pale. Transparent enough to see what it has eaten. You release it. It does not swim away immediately — as though it is waiting to be sure you meant it.`,
+      `A blind cavefish. Pale. Transparent enough to see what it has eaten. You release it. It does not swim away. It hangs in the water for a beat. Then a beat longer. Then it goes.`,
 
       `An eyeless trout. Wrong size for the depth. Three times the size it has any right to be. Its skin is loose where the eyes should be. You set it back. The water swallows it without ceremony.`,
 
@@ -618,7 +618,7 @@ The sound is steady. Patient. It has been doing this for a very long time.`,
       items: ['fishing_rod'],
 
       exits: {
-        east: { roomId: 'the_hollow', label: 'Back to the Hollow' },
+        east: { roomId: 'the_hollow', label: 'East to the Hollow' },
         south: { roomId: 'bone_shelf', label: 'Follow the water deeper' }
       },
 
@@ -710,7 +710,7 @@ You forget your name. You forget you had one.`,
       id: 'the_hollow',
       name: 'The Hollow',
       zone: 'cavern',
-      descriptionFirst: `The passages converge here into a space that feels almost deliberate, as if the stone made room for something. The ceiling domes above you. Four openings lead out in different directions, each one a different shade of dark.
+      descriptionFirst: `The passages converge here into a space that feels deliberate. The ceiling domes above you. Four openings lead out in different directions, each one a different shade of dark.
 
 The floor is flat — not perfectly, but enough to notice. Your feet find purchase here in a way they haven't since the fall. You could stop here. Catch your breath. Decide.
 
@@ -732,7 +732,7 @@ There is a faint current of air from the east. Warmer air rises from below.`,
       ],
 
       exits: {
-        north: { roomId: 'the_fall', label: 'Back to the Fall' },
+        north: { roomId: 'the_fall', label: 'North to the Fall' },
         west: { roomId: 'dripping_gallery', label: 'The dripping sound (west)' },
         east: { roomId: 'collapsed_tunnel', label: 'Follow the air current (east)' },
         south: { roomId: 'the_etching', label: 'Descend toward the warmth' },
@@ -782,7 +782,7 @@ A heavy slab leans against the collapse at an angle. With the right tool, you mi
       ],
 
       exits: {
-        west: { roomId: 'the_hollow', label: 'Back to the Hollow' }
+        west: { roomId: 'the_hollow', label: 'West to the Hollow' }
       },
 
       useItems: [
@@ -838,7 +838,7 @@ There is a pack here too, half-rotted. Canvas or leather once, now mostly gone. 
       ],
 
       exits: {
-        north: { roomId: 'dripping_gallery', label: 'Back to the gallery' },
+        north: { roomId: 'dripping_gallery', label: 'North to the gallery' },
         south: { roomId: 'mushroom_grotto', label: 'Climb down past the ledge' },
         down: { roomId: 'overgrowth', label: 'Drop further past the ledge into something green' },
         up: {
@@ -946,7 +946,7 @@ so the pieces could never be still long enough to mend.`
       },
 
       exits: {
-        north: { roomId: 'the_hollow', label: 'Back to the Hollow' },
+        north: { roomId: 'the_hollow', label: 'North to the Hollow' },
         south: { roomId: 'the_seep', label: 'Continue deeper' },
         east: { roomId: 'weeping_wall', label: 'A narrow side passage' }
       }
@@ -998,8 +998,8 @@ You forget your name. You forget you had one.`
       },
 
       exits: {
-        north: { roomId: 'the_etching', label: 'Back (quickly)' },
-        south: { roomId: 'echoing_pit', label: 'Through the seep (deeper)' }
+        north: { roomId: 'the_etching', label: 'North to the etching (quickly)' },
+        south: { roomId: 'echoing_pit', label: 'South to the pit (deeper)' }
       }
     },
 
@@ -1010,7 +1010,7 @@ You forget your name. You forget you had one.`
       zone: 'cavern',
       descriptionFirst: `A side passage, barely wide enough to walk, opens into an alcove where the wall weeps.
 
-Not water — though there is water here too, running in a thin sheet down the stone. Beneath the water, carved into the wall with careful hands, is a passage of text. The water flows over it, filling the grooves, making the words shimmer and shift as if the stone itself is trying to speak.
+Not water — though there is water here too, running in a thin sheet down the stone. Beneath the water, carved into the wall with careful hands, is a passage of text. The water flows over it, filling the grooves, making the words shimmer and shift under the run.
 
 The carving is older than the etching you found before. Much older. The style is different — controlled, precise, the work of someone who had time and purpose. This was not scratched in desperation. This was placed here to be found.`,
 
@@ -1035,7 +1035,7 @@ when the light is all you have.`
       },
 
       exits: {
-        west: { roomId: 'the_etching', label: 'Back to the etching' }
+        west: { roomId: 'the_etching', label: 'West to the etching' }
       }
     },
 
@@ -1060,7 +1060,7 @@ The sky is up there. You can feel it.`,
       },
 
       exits: {
-        west: { roomId: 'collapsed_tunnel', label: 'Back down' },
+        west: { roomId: 'collapsed_tunnel', label: 'West to the tunnel' },
         up: { roomId: 'exit_surface', label: 'Climb toward the light' }
       }
     },
@@ -1190,7 +1190,7 @@ The last thing you see is the ring of black mushrooms, and you could swear they'
       ],
 
       exits: {
-        north: { roomId: 'bone_shelf', label: 'Back up to the bone shelf' },
+        north: { roomId: 'bone_shelf', label: 'North up to the bone shelf' },
         east: { roomId: 'echoing_pit', label: 'Continue into the dark' }
       }
     },
@@ -1220,8 +1220,8 @@ A clay lamp sits on the ledge near the edge, abandoned. Empty of oil, but intact
       items: ['lantern'],
 
       exits: {
-        west: { roomId: 'mushroom_grotto', label: 'Back to the grotto' },
-        north: { roomId: 'the_seep', label: 'Back through the seep (dangerous)' }
+        west: { roomId: 'mushroom_grotto', label: 'West to the grotto' },
+        north: { roomId: 'the_seep', label: 'North through the seep (dangerous)' }
       },
 
       // Rope can bridge the gap (future connection to deeper areas)
@@ -1271,7 +1271,7 @@ Something was built down here. Or something was always here, and the cave grew a
       },
 
       exits: {
-        north: { roomId: 'echoing_pit', label: 'Back across the pit' },
+        north: { roomId: 'echoing_pit', label: 'North across the pit' },
         up: {
           roomId: 'the_hollow',
           label: 'Up through the crack to the Hollow',
@@ -1341,7 +1341,7 @@ You walk through clouds that part for you and close behind. By the time you reac
       items: ['hollow_reed'],
 
       exits: {
-        north: { roomId: 'overgrowth', label: 'Back to the Overgrowth' },
+        north: { roomId: 'overgrowth', label: 'North to the Overgrowth' },
         south: { roomId: 'fungal_hollow', label: 'Deeper, where the fungus thickens' },
         east: { roomId: 'tangled_path', label: 'East to the tangled path' }
       }
@@ -1370,7 +1370,7 @@ Whatever wore this path did not wear it on two legs.`,
       },
 
       exits: {
-        west: { roomId: 'overgrowth', label: 'Back to the Overgrowth' },
+        west: { roomId: 'overgrowth', label: 'West to the Overgrowth' },
         north: { roomId: 'root_shrine', label: 'Into a constructed-looking alcove' },
         south: { roomId: 'crystal_grove', label: 'Toward something that catches light' }
       }
@@ -1434,7 +1434,7 @@ The forest has accepted what you brought.`,
       ],
 
       exits: {
-        south: { roomId: 'tangled_path', label: 'Back to the path' },
+        south: { roomId: 'tangled_path', label: 'South to the path' },
         east: { roomId: 'feeding_ground', label: 'A trail east, dark with old stains' },
         west: { roomId: 'fungal_hollow', label: 'West toward the fungal growth' }
       }
@@ -1503,7 +1503,7 @@ When the forest opens again you have learned the shape of the thing the cycle ke
       ],
 
       exits: {
-        west: { roomId: 'root_shrine', label: 'Back to the shrine (quickly)' }
+        west: { roomId: 'root_shrine', label: 'West to the shrine (quickly)' }
       }
     },
 
@@ -1531,7 +1531,7 @@ Whatever is below has been growing for longer.`,
       },
 
       exits: {
-        north: { roomId: 'spore_corridor', label: 'Back through the spores' },
+        north: { roomId: 'spore_corridor', label: 'North through the spores' },
         east: { roomId: 'root_shrine', label: 'East to the shrine' },
         south: { roomId: 'root_cathedral', label: 'South into the cathedral of roots' },
         down: { roomId: 'spore_veil', label: 'Down the breathing passage' }
@@ -1592,7 +1592,7 @@ The forest knows what you became. The face has nothing more to ask of you. Whate
       ],
 
       exits: {
-        north: { roomId: 'fungal_hollow', label: 'Back to the Fungal Hollow' },
+        north: { roomId: 'fungal_hollow', label: 'North to the Fungal Hollow' },
         east: { roomId: 'crystal_grove', label: 'East to the crystal light' },
         west: { roomId: 'hollow_tree', label: 'West, where a great tree stands' }
       }
@@ -1632,7 +1632,7 @@ that broke.`
 
       exits: {
         north: { roomId: 'tangled_path', label: 'North to the tangled path' },
-        west: { roomId: 'root_cathedral', label: 'Back to the cathedral' },
+        west: { roomId: 'root_cathedral', label: 'West to the cathedral' },
         south: { roomId: 'clearing', label: 'South where the canopy opens' },
         east: { roomId: 'canopy', label: 'East and up — the canopy rises' }
       }
@@ -1718,7 +1718,7 @@ You forget your name. You forget you had one.`,
       ],
 
       exits: {
-        west: { roomId: 'crystal_grove', label: 'Back down to the grove' }
+        west: { roomId: 'crystal_grove', label: 'West down to the grove' }
       }
     },
 
@@ -1770,7 +1770,7 @@ A relic shard. A piece of something much larger and much older. You do not know 
       ],
 
       exits: {
-        east: { roomId: 'root_cathedral', label: 'Back to the cathedral' },
+        east: { roomId: 'root_cathedral', label: 'East to the cathedral' },
         south: { roomId: 'clearing', label: 'South into a break in the canopy' }
       }
     },
@@ -1800,7 +1800,7 @@ You realize, slow, that the rest the clearing offered was a question. You had be
       },
 
       exits: {
-        north: { roomId: 'crystal_grove', label: 'Back to the crystal grove' },
+        north: { roomId: 'crystal_grove', label: 'North to the crystal grove' },
         west: { roomId: 'hollow_tree', label: 'West to the great tree' },
         south: { roomId: 'the_wound', label: 'South where the forest ends badly' }
       }
@@ -1844,7 +1844,7 @@ You climb. The forest does not resist your ascent. It does not assist it either.
       ],
 
       exits: {
-        north: { roomId: 'clearing', label: 'Back to the clearing' },
+        north: { roomId: 'clearing', label: 'North to the clearing' },
         down: { roomId: 'threshold_hall', label: 'Drop into the ruins below' }
       }
     },
@@ -1903,7 +1903,7 @@ You will need both hands free for what is below.`,
       ],
 
       exits: {
-        up: { roomId: 'fungal_hollow', label: 'Back up to the Fungal Hollow' },
+        up: { roomId: 'fungal_hollow', label: 'Up to the Fungal Hollow' },
         south: { roomId: 'mycelium_web', label: 'Through the veil, southward' }
       }
     },
@@ -1934,7 +1934,7 @@ It is not unpleasant. That is the worst of it.`,
       },
 
       exits: {
-        north: { roomId: 'spore_veil', label: 'Back through the veil' },
+        north: { roomId: 'spore_veil', label: 'North through the veil' },
         west: { roomId: 'decaying_ones', label: 'West where the thoughts are loudest' },
         south: { roomId: 'mother_tangle', label: 'South toward the centre' },
         east: { roomId: 'inverted_grove', label: 'East where the gravity disagrees' }
@@ -1967,7 +1967,7 @@ A small bowl of stone sits at the centre of the chamber, surrounded by skulls th
       items: ['decay_token'],
 
       exits: {
-        east: { roomId: 'mycelium_web', label: 'Back to the web' }
+        east: { roomId: 'mycelium_web', label: 'East to the web' }
       }
     },
 
@@ -2015,7 +2015,7 @@ What it takes it does not return.`
       },
 
       exits: {
-        north: { roomId: 'mycelium_web', label: 'Back to the web' },
+        north: { roomId: 'mycelium_web', label: 'North to the web' },
         down: { roomId: 'quiet_room', label: 'Down through a gap in the floor' }
       }
     },
@@ -2045,7 +2045,7 @@ Your inner ear protests. The forest's gravity does not match the chamber's. You 
       },
 
       exits: {
-        west: { roomId: 'mycelium_web', label: 'Back to the web' }
+        west: { roomId: 'mycelium_web', label: 'West to the web' }
       }
     },
 
@@ -2075,7 +2075,7 @@ It is the only thing in the world right now that is not trying to be heard.`,
       items: ['quiet_stone'],
 
       exits: {
-        up: { roomId: 'mother_tangle', label: 'Back up through the gap' }
+        up: { roomId: 'mother_tangle', label: 'Up through the gap to Mother Tangle' }
       }
     },
 
@@ -2148,7 +2148,7 @@ and found only the turning.`
       },
 
       exits: {
-        west: { roomId: 'threshold_hall', label: 'Back to the hall' }
+        west: { roomId: 'threshold_hall', label: 'West to the hall' }
       }
     },
 
@@ -2192,7 +2192,7 @@ Through the rubble, you can see the edge of another room beyond. Inaccessible, u
       ],
 
       exits: {
-        east: { roomId: 'threshold_hall', label: 'Back to the hall' },
+        east: { roomId: 'threshold_hall', label: 'East to the hall' },
         south: { roomId: 'offering_niche', label: 'A side passage south' },
         up: {
           roomId: 'ventilation_shaft',
@@ -2297,7 +2297,7 @@ Your hand finds the chisel-weight of the air, and lets it go. Your name is not f
       ],
 
       exits: {
-        up: { roomId: 'threshold_hall', label: 'Back up the stairway' },
+        up: { roomId: 'threshold_hall', label: 'Up the stairway to the hall' },
         west: { roomId: 'reliquary', label: 'A passage west, plated in dull metal' },
         down: { roomId: 'cosmogony_wall', label: 'Down a stairway lit faintly from below' }
       }
@@ -2353,7 +2353,7 @@ Something has begun. The forest will know it. The deeper places will not.`,
       ],
 
       exits: {
-        east: { roomId: 'collapsed_archive', label: 'Back through the gap' },
+        east: { roomId: 'collapsed_archive', label: 'East through the gap to the archive' },
         west: { roomId: 'echoes', label: 'A breath of sound from the west' }
       }
     },
@@ -2405,7 +2405,7 @@ and calls it beautiful.`
       },
 
       exits: {
-        north: { roomId: 'threshold_hall', label: 'Back to the hall' },
+        north: { roomId: 'threshold_hall', label: 'North to the hall' },
         east: { roomId: 'reliquary', label: 'East to a sealed door' },
         south: { roomId: 'echoes', label: 'South where sound carries strangely' }
       }
@@ -2483,7 +2483,7 @@ You understand now what the bones were laid down for.`,
       ],
 
       exits: {
-        west: { roomId: 'mural_chamber', label: 'Back to the murals' },
+        west: { roomId: 'mural_chamber', label: 'West to the murals' },
         east: { roomId: 'hall_of_names', label: 'East to the hall of names' }
       }
     },
@@ -2513,6 +2513,25 @@ Above the shelf, in a hand that wrote without care, a single line. Carved in has
 
       actions: [
         {
+          id: 'offer_decay_token',
+          label: 'Set the Black Token on the shelf',
+          requires: { hasItem: 'decay_token' },
+          text: `You set the Black Token on the shelf where the dust waited for it.
+
+The dust does not shift. The token does. It sinks into the shelf the way a stone sinks into still water, and the stone takes it without resistance. The drain in the floor stirs. Something black runs the channel from the shelf to the drain — not the token; the token is gone — but what the token was made of. What remains, after the cold thing has been spent.
+
+The shelf is dust again. The drain is wet.
+
+The room holds you for a moment. When it lets go, there is a weight in your hand that was not there before. A fragment. Warm. Heart-soft. The same warmth the other shards have carried.
+
+You have given the niche what it was built to receive. The niche has given you what remains.`,
+          once: true,
+          consumeItem: 'decay_token',
+          giveRelic: 'shard_niche',
+          setFlag: { niche_offered: true },
+          type: 'narration'
+        },
+        {
           id: 'place_in_niche',
           label: 'Set something in the niche',
           text: `You set what you have on the shelf.
@@ -2527,7 +2546,7 @@ You take what you set down back into your hand. The shelf is dust again.`,
       ],
 
       exits: {
-        north: { roomId: 'collapsed_archive', label: 'Back to the archive' },
+        north: { roomId: 'collapsed_archive', label: 'North to the archive' },
         east: { roomId: 'echoes', label: 'East where sound is doing something' }
       }
     },
@@ -2564,7 +2583,7 @@ The first echo is yours. The second is yours. The third is yours.
 
 The fourth is something else. It speaks a sound that is almost a word — vorthen-li-aerix — and then the fourth echo collapses back into the third, which collapses back into yours, which fades.
 
-You will not unhear that sound. Whether the sound was meant for you, you cannot say.`,
+The sound stays. The other echoes finished. This one does not. Whether it was meant for you, you cannot say.`,
           once: false,
           setFlag: { false_name_heard: true },
           type: 'narration'
@@ -2585,7 +2604,7 @@ You will not unhear that sound. Whether the sound was meant for you, you cannot 
       zone: 'ruins1',
       descriptionFirst: `The stairway from the Hall of Names ends at a wall.
 
-The wall is a record. From floor to ceiling, the makers of this place set down what they thought the world was. A circle for the world they lived on. Smaller circles around it for the lights they could see. A larger circle around all of them — a wall painted around the whole arrangement, the kind of wall a child draws to keep a story inside.
+The wall is a record. From floor to ceiling, the makers of this place set down what they thought the world was. A circle for the world they lived on. Smaller circles around it for the lights they could see. A larger circle around all of them — a wall painted around the whole arrangement. The wall a child draws to keep a story inside.
 
 At the centre of the largest circle, a brighter mark. Not a star. A different shape. The shape has been re-cut several times. The latest cutting is the shape of a keyhole.
 
@@ -2653,7 +2672,7 @@ The cosmology drawing is not only a record of what the makers thought the world 
         'centre': `Cut and re-cut. Each cutting older than the last. The latest is a keyhole.
 
 You see now what the carvers could not say plainly. The lock at the centre is not on this wall. The lock is the chamber the wall describes. The mark here is its echo.`,
-        'keyhole': `Drawn small, drawn deep. The shape stands for the chamber where the one who heard the prophecy first chose to sleep until it was almost finished. You are most of the way to that chamber by now. You have read more of this place than most readers ever do.
+        'keyhole': `Drawn small, drawn deep. The shape stands for the chamber where the one who came carrying what could not be left chose to sleep until he was whole enough to wake. You are most of the way to that chamber by now. You have read more of this place than most readers ever do.
 
 What the makers could not say in stone, because stone holds names too well: the chamber asks for a name that has never been used. Not a cycle's name. Not a god's. As new as he is old. Bring everything the wall asks you to bring. Stand inside the room that is not a room. Wait until it agrees. Then go down.`,
         'frieze': `You see the eighth carving now without straining for it. The eye that was closed is the eye of the one who sleeps. The seven taught the eye to count. The eighth taught it where to look once it could.`,
@@ -2661,7 +2680,7 @@ What the makers could not say in stone, because stone holds names too well: the 
       },
 
       exits: {
-        up: { roomId: 'hall_of_names', label: 'Back up to the Hall' },
+        up: { roomId: 'hall_of_names', label: 'Up to the Hall of Names' },
         down: { roomId: 'vitrified_entry', label: 'Descend into the deeper ruins' }
       }
     },
@@ -2697,7 +2716,7 @@ A corridor leads east. The wall there has writing on it. The writing moves.`,
       },
 
       exits: {
-        up: { roomId: 'cosmogony_wall', label: 'Back up to the cosmogony wall' },
+        up: { roomId: 'cosmogony_wall', label: 'Up to the cosmogony wall' },
         east: { roomId: 'mirror_corridor', label: 'East where the writing moves' }
       }
     },
@@ -2756,7 +2775,7 @@ You climb.`,
       ],
 
       exits: {
-        west: { roomId: 'vitrified_entry', label: 'Back to the entry' },
+        west: { roomId: 'vitrified_entry', label: 'West to the entry' },
         east: { roomId: 'resonance_choir', label: 'East where the corridor widens' },
         south: { roomId: 'gravity_well', label: 'South where the floor disagrees' }
       }
@@ -2803,7 +2822,7 @@ burns.`
       },
 
       exits: {
-        west: { roomId: 'mirror_corridor', label: 'Back to the mirrors' },
+        west: { roomId: 'mirror_corridor', label: 'West to the mirrors' },
         east: { roomId: 'crucible', label: 'East where the air burns' },
         south: { roomId: 'living_script', label: 'South where letters crawl' }
       }
@@ -2849,7 +2868,7 @@ The sky is grey. The sky is enough.`,
       ],
 
       exits: {
-        north: { roomId: 'mirror_corridor', label: 'Back up to the mirrors' },
+        north: { roomId: 'mirror_corridor', label: 'North up to the mirrors' },
         east: { roomId: 'the_choosing', label: 'East where the air thins' }
       }
     },
@@ -2919,7 +2938,7 @@ There is a passage in the wall behind the basin you did not see until now. The p
       ],
 
       exits: {
-        west: { roomId: 'resonance_choir', label: 'Back to the choir' },
+        west: { roomId: 'resonance_choir', label: 'West to the choir' },
         east: { roomId: 'crystal_organ', label: 'East where stone sings' }
       }
     },
@@ -2993,7 +3012,7 @@ You can step through.`,
       ],
 
       exits: {
-        north: { roomId: 'resonance_choir', label: 'Back to the choir' },
+        north: { roomId: 'resonance_choir', label: 'North to the choir' },
         east: { roomId: 'crystal_organ', label: 'East to the organ' },
         south: { roomId: 'membrane', label: 'South where the air thins further' },
         west: {
@@ -3032,7 +3051,7 @@ Above it, in the script that moves outside, a single phrase has been held still:
       },
 
       exits: {
-        east: { roomId: 'living_script', label: 'Back through the place where the doorway agreed to exist' }
+        east: { roomId: 'living_script', label: 'East through the place where the doorway agreed to exist' }
       }
     },
 
@@ -3113,7 +3132,7 @@ The forest will know what you have continued.`,
       ],
 
       exits: {
-        west: { roomId: 'crucible', label: 'Back to the crucible' },
+        west: { roomId: 'crucible', label: 'West to the crucible' },
         north: { roomId: 'living_script', label: 'North to the living script' }
       }
     },
@@ -3172,7 +3191,7 @@ The choosing was done elsewhere. The doors will let you through anyway. The eyel
       ],
 
       exits: {
-        west: { roomId: 'gravity_well', label: 'Back to the well' },
+        west: { roomId: 'gravity_well', label: 'West to the well' },
         south: { roomId: 'membrane', label: 'South through the eyeless face' }
       }
     },
@@ -3212,7 +3231,7 @@ kneeling before nothing.`
       },
 
       exits: {
-        north: { roomId: 'living_script', label: 'Back to the living script' },
+        north: { roomId: 'living_script', label: 'North to the living script' },
         east: { roomId: 'the_choosing', label: 'East to the chamber of choice' },
         south: { roomId: 'thinning', label: 'South where the wall is thinnest' }
       }
@@ -3240,7 +3259,7 @@ Whatever lies beneath was not built. It was given a shape and the shape held.`,
       },
 
       exits: {
-        north: { roomId: 'membrane', label: 'Back to the Membrane' },
+        north: { roomId: 'membrane', label: 'North to the Membrane' },
         down: { roomId: 'pulse', label: 'Step through the thinning, down into the grown stone' }
       }
     },
@@ -3280,7 +3299,7 @@ The air smells of breath. Wet. Warm. The space between an inhale and the answeri
       },
 
       exits: {
-        up: { roomId: 'thinning', label: 'Back up through the thinning' },
+        up: { roomId: 'thinning', label: 'Up through the thinning' },
         south: { roomId: 'bone_cathedral', label: 'South toward something larger that breathes' }
       },
 
@@ -3357,7 +3376,7 @@ that has never once forgotten what it is.`
       },
 
       exits: {
-        north: { roomId: 'pulse', label: 'Back to the Pulse' },
+        north: { roomId: 'pulse', label: 'North to the Pulse' },
         east: { roomId: 'throat', label: 'East where the cathedral narrows' },
         south: { roomId: 'first_word', label: 'South to a chamber that listens' }
       }
@@ -3437,7 +3456,7 @@ If you have anything left to say with the mouth you used to have, say it now.`,
       ],
 
       exits: {
-        west: { roomId: 'bone_cathedral', label: 'Back through the cathedral (quickly)' }
+        west: { roomId: 'bone_cathedral', label: 'West through the cathedral (quickly)' }
       }
     },
 
@@ -3545,7 +3564,7 @@ You can hear something pumping further down. Not a heart. The thing that a heart
       },
 
       exits: {
-        west: { roomId: 'womb', label: 'Back to the Womb' },
+        west: { roomId: 'womb', label: 'West to the Womb' },
         down: { roomId: 'heart_chamber', label: 'Down toward the pumping' },
         up: {
           roomId: 'threshold_hall',
@@ -3591,7 +3610,7 @@ begging.`
       },
 
       exits: {
-        north: { roomId: 'bone_cathedral', label: 'Back to the cathedral' },
+        north: { roomId: 'bone_cathedral', label: 'North to the cathedral' },
         south: { roomId: 'womb', label: 'South to the Womb' }
       }
     },
@@ -3670,7 +3689,7 @@ The cathedral above will recognise what you have given here.`,
       ],
 
       exits: {
-        up: { roomId: 'wound_eternal', label: 'Back up through the wound' },
+        up: { roomId: 'wound_eternal', label: 'Up through the wound' },
         south: { roomId: 'quickening', label: 'South where the pulse quickens' }
       }
     },
@@ -3712,7 +3731,7 @@ almost —`
       },
 
       exits: {
-        north: { roomId: 'heart_chamber', label: 'Back to the Heart' },
+        north: { roomId: 'heart_chamber', label: 'North to the Heart' },
         down: { roomId: 'antechamber', label: 'Down through the southern arch' }
       }
     },
@@ -3756,7 +3775,7 @@ but because they were tired of holding.`
       },
 
       exits: {
-        up: { roomId: 'quickening', label: 'Back up to the Quickening' },
+        up: { roomId: 'quickening', label: 'Up to the Quickening' },
         south: { roomId: 'final_choice', label: 'Onward, where the floor gives a choice' }
       }
     },
@@ -3839,7 +3858,8 @@ You are not carrying what was needed. You did not survive what would have prepar
 The descent does not stop you. The descent does not need to.
 
 You forget your name. You forget you had one.`,
-          death: true
+          death: true,
+          permadeath: true
         }
       ]
     },
@@ -4008,9 +4028,9 @@ You did not see him at first. He is the size of the chamber. The chamber is the 
 
 He is asleep.
 
-He has been asleep since the prophecy was first spoken. He heard it in a room that did not yet exist, in a body that no longer does. He chose to sleep until the cycle reached the point where it might shatter. The cycle has reached that point.
+He has been asleep for ages. Longer than this world has been a world. He came here from somewhere that fell, carrying what could not be left to the dark that fell with it. Two heartbeats inside one body. His own, slow as continents. Hers, fainter, held.
 
-He has not yet woken.
+He is healing. Across ages. When he is whole enough he will wake. When he wakes she will wake. Until then he holds her.
 
 You can wake him.
 
@@ -4018,7 +4038,7 @@ Give him a name. He has waited for one.
 
 The name cannot be any name a cycle has used. Not for any of the twelve. Not for any of the things they were made to hold. Not for any title written into the cosmogony.
 
-The name must be new. The cycle reads it the same forward as backward. The shape of it sits already in your jaw — bone-deep, lodged there since the breaking, waiting to be spoken.
+The name must be new. The cycle reads it the same forward as backward — because he is the same forward as backward, two beings in one closed shape, beginning and ending indistinguishable. The shape of it sits already in your jaw. Bone-deep. Lodged since the breaking. Waiting to be spoken.
 
 (Type a name. The room is listening.)`, 'narration');
       },
