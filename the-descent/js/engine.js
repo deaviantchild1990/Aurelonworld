@@ -23,6 +23,11 @@ class GameEngine {
     this.turnCount = 0;
     this.gameOver = false;
     this.gameOverReason = null;
+    // Permadeath flag — set by _die() when called with { permadeath: true }.
+    // When true, undo is locked (the death is meaningful and irreversible).
+    // Default deaths are recoverable via undo; only specific named-ending
+    // ritual failures and Vreth'kai transformation deaths set this.
+    this.permadeath = false;
 
     // --- Inventory ---
     this.inventory = [];
@@ -34,7 +39,13 @@ class GameEngine {
     this.totalFragments = 20;
 
     // --- Relic shards ---
-    this.relicShards = new Set();  // 'shard_forest', 'shard_ruins1', 'shard_ruins3'
+    // Canonical shards: shard_forest, shard_ruins1, shard_ruins3.
+    // Optional 4th: shard_niche (acquired by offering the Black Token at the
+    // Offering Niche, sacrificing the player's Reliquary survival path).
+    // The win condition checks relicShards.size >= 3, so the niche shard is
+    // an alternative route — useful as a safety net if one of the canonical
+    // three was missed. Collecting all four is possible but not required.
+    this.relicShards = new Set();
     this.totalShards = 3;
 
     // --- Fisher catches ---
@@ -163,6 +174,7 @@ class GameEngine {
     this.turnCount = 0;
     this.gameOver = false;
     this.gameOverReason = null;
+    this.permadeath = false;
     this.inventory = [];
     this.prophecyFragments = new Set();
     this.prophecyOrder = [];
@@ -278,6 +290,7 @@ class GameEngine {
         bypassFlag: room.timer.bypassFlag,
         bypassItem: room.timer.bypassItem,
         deathText: room.timer.deathText,
+        permadeath: !!room.timer.permadeath, // forward permadeath flag if set
         roomId: roomId
       };
       const bypassed = (room.timer.bypassFlag && this.flags[room.timer.bypassFlag]) ||
@@ -459,7 +472,7 @@ class GameEngine {
     }
 
     if (action.death) {
-      this._die(action.deathText || action.text);
+      this._die(action.deathText || action.text, { permadeath: !!action.permadeath });
       return;
     }
 
@@ -598,7 +611,7 @@ The walls look different. The light tastes different. The light has a taste now.
       // Wrong word — burn an attempt
       this.flags.vrethkai_identity_attempts = (this.flags.vrethkai_identity_attempts || 0) + 1;
       if (this.flags.vrethkai_identity_attempts >= 2) {
-        this._die(`The shape closed. The thing you were became the thing they are. You forget your name. You forget you had one.`);
+        this._die(`The shape closed. The thing you were became the thing they are. You forget your name. You forget you had one.`, { permadeath: true });
         return;
       }
       this._emit('output', `The shape closes a little more around your jaw. The word you tried was not the word.`, 'system');
@@ -615,7 +628,7 @@ The walls look different. The light tastes different. The light has a taste now.
       if (!this._isAlternatingCase(rawTrimmed)) {
         this._emit('output', `Your jaw will not shape that sound.`, 'narration');
         if (this.flags.vrethkai_escape_turns_left <= 0) {
-          this._die(`The dark caught up to you. The body that was yours was no longer yours, and the thing it became did not have a use for memory.`);
+          this._die(`The dark caught up to you. The body that was yours was no longer yours, and the thing it became did not have a use for memory.`, { permadeath: true });
           return;
         }
         this._presentRoomChoices(this.rooms[this.currentRoom]);
@@ -628,7 +641,7 @@ The walls look different. The light tastes different. The light has a taste now.
       if (this.gameOver) return;
 
       if (this.flags.vrethkai_escape_turns_left <= 0) {
-        this._die(`The dark caught up to you.`);
+        this._die(`The dark caught up to you.`, { permadeath: true });
         return;
       }
 
@@ -982,6 +995,12 @@ The walls look different. The light tastes different. The light has a taste now.
 
     // --- Unrecognized ---
     this._emit('output', "Nothing happens.", 'narration');
+    // Quiet meta-hint, only shown the first few times the player misses,
+    // so it remains useful for newcomers without becoming nagging wallpaper.
+    this.flags._unrecognised_count = (this.flags._unrecognised_count || 0) + 1;
+    if (this.flags._unrecognised_count <= 3) {
+      this._emit('output', "(Type `help` to see the full list of commands the parser understands.)", 'system');
+    }
     this._presentRoomChoices(room);
   }
 
@@ -1169,7 +1188,7 @@ The shape that shaped you taught you how a name like his must be spoken — ever
     if (lower !== lower.split('').reverse().join('')) {
       this._emit('output', `The name does not turn back upon itself.
 
-He is the witness who did not become the witnessed. What names him must reflect what he is — read the same forward as backward, ending and beginning indistinguishable, a closed circle. The room does not punish the attempt. The room is still listening.`, 'narration');
+He is the one who held what should not have been held. What names him must reflect what he is — two beings in one closed shape, ending and beginning indistinguishable, the name folded back on itself the way he folded her into him. The room does not punish the attempt. The room is still listening.`, 'narration');
       return true;
     }
 
@@ -1202,7 +1221,7 @@ Both paths end at the same gate. The second one ends with a conversation.
     if (!this.flags.vrethkai_with_mind || this.gameOver) return false;
     this.flags.vrethkai_escape_turns_left = (this.flags.vrethkai_escape_turns_left || 0) - 1;
     if (this.flags.vrethkai_escape_turns_left <= 0) {
-      this._die(`The dark caught up to you. The body that was yours was no longer yours, and the thing it became did not have a use for memory.`);
+      this._die(`The dark caught up to you. The body that was yours was no longer yours, and the thing it became did not have a use for memory.`, { permadeath: true });
       return true;
     }
     return false;
@@ -1238,8 +1257,17 @@ Both paths end at the same gate. The second one ends with a conversation.
    */
   undo() {
     if (this.gameOver) {
-      this._emit('output', 'There is no taking that back.', 'system');
-      return false;
+      // Permadeath blocks undo entirely.
+      if (this.permadeath) {
+        this._emit('output', 'There is no taking that back.', 'system');
+        return false;
+      }
+      // Reaching a named ending is also irreversible — you finished the run.
+      // Only ordinary (non-permadeath) deaths can be unwound.
+      if (this.gameOverReason !== 'death') {
+        this._emit('output', 'There is no taking that back.', 'system');
+        return false;
+      }
     }
     if (this._undoStack.length === 0) {
       this._emit('output', 'There is nothing to take back.', 'system');
@@ -1695,13 +1723,53 @@ Both paths end at the same gate. The second one ends with a conversation.
 
   _showHelp() {
     this._emit('output', [
-      'Commands: look, inventory, fragments, hint, undo, score, tutorial, help',
-      'Movement: north/south/east/west/up/down (or n/s/e/w/u/d), enter, leave, climb, descend, back, wait',
-      'Items: take [item], drop [item], use [item], examine [thing], read/smell/listen/touch [thing]',
-      'Combine: combine [item] with [item]; light [item]',
-      'NPCs: talk to [name]',
-      'Hints escalate from vague to specific — the hardest endings give only the lightest hint.',
-      'Type tutorial to re-open the welcome screen. Or click the choices above.'
+      '— Full command reference —',
+      '',
+      'LOOK AROUND',
+      '  look (l)             re-show this room',
+      '  examine <thing>      examine an object  (also: read, inspect, study, x)',
+      '  smell / listen / touch / taste  (with or without a target)',
+      '',
+      'MOVE',
+      '  north / south / east / west / up / down    (or n/s/e/w/u/d)',
+      '  northeast / northwest / southeast / southwest    (or ne/nw/se/sw)',
+      '  go <direction>       also: walk, move, head, step, travel',
+      '  back / return        return to previous room',
+      '  climb / descend      take an up/down exit',
+      '  enter <place>        step into a labelled exit',
+      '  leave / out          take an "out" exit if available',
+      '',
+      'CARRY THINGS',
+      '  inventory (i)        show what you carry',
+      '  take <item>          also: get, pick up, grab, collect',
+      '  drop <item>          also: put down, discard, release',
+      '  use <item>',
+      '  combine <a> with <b>    also: use <a> on/with <b>',
+      '  light <thing>        auto-combines flint with the target',
+      '',
+      'TALK',
+      '  talk / talk to <npc>    also: greet, speak to, address',
+      '',
+      'TIME & SYSTEM',
+      '  wait                 burn a turn  (also: rest, pause, do nothing)',
+      '  fragments            show prophecy fragments you have found',
+      '  score                show this run\'s progress',
+      '  hint                 hint for this room (escalates from vague to specific)',
+      '  undo (oops)          take back the last turn',
+      '  tutorial             re-open the welcome screen',
+      '  intro                re-open the full intro',
+      '  help (h)             show this list',
+      '',
+      'FISH  (in water rooms with the rod)',
+      '  cast                 begin a cast',
+      '  wait                 let the line drift',
+      '  pull                 try to land the catch (or commit during the fight)',
+      '  release              abandon the cast (or let line out during the fight)',
+      '',
+      '— The parser is forgiving. Articles (the/a/an) are stripped.',
+      'Partial item names work (drop fish → drops Old Fishing Rod).',
+      'Capitalisation does not matter, except for one moment',
+      'the dark will explain when it comes.'
     ].join('\n'), 'system');
   }
 
@@ -1916,7 +1984,7 @@ Both paths end at the same gate. The second one ends with a conversation.
    */
   async _submitClaim(endingId, opts = {}) {
     if (!this.apiBaseUrl) return null;
-    const namedEndings = ['warden', 'cultist', 'vrethkai_with_mind', 'sleeping_god'];
+    const namedEndings = ['warden', 'cultist', 'vrethkai_with_mind', 'sleeping_god', 'fisher'];
     if (!namedEndings.includes(endingId) && endingId !== 'basic_escape') {
       // Don't submit unrecognised endings.
       return null;
@@ -2298,7 +2366,7 @@ The first ten preread spots are taken, but the descent itself is its own reward 
         if (timer.turnsLeft <= 0) {
           delete this.activeTimers[roomId];
           if (timer.onExpire === 'death') {
-            this._die(timer.deathText || 'You lingered too long. The dark found you.');
+            this._die(timer.deathText || 'You lingered too long. The dark found you.', { permadeath: !!timer.permadeath });
           } else if (typeof timer.onExpire === 'function') {
             timer.onExpire(this);
           }
@@ -2311,9 +2379,14 @@ The first ten preread spots are taken, but the descent itself is its own reward 
   // DEATH & ENDINGS
   // ─────────────────────────────────────────────
 
-  _die(text) {
+  _die(text, opts) {
     this.gameOver = true;
     this.gameOverReason = 'death';
+    // permadeath: when true, the death is meaningful and irreversible.
+    // Undo is locked. Default false — most deaths are recoverable so the
+    // player can keep exploring without restart-tedium. Reserved for
+    // named-ending ritual failures and Vreth'kai transformation deaths.
+    this.permadeath = !!(opts && opts.permadeath);
     this._emit('output', text, 'death');
     this._emit('gameOver', 'death', text);
   }
@@ -2505,6 +2578,7 @@ Newsletter: https://aurelonuniverse.com.
         bypassFlag: t.bypassFlag,
         bypassItem: t.bypassItem,
         deathText: t.deathText,
+        permadeath: !!t.permadeath,
         roomId: t.roomId
       };
     }
@@ -2530,6 +2604,7 @@ Newsletter: https://aurelonuniverse.com.
       sleepingGodNamed: !!this.sleepingGodNamed,
       gameOver: !!this.gameOver,
       gameOverReason: this.gameOverReason || null,
+      permadeath: !!this.permadeath,
       hintsViewed: { ...this.hintsViewed }
     };
   }
@@ -2562,6 +2637,7 @@ Newsletter: https://aurelonuniverse.com.
     this.sleepingGodNamed = !!state.sleepingGodNamed;
     this.gameOver = !!state.gameOver;
     this.gameOverReason = state.gameOverReason || null;
+    this.permadeath = !!state.permadeath;
     this.hintsViewed = state.hintsViewed ? { ...state.hintsViewed } : {};
 
     // Restore NPC state
