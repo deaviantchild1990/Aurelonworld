@@ -79,7 +79,7 @@ const GAME_DATA = {
     {
       id: 'relic_shard_forest',
       name: 'Living Shard',
-      description: 'A fragment of something that pulses faintly — heartbeat-slow, held in stone. Warm to the touch. The break-edges are too clean. Somewhere larger is missing the piece in your hand.'
+      description: 'A fragment of something that pulses faintly. Heartbeat-slow, held in stone. Warm to the touch. The break-edges are too clean. Somewhere larger is missing the piece in your hand.'
     },
     {
       id: 'hollow_reed',
@@ -94,7 +94,7 @@ const GAME_DATA = {
     {
       id: 'quiet_stone',
       name: 'Quiet Stone',
-      description: 'A grey stone, smooth, the size of a closed fist. Heavier than it should be. When you hold it the world goes still around your hand — a small circle of silence travels with it.'
+      description: 'A grey stone, smooth, the size of a closed fist. Heavier than it should be. When you hold it the world goes still around your hand. A small circle of silence travels with it.'
     },
     {
       id: 'lit_lantern',
@@ -151,7 +151,7 @@ You set it carefully on the stone beside you. You consider whether the fish that
           name: 'The Sentence',
           text: `The line in this water has nothing to catch. There is nothing here to fish. You wait anyway.
 
-After the third turn the water does what water does not do — it stops. For one moment the carved words beneath the sheet are dry. You read what the water has been hiding.
+After the third turn the water does what water does not do. It stops. For one moment the carved words beneath the sheet are dry. You read what the water has been hiding.
 
 Then the water resumes.
 
@@ -255,7 +255,7 @@ You drop it back. You do not look closely.`
         `The line trembles. Then again. Something is deciding.`,
         `The line bends slow. Whatever is on the end of it is heavier than expected.`,
         `The float dips. Then dips again. Pull, or do not pull.`,
-        `The line tugs once — a real pull, then nothing. Then a real pull again.`,
+        `The line tugs once. A real pull, then nothing. Then a real pull again.`,
         `Something has the hook. The line bends. Whether it stays is up to whatever has it.`,
         `The float goes under. Comes back. Goes under again. The third time it stays under.`,
         `A weight that wasn't there is there now. It is moving the line in slow circles.`
@@ -353,7 +353,7 @@ You drop it back. You do not look closely.`
       // first time. The Guardian roams the Sleeping path and Ruins III.
       patrol: ['bone_cathedral', 'first_word', 'heart_chamber', 'quickening', 'antechamber', 'pulse'],
       moveEvery: 4,
-      presenceLine: `A figure stands across the room from you, watching without watching. Tall. Robed. The face is calm — the calm of someone who has worn it long enough that the muscles have forgotten any other shape. They are not from this place but they have been here a long time.`,
+      presenceLine: `A figure stands across the room from you, watching without watching. Tall. Robed. The face is calm. The calm of someone who has worn it long enough that the muscles have forgotten any other shape. They are not from this place but they have been here a long time.`,
       arrivalLine: `Footsteps. Soft. Then the figure steps into the room. Their attention turns toward you without urgency.`,
       departureLine: `The figure moves on. They do not say goodbye.`,
       talkLabel: 'Speak with the Guardian',
@@ -374,7 +374,7 @@ They do not name themselves. The not-naming is intentional.`,
         },
         twelve: {
           prompt: 'There were twelve, weren\'t there?',
-          text: `Something in their face changes — only for an instant.
+          text: `Something in their face changes. Only for an instant.
 
 "Twelve stood at the beginning. Twelve stand still. Some watch the wind. Some watch the fire." A pause. "I watch the one who chose to sleep. The cycle is a cage. He is the only one in it who chose."`,
           once: true
@@ -390,7 +390,7 @@ They do not name themselves. The not-naming is intentional.`,
           once: true
         },
         old_god: {
-          prompt: 'The Sleeping God — who is he?',
+          prompt: 'The Sleeping God, who is he?',
           text: `"Not what you think." The Guardian considers the question for longer than they considered any other.
 
 "He was there when the first cycle began. He heard what was spoken. He chose stillness over what the others chose. The architects did not anticipate stillness as a choice. He has been alone with that choice for longer than any of us can hold in our minds."
@@ -460,7 +460,7 @@ You forget your name. You forget you had one.`,
       moveEvery: 3,
       presenceLine: `Something stands at the far edge of the room. Long. Pale. The joints bend at angles your body learned to call wrong before it learned to bend that way too.
 
-It has not eaten you. It is not going to. Its eyes — the dark hollows where eyes belong — track you with the steady, unblinking patience of recognition.`,
+It has not eaten you. It is not going to. Its eyes, the dark hollows where eyes belong, track you with the steady, unblinking patience of recognition.`,
       arrivalLine: `It enters without sound. Bone-soft floor takes its weight. Bone-soft floor takes yours.`,
       departureLine: `It moves on into the dark. It does not look back. It does not need to.`,
       talkLabel: 'Speak with it (with the throat you have now)',
@@ -474,7 +474,7 @@ It is willing to talk. There is much it remembers.`,
           unlocks: ['who_were_you', 'how_to_leave', 'remember', 'where_go', 'others', 'leave']
         },
         who_were_you: {
-          prompt: '(ask) — who were you?',
+          prompt: '(ask) who were you?',
           text: `*A name,* it answers, *I had once. The shape of the name is gone. The reason for the name is not.*
 
 *I came down for a sister. I did not find her. I found something else.*
@@ -483,7 +483,7 @@ It is willing to talk. There is much it remembers.`,
           once: true
         },
         how_to_leave: {
-          prompt: '(ask) — how do I leave?',
+          prompt: '(ask) how do I leave?',
           text: `*Speak the word the dead mappers carved. The word that the bone of the throat shows you.*
 
 *If you have not yet read the word, read it. The bone will show you. Speak it where the dark holds you and the dark steps aside.*
@@ -492,7 +492,7 @@ It is willing to talk. There is much it remembers.`,
           once: true
         },
         remember: {
-          prompt: '(ask) — what do you remember?',
+          prompt: '(ask) what do you remember?',
           text: `*Light. I remember light. The grey kind that came from above. I remember a voice that was not mine, calling me by the name the shape of which is gone.*
 
 *I remember someone else. I do not remember whether I followed them or they followed me. We came to the same place by different paths and the place was a mouth.*
@@ -501,14 +501,14 @@ It is willing to talk. There is much it remembers.`,
           once: true
         },
         where_go: {
-          prompt: '(ask) — where do you go?',
+          prompt: '(ask) where do you go?',
           text: `*Where the dark needs me. The dark does not need me much. The cycle is failing. The dark has been quieter, this cycle.*
 
 *Sometimes the throat. Sometimes the cathedral. Once I went up into the forest. The forest did not know what to do with me. I came back.*`,
           once: true
         },
         others: {
-          prompt: '(ask) — are there others like us?',
+          prompt: '(ask) are there others like us?',
           text: `*Few. Most who are taken do not keep the part that asks. The part that asks is the part the dark wants most. To keep it, you must have spoken the word. Or you must have been already broken in a way the dark could not finish.*
 
 *I was already broken. You spoke the word. We are not the same.*`,
@@ -555,15 +555,15 @@ The thing in your hand will not let what should not enter, enter.`,
       id: 'the_fall',
       name: 'The Fall',
       zone: 'cavern',
-      descriptionFirst: `The world above had been grey for months. You were walking through it because walking through it was what people did, when the alternative was sitting still while the cycle finished failing.
+      descriptionFirst: `The world above had been grey for months. You were walking through it because that was all you could do.
 
-The ground gave way under you. There was a moment of understanding — what was happening, why — and then the dark closed around you faster than the understanding could matter.
+The ground gave way under you. There was a moment of understanding. What was happening, why. Then the dark closed around you faster than it could matter.
 
-You wake against stone. You do not know how long you were not awake. The cold against your cheek tells you first, then the fact that the world is no longer above you, then the fact that you are not injured, which is something that should not be true after a fall like that, and is.
+You wake against stone. You do not know how long you were not awake. The cold against your cheek tells you first. Then that the world is no longer above you. Then that you are not injured, which should not be true after a fall like that, and is.
 
-Rubble above you, where the earth opened. A shaft of grey light comes down through the gap, but it is narrowing — dust settling, stones shifting. You will not be climbing back through that.
+Rubble above you, where the earth opened. A shaft of grey light comes down through the gap, but it is narrowing. Dust settling, stones shifting. You will not be climbing back through that.
 
-The air is cool. Damp. It smells like old stone and something else underneath it, something you don't have a word for. The dark begins a few feet in every direction.
+The air is cool. Damp. It smells like old stone, and under that, something you don't have a word for. The dark begins a few feet in every direction.
 
 You are alone. The world above, the one that was dying, feels very far away already.`,
 
@@ -573,8 +573,8 @@ You are alone. The world above, the one that was dying, feels very far away alre
         'rubble': 'Broken stone and packed earth. The hole you fell through is already half-closed. Even if you could reach it, the edges are crumbling.',
         'light': 'Grey and fading. The dust in the air catches it. It won\'t last.',
         'dark': 'It begins where the light ends. It is patient.',
-        'air': 'Cool and damp. That smell underneath the stone — old. Very old. Like opening a room that has been sealed for a long time.',
-        'lintel': 'There is no door, no lintel — just the rubble where the world above used to be. But on the largest stone, scratched in something that bled across the surface: a single letter. **F**. The hand was unsteady. Whoever made the mark made it just before the dark closed around them.'
+        'air': 'Cool and damp. That smell underneath the stone. Old. Very old. Like opening a room that has been sealed for a long time.',
+        'lintel': 'There is no door, no lintel, just the rubble where the world above used to be. But on the largest stone, scratched in something that bled across the surface: a single letter. **F**. The hand was unsteady. Whoever made the mark made it just before the dark closed around them.'
       },
 
       hints: [
@@ -597,7 +597,7 @@ You are alone. The world above, the one that was dying, feels very far away alre
       zone: 'cavern',
       descriptionFirst: `The passage opens into a space you feel more than see. The ceiling is high here. You know this because the dripping sounds come from far above.
 
-Water runs down the walls in thin sheets, catching whatever light you carry and giving it back in fragments. The stone is slick underfoot. Somewhere ahead, the water collects into something larger — a pool, maybe, or a stream moving in the dark.
+Water runs down the walls in thin sheets, catching whatever light you carry and giving it back in fragments. The stone is slick underfoot. Somewhere ahead, the water collects into something larger. A pool, maybe, or a stream moving in the dark.
 
 The sound is steady. Patient. It has been doing this for a very long time.`,
 
@@ -605,14 +605,14 @@ The sound is steady. Patient. It has been doing this for a very long time.`,
 
       examineTargets: {
         'water': 'Clean. Cold. It runs in thin sheets down walls that have been shaped by it over centuries. The grooves are deep.',
-        'walls': 'Smooth where the water runs. Rough where it doesn\'t. Natural stone — nothing carved here.',
+        'walls': 'Smooth where the water runs. Rough where it doesn\'t. Natural stone. Nothing carved here.',
         'pool': 'You can hear it more than see it. Water collecting in a depression in the floor. It overflows somewhere, moving further into the dark.',
         'ceiling': 'Too high to see clearly. The dripping comes from up there. How far up, you can\'t tell.',
         'rod': 'A rod of pale wood leans against the rock at the edge of the pool. Someone left it. Someone left it deliberately, propped where the next person to find the pool would see it.',
         'tally': 'Five marks scratched into the butt of the rod. The sixth was started and not finished.',
         'pouch': 'A small leather pouch tied to the grip. Inside it, a dozen hand-made hooks. The previous fisher came down expecting to lose hooks. They were right.',
         'hooks': 'A dozen of them, in the pouch tied to the grip. Each one shaped by the same hand. The line on the rod can be re-tied with one as fast as you can think to do it.',
-        'lintel': 'No lintel of stone — but where the passage from the Hollow narrows, scratched into the wall just before the dripping begins, a single letter. **D**.'
+        'lintel': 'No lintel of stone, but where the passage from the Hollow narrows, scratched into the wall just before the dripping begins, a single letter. **D**.'
       },
 
       items: ['fishing_rod'],
@@ -648,7 +648,7 @@ Three currents meet here. Your hand finds the difference between them by feel.
 
 To the right, the strongest pull. Water hammers against your ribs and shoves at your shoulders. It is going somewhere fast.
 
-To the left, the water is bright. Not from light — from something the water has been holding. The pull there is gentler.
+To the left, the water is bright. Not from light. From something the water has been holding. The pull there is gentler.
 
 Below you, the current eddies. The water is slack, almost still, and your hand finds rocks below that feel climbable.
 
@@ -658,8 +658,8 @@ You have a few breaths.`,
 
       examineTargets: {
         'right': 'The water is moving fast. Something at the other end of it is pulling.',
-        'strongest': 'Water that moves came from somewhere it could leave. The pull at your hands is the pull of weather above ground — rain on stone, snowmelt, a river finding its bed.',
-        'left': 'Bright water. Not lit — stained. Whatever the stain is, it has been settling here long.',
+        'strongest': 'Water that moves came from somewhere it could leave. The pull at your hands is the pull of weather above ground. Rain on stone, a river finding its bed.',
+        'left': 'Bright water. Not lit. Stained. Whatever the stain is, it has been settling here long.',
         'bright': 'Bright water that does not move. Stilled water learns things moving water never has to learn. You do not want what it has learned.',
         'below': 'Slack current. Stilled because the basin has no exit. The rocks below have been smoothed by something. You do not want to ask what.',
         'calm': 'The slack current is slack. The basin has no exit.',
@@ -669,14 +669,14 @@ You have a few breaths.`,
       hints: [
         'Three currents. Only one has somewhere to be.',
         'Water that moves with urgency moves toward the surface. Water that pools has been pooling for a long time.',
-        'Take the strongest current — up and to the right. It is the only one that goes anywhere.'
+        'Take the strongest current, up and to the right. It is the only one that goes anywhere.'
       ],
 
       actions: [
         {
           id: 'water_strongest',
-          label: 'Follow the strongest current — up and to the right',
-          text: `You pull yourself into the strongest pull. The water carries you fast. For a moment you cannot tell up from down — and then you taste air at the top of a tunnel that opens onto sky.
+          label: 'Follow the strongest current, up and to the right',
+          text: `You pull yourself into the strongest pull. The water carries you fast. For a moment you cannot tell up from down. Then you taste air at the top of a tunnel that opens onto sky.
 
 You climb out, soaked and shivering, into grey light. The rope trails behind you, still tied to the stalagmite far below.`,
           setFlag: { escape_route: 'water_route' },
@@ -684,10 +684,10 @@ You climb out, soaked and shivering, into grey light. The rope trails behind you
         },
         {
           id: 'water_bright',
-          label: 'Swim toward the bright water — left',
+          label: 'Swim toward the bright water, left',
           text: `You swim toward the bright stillness.
 
-The brightness was wrong. The water has been holding something — minerals, or a memory of light from cycles ago — in a pool with no exit. The current you swam against is now between you and the way you came.
+The brightness was wrong. The water has been holding something, minerals or a memory of light from cycles ago, in a pool with no exit. The current you swam against is now between you and the way you came.
 
 You forget your name. You forget you had one.`,
           death: true
@@ -712,7 +712,7 @@ You forget your name. You forget you had one.`,
       zone: 'cavern',
       descriptionFirst: `The passages converge here into a space that feels deliberate. The ceiling domes above you. Four openings lead out in different directions, each one a different shade of dark.
 
-The floor is flat — not perfectly, but enough to notice. Your feet find purchase here in a way they haven't since the fall. You could stop here. Catch your breath. Decide.
+The floor is flat. Not perfectly, but enough to notice. Your feet find purchase here in a way they haven't since the fall. You could stop here. Catch your breath. Decide.
 
 There is a faint current of air from the east. Warmer air rises from below.`,
 
@@ -728,7 +728,7 @@ There is a faint current of air from the east. Warmer air rises from below.`,
       hints: [
         'Four passages, but a flat floor in stone like this is rarely just flat.',
         'The floor has been shaped. Not by water. Examine it.',
-        'Examine the floor — there is a seam in it that breathes warm air upward.'
+        'Examine the floor. There is a seam in it that breathes warm air upward.'
       ],
 
       exits: {
@@ -749,7 +749,7 @@ There is a faint current of air from the east. Warmer air rises from below.`,
         {
           id: 'find_crack',
           patterns: ['examine floor', 'look at floor', 'search floor', 'look down'],
-          text: 'You kneel. The flat floor has a seam running through it — not a crack from settling, but a gap. Intentional. Wide enough to fit through if you squeeze. Warm air breathes up from it, steady and slow, like something exhaling.',
+          text: 'You kneel. The flat floor has a seam running through it. Not a crack from settling, but a gap. Intentional. Wide enough to fit through if you squeeze. Warm air breathes up from it, steady and slow, like something exhaling.',
           type: 'narration',
           setFlag: { discovered_crack_in_stone: true }
         }
@@ -763,14 +763,14 @@ There is a faint current of air from the east. Warmer air rises from below.`,
       zone: 'cavern',
       descriptionFirst: `The passage east opens into what was once a wider corridor. Was. The ceiling has come down here, filling the way forward with broken stone and compressed earth. Whatever was beyond is buried.
 
-But the air still moves. You can feel it threading through the gaps between stones, carrying that faint scent of outside. There is a way through this. Not for your body — not yet — but the air knows the path.
+But the air still moves. You can feel it threading through the gaps between stones, carrying that faint scent of outside. There is a way through this. Not for your body, not yet. But the air knows the path.
 
 A heavy slab leans against the collapse at an angle. With the right tool, you might lever it aside and open a gap large enough to crawl through.`,
 
       description: `The collapsed tunnel. Rubble blocks the way east, but air moves through the gaps. A heavy slab could be levered aside with the right tool.`,
 
       examineTargets: {
-        'rubble': 'Stone and earth, packed tight. The collapse wasn\'t recent — this has been sealed for a long time. But the air still finds a way through.',
+        'rubble': 'Stone and earth, packed tight. The collapse wasn\'t recent. This has been sealed for a long time. But the air still finds a way through.',
         'slab': 'Heavy. Leaning at an angle against the collapse. The bottom edge has a gap beneath it. A good lever could shift it.',
         'air': 'Moving east to west. Steady. It smells faintly of rain, of grass, of a world that still exists above you.'
       },
@@ -778,7 +778,7 @@ A heavy slab leans against the collapse at an angle. With the right tool, you mi
       hints: [
         'The rubble looks immovable. The slab leaning against it does not.',
         'The right tool would lever the slab free. Iron, perhaps.',
-        'Use the iron pry bar on the slab to clear the way east — that path leads to the surface.'
+        'Use the iron pry bar on the slab to clear the way east. That path leads to the surface.'
       ],
 
       exits: {
@@ -789,7 +789,7 @@ A heavy slab leans against the collapse at an angle. With the right tool, you mi
         {
           itemId: 'pry_bar',
           label: 'Lever the slab with the pry bar',
-          text: `You wedge the iron bar beneath the slab and lean into it. For a moment nothing moves. Then the stone shifts with a grinding sound that echoes down every passage, and a gap opens — narrow but passable.
+          text: `You wedge the iron bar beneath the slab and lean into it. For a moment nothing moves. Then the stone shifts with a grinding sound that echoes down every passage, and a gap opens, narrow but passable.
 
 Beyond it, the tunnel continues upward. The air is stronger here. Cooler. You can almost taste the sky.`,
           consumeItem: false,
@@ -815,7 +815,7 @@ Beyond it, the tunnel continues upward. The air is stronger here. Cooler. You ca
       id: 'bone_shelf',
       name: 'Bone Shelf',
       zone: 'cavern',
-      descriptionFirst: `The passage narrows and then opens onto a natural ledge — a shelf of stone jutting out over a deeper darkness below. Bones here. Old ones. Scattered across the shelf as if something carried them here to eat and then left the remains.
+      descriptionFirst: `The passage narrows and then opens onto a natural ledge. A shelf of stone jutting out over a deeper darkness below. Bones here. Old ones. Scattered across the shelf as if something carried them here to eat and then left the remains.
 
 Not animal bones. You know this because you can see a jaw, and jaws like that belong to people.
 
@@ -826,7 +826,7 @@ There is a pack here too, half-rotted. Canvas or leather once, now mostly gone. 
       examineTargets: {
         'bones': 'Old. Very old. The marrow has long since dried to dust. Whoever this was, they died here a long time ago. The teeth in the jaw are worn smooth.',
         'pack': 'Canvas, mostly rotted through. The buckles are green with corrosion. A few things inside survived: iron and bone, the materials that outlast everything else.',
-        'jaw': 'Human. The teeth are worn flat at the molars — chewing wear, not violence. They were old when they died down here. They had been down here long enough to grow old.',
+        'jaw': 'Human. The teeth are worn flat at the molars. Chewing wear, not violence. They had been down here long enough to grow old.',
         'ledge': 'Natural stone. Below the ledge, the dark continues. You can\'t see the bottom.',
         'lintel': 'On the rock face above where the passage opens onto the shelf, scratched in haste: a single letter. **B**. The person who scratched it might have been the person whose jaw lies here.'
       },
@@ -845,7 +845,7 @@ There is a pack here too, half-rotted. Canvas or leather once, now mostly gone. 
           roomId: 'bone_shaft',
           label: 'Climb behind the curtain of bones',
           requires: { hasItem: 'rope' },
-          blockedText: 'There is something behind the curtain of bones above the shelf. A shaft, going up. Without rope, the climb would not be a climb — it would be a fall.'
+          blockedText: 'There is something behind the curtain of bones above the shelf. A shaft, going up. Without rope, the climb would not be a climb. It would be a fall.'
         }
       },
 
@@ -859,7 +859,7 @@ There is a pack here too, half-rotted. Canvas or leather once, now mostly gone. 
       zone: 'cavern',
       descriptionFirst: `Behind the curtain of bones, the rock opens into a vertical shaft.
 
-The walls are riddled with bone — fused, half-swallowed, the rock grown around them. Some are still articulated. Most are not.
+The walls are riddled with bone. Fused, half-swallowed, the rock grown around them. Some are still articulated. Most are not.
 
 The shaft goes up. You can see grey light filtering down from very far above.
 
@@ -871,7 +871,7 @@ You secure the rope and begin to climb.`,
 
       examineTargets: {
         'shaft': 'A vertical climb, sixty feet at least. Bones in the walls. The branch above is the only choice.',
-        'wider': 'The wider channel curves left. The bones around its mouth are smoothed and weathered — eaten down by passage of air, of water, of bodies. Whatever moved through this channel did not come back the same.',
+        'wider': 'The wider channel curves left. The bones around its mouth are smoothed and weathered. Eaten down by passage of air, of water, of bodies. Whatever moved through this channel did not come back the same.',
         'narrower': 'The narrower channel goes straight up. The bones around its mouth are denser, fresher. Things have used this path more recently. They did not always emerge.',
         'bones': 'Calcified into the walls. Around the wider channel: weathered, eaten down. Around the narrower channel: dense, recent. Whatever uses the narrower path uses it often. Whatever used the wider path has been gone for a long time.',
         'rope': 'Tight against your waist. It will hold for the climb.',
@@ -920,7 +920,7 @@ You forget your name. You forget you had one.`,
 
 Someone was here.
 
-On the wall, scratched into the stone with something sharp — a finger, maybe, or the point of a bone — are marks. Not random. Deliberate. Letters, if you can call them that, in a hand that shook while writing them.
+On the wall, marks scratched into the stone with something sharp. A finger, maybe, or the point of a bone. Not random. Deliberate. Letters, if you can call them that, in a hand that shook while writing them.
 
 You lean closer. The marks are deep. Whoever made them pressed hard. They wanted this to last.`,
 
@@ -957,7 +957,7 @@ so the pieces could never be still long enough to mend.`
       id: 'the_seep',
       name: 'The Seep',
       zone: 'cavern',
-      descriptionFirst: `The stone here is wet, but not from the water above. The walls themselves bead and run — thick droplets, slightly warm, slow to drip. The air is thicker. Warmer. Wrong.
+      descriptionFirst: `The stone here is wet, but not from the water above. The walls themselves bead and run. Thick droplets, slightly warm, slow to drip. The air is thicker. Warmer. Wrong.
 
 There are marks on the floor. Not writing this time. Gouges. Long parallel lines dragged through the soft stone, as if something heavy was pulled through here. Or dragged itself.
 
@@ -969,15 +969,15 @@ Your skin tightens between your shoulder blades. You should not stay here long.`
 
       examineTargets: {
         'gouges': 'Four parallel lines. Deep. The spacing is wrong for any tool you know. They were made by something with fingers, but fingers that ended differently than yours.',
-        'walls': 'Wet. The moisture beads and runs. It\'s not water — thicker, slightly warm. You don\'t want to touch it.',
+        'walls': 'Wet. The moisture beads and runs. It\'s not water. Thicker, slightly warm. You don\'t want to touch it.',
         'air': 'Thick. Sweet in a way that makes your stomach turn. The warmth isn\'t comforting. It\'s the warmth of something alive.',
-        'lintel': 'Above the entry from the etching, a single letter has been scratched in. **P**. The mark stops abruptly — whoever began the next stroke had to stop and run.'
+        'lintel': 'Above the entry from the etching, a single letter has been scratched in. **P**. The mark stops abruptly. Whoever began the next stroke had to stop and run.'
       },
 
       vrethkaiTargets: {
         'walls': 'The wet on the walls is not moisture. It is the script the dead mappers wrote in the only ink they had left. The script reads, plainly, the same word that opens every gate of this place: WITNESS. And below it, smaller, in a hand you recognise as belonging to someone who became what you have become: four turns. The dark counts them. You can count them too.',
         'gouges': 'The four parallel lines are not random. Four turns. Four breaths. They are the same hand, the same patience, the same warning the room has been giving since the first cycle.',
-        'script': 'The wet on the walls. WITNESS — and four marks below it.',
+        'script': 'The wet on the walls. WITNESS, and four marks below it.',
         'count': 'Four turns from the moment a body enters. The wall has been telling the truth. You did not have eyes to see it before.'
       },
 
@@ -990,7 +990,7 @@ Your skin tightens between your shoulder blades. You should not stay here long.`
         bypassItem: 'quiet_stone',
         deathText: `You stayed too long.
 
-The sound came from behind you first — a wet sliding, like something heavy dragging itself across slick stone. Then from the sides. Then from everywhere.
+The sound came from behind you first. A wet sliding, like something heavy dragging itself across slick stone. Then from the sides. Then from everywhere.
 
 You didn't see what it was. That was a mercy.
 
@@ -1010,15 +1010,15 @@ You forget your name. You forget you had one.`
       zone: 'cavern',
       descriptionFirst: `A side passage, barely wide enough to walk, opens into an alcove where the wall weeps.
 
-Not water — though there is water here too, running in a thin sheet down the stone. Beneath the water, carved into the wall with careful hands, is a passage of text. The water flows over it, filling the grooves, making the words shimmer and shift under the run.
+Not water, though there is water here too, running in a thin sheet down the stone. Beneath the water, carved into the wall with careful hands, is a passage of text. The water flows over it, filling the grooves, making the words shimmer and shift under the run.
 
-The carving is older than the etching you found before. Much older. The style is different — controlled, precise, the work of someone who had time and purpose. This was not scratched in desperation. This was placed here to be found.`,
+The carving is older than the etching you found before. Much older. The style is different. Controlled, precise, the work of someone who had time and purpose. This was not scratched in desperation. This was placed here to be found.`,
 
       description: `The weeping wall. Water runs over carved text, making the words shimmer. An old inscription, placed here with purpose.`,
 
       examineTargets: {
         'water': 'Thin and clear, running in a sheet over the carved text. It fills the grooves and makes them glow faintly. The source is somewhere above, hidden in a crack too small to see.',
-        'carving': 'Precise. Deep. The hand that made this did not shake. The letters are in a script you can mostly read — similar to yours, but older. Some words have shifted meaning.',
+        'carving': 'Precise. Deep. The hand that made this did not shake. The letters are in a script you can mostly read. Similar to yours, but older. Some words have shifted meaning.',
         'lintel': 'Above the entryway, scratched into the stone of the lintel: a single letter. **W**. The mark is shallow, recent compared to the carving inside. Someone was mapping this place.',
         'door': 'Above the entryway, scratched into the stone of the lintel: a single letter. **W**. The mark is shallow, recent compared to the carving inside.'
       },
@@ -1044,7 +1044,7 @@ when the light is all you have.`
       id: 'rubble_stair',
       name: 'Rubble Stair',
       zone: 'cavern',
-      descriptionFirst: `Beyond the cleared collapse, the tunnel angles upward. Sharply. The floor becomes a series of broken ledges — not stairs exactly, but close enough. Someone or something climbed this way before, often enough to wear the edges smooth.
+      descriptionFirst: `Beyond the cleared collapse, the tunnel angles upward. Sharply. The floor becomes a series of broken ledges. Not stairs exactly, but close enough. Someone or something climbed this way before, often enough to wear the edges smooth.
 
 The air is noticeably cooler. The smell of stone gives way to something you almost forgot existed: soil. Living soil. Roots thread through cracks above you, thin and pale from the dark but alive.
 
@@ -1054,7 +1054,7 @@ The sky is up there. You can feel it.`,
 
       examineTargets: {
         'roots': 'Pale and thin but alive. They\'ve found their way down through cracks in the stone. Wherever they come from, there is soil and rain and light.',
-        'ledges': 'Worn smooth by use. Not recent use — old, repeated passage. Something used this path for a long time.',
+        'ledges': 'Worn smooth by use. Not recent use. Old, repeated passage. Something used this path for a long time.',
         'air': 'Cool. Clean. It tastes like the world you fell from.',
         'lintel': 'On the stone at the bottom of the climb, scratched after the earth opened: a single letter. **R**. The mark is bright. Whoever made it left the same way you are about to leave.'
       },
@@ -1089,7 +1089,7 @@ The grass is grey. The sky is grey. None of it has changed. All of it has change
 Down the slope, a town sits in a valley by a river. Smoke rises from the chimneys. Someone is alive there.
 
 The thing that was you walks down toward the smoke.`;
-          const epilogueV = `\n\n— THE TURNING (with mind) —\n(You have earned the right to name the small Vreth'kai watching at the end of *Of Echoes and Iron* — the second book of *The Breaking*. A creature the characters do not understand. Something following them, observing, maybe protecting. The player knows what it is. The characters do not. Yet.)`;
+          const epilogueV = `\n\n✦ THE TURNING (with mind) ✦\n(You have earned the right to name the small Vreth'kai watching at the end of *Of Echoes and Iron*, the second book of *The Breaking*. A creature the characters do not understand. Something following them, observing, maybe protecting. The player knows what it is. The characters do not. Yet.)`;
           engine._emit('output', arrivalV, 'narration');
           engine._emit('output', epilogueV, 'narration');
           engine.escape('vrethkai_with_mind', '');
@@ -1130,15 +1130,15 @@ You made it out.`;
         let endText = '';
         if (ending === 'warden') {
           if (route === 'root_tunnel') {
-            endText = `\n\nThe forest has closed the wound. The seal holds. Nothing will follow you out. You made certain of that.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n— THE WARDEN OF THE GATE —\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
+            endText = `\n\nThe forest has closed the wound. The seal holds. Nothing will follow you out. You made certain of that.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n✦ THE WARDEN OF THE GATE ✦\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
           } else if (route === 'canopy') {
-            endText = `\n\nThe canopy folds in on itself somewhere far below your feet. The way you came is no longer a way. The seal holds.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n— THE WARDEN OF THE GATE —\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
+            endText = `\n\nThe canopy folds in on itself somewhere far below your feet. The way you came is no longer a way. The seal holds.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n✦ THE WARDEN OF THE GATE ✦\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
           } else {
-            endText = `\n\nBehind you, the ground shudders. The entrance collapses — not falling, but folding. The seal holds.\n\nNothing will follow you out. You made certain of that.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n— THE WARDEN OF THE GATE —\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
+            endText = `\n\nBehind you, the ground shudders. The entrance collapses. Not falling, but folding. The seal holds.\n\nNothing will follow you out. You made certain of that.\n\nYou stand at the edge of the wilds and watch the place where the entrance was. Someone will need to keep watching.\n\n✦ THE WARDEN OF THE GATE ✦\n(You have earned the right to name a town guard captain in *Aurelon: The Crosslands*.)`;
           }
           engine.escape('warden', endText);
         } else if (ending === 'fisher') {
-          endText = `\n\nYou came up holding three things you did not have when you went down. A scale, larger than your hand. A stone with a hole bored through it. The shape of a sentence you read once when the water stopped running.\n\nThe world above did not change. The wind moves the grass. The sky is grey. None of this is different from when you fell.\n\nBut you came back with what you came back with. What you did has a name. That name has not been written yet.\n\n— THE FISHER —\n(You have earned the right to name a fisher NPC in *The Breaking*. Someone hard people speak of quietly — the one you would want at your side when the world ends slowly.)`;
+          endText = `\n\nYou came up holding three things you did not have when you went down. A scale, larger than your hand. A stone with a hole bored through it. The shape of a sentence you read once when the water stopped running.\n\nThe world above did not change. The wind moves the grass. The sky is grey. None of this is different from when you fell.\n\nBut you came back with what you came back with. What you did has a name. That name has not been written yet.\n\n✦ THE FISHER ✦\n(You have earned the right to name a fisher NPC in *The Breaking*. Someone hard people speak of quietly. The one you would want at your side when the world ends slowly.)`;
           engine.escape('fisher', endText);
         } else {
           endText = `\n\nYou stand in the grey light and breathe. The wind moves the grass. The world is still dying. You are still in it.\n\nYou found ${fragments} of 20 prophecy fragments. You carry ${shards} of 3 relic shards.\n\nThe dark is behind you. For now.`;
@@ -1154,7 +1154,7 @@ You made it out.`;
       id: 'mushroom_grotto',
       name: 'Mushroom Grotto',
       zone: 'cavern',
-      descriptionFirst: `Below the bone shelf, the stone gives way to soil — actual soil, dark and damp. And growing from it, in clusters that glow faintly blue in the dark, mushrooms.
+      descriptionFirst: `Below the bone shelf, the stone gives way to soil. Actual soil, dark and damp. And growing from it, in clusters that glow faintly blue in the dark, mushrooms.
 
 Dozens of them. Some small as a fingernail, some large as your fist. The blue light they give off is barely enough to see by, but after the absolute dark, it feels like a lantern.
 
@@ -1163,8 +1163,8 @@ Two kinds grow here. The blue ones, clustered near the walls. And darker ones, a
       description: `The mushroom grotto. Blue glowing fungi near the walls. Black fungi in a ring at the center, smelling of meat. Soft soil underfoot.`,
 
       examineTargets: {
-        'blue mushrooms': 'Faintly luminescent. The caps are smooth and cool. They smell earthy and clean. You\'ve seen similar species on the surface — not these exactly, but relatives. Those were safe to eat.',
-        'black mushrooms': 'No glow. The caps are slick and dark. The smell is wrong — meaty, sweet, like something decaying. The ring they form is almost perfect. Too perfect.',
+        'blue mushrooms': 'Faintly luminescent. The caps are smooth and cool. They smell earthy and clean. You\'ve seen similar species on the surface. Not these exactly, but relatives. Those were safe to eat.',
+        'black mushrooms': 'No glow. The caps are slick and dark. The smell is wrong. Meaty, sweet, like something decaying. The ring they form is almost perfect. Too perfect.',
         'soil': 'Dark and rich. It shouldn\'t exist this far underground. Something is feeding it. The mushrooms, maybe. Or something feeding the mushrooms.'
       },
 
@@ -1204,7 +1204,7 @@ The last thing you see is the ring of black mushrooms, and you could swear they'
 
 A pit. The floor drops away into blackness so complete that dropping a stone produces no sound for a long time, and when the sound finally comes it is small and very far below.
 
-The ledge you stand on wraps around the near side of the pit. Narrow but walkable. Across the gap, you can see the faint outline of another passage — but the pit is too wide to jump and there is nothing to bridge it.
+The ledge you stand on wraps around the near side of the pit. Narrow but walkable. Across the gap, you can see the faint outline of another passage. But the pit is too wide to jump and there is nothing to bridge it.
 
 A clay lamp sits on the ledge near the edge, abandoned. Empty of oil, but intact.`,
 
@@ -1213,7 +1213,7 @@ A clay lamp sits on the ledge near the edge, abandoned. Empty of oil, but intact
       examineTargets: {
         'pit': 'Deep. The kind of deep that makes your body lean back from the edge without being told to. The air rising from it is warm and carries no sound.',
         'ledge': 'Narrow. A foot and a half wide at most. The stone is solid but there is no railing, no handhold. Just the edge and the dark.',
-        'passage': 'Across the pit. You can see its outline — an archway, maybe, though the style is different from anything natural. You can\'t reach it from here.',
+        'passage': 'Across the pit. You can see its outline. An archway, maybe, though the style is different from anything natural. You can\'t reach it from here.',
         'lamp': 'Clay. Well-made. Whoever carried this came from a place that made things carefully. It has no oil but no cracks either.'
       },
 
@@ -1229,7 +1229,7 @@ A clay lamp sits on the ledge near the edge, abandoned. Empty of oil, but intact
         {
           itemId: 'rope',
           label: 'Secure the rope across the pit',
-          text: `You find an outcrop of stone on the near side, solid enough. The throw takes three tries — the far side has nothing obvious to catch on. But on the third throw the rope snags on something in the dark across the gap and holds when you pull.
+          text: `You find an outcrop of stone on the near side, solid enough. The throw takes three tries. The far side has nothing obvious to catch on. But on the third throw the rope snags on something in the dark across the gap and holds when you pull.
 
 It's not a bridge. It's barely a handhold. But it spans the pit, and if you're willing to trust old rope and the grip of your hands, you can cross.`,
           consumeItem: false,
@@ -1256,16 +1256,16 @@ It's not a bridge. It's barely a handhold. But it spans the pit, and if you're w
       zone: 'cavern',
       descriptionFirst: `Through the gap, past the pit, the stone changes.
 
-The natural cave gives way to something else. The walls here are smoother. Not carved — or if carved, done so long ago that the edges have worn to curves. But the proportions are wrong for nature. The angles are too regular. The passage is too straight.
+The natural cave gives way to something else. The walls here are smoother. Not carved, or if carved, done so long ago that the edges have worn to curves. But the proportions are wrong for nature. The angles are too regular. The passage is too straight.
 
-Warm air rises from below, steady as breath. The smell changes too — less stone, more... dust. Old dust. The kind that settles in places that have been empty for a very long time.
+Warm air rises from below, steady as breath. The smell changes too. Less stone, more... dust. Old dust. The kind that settles in places that have been empty for a very long time.
 
 Something was built down here. Or something was always here, and the cave grew around it.`,
 
-      description: `The crack in the stone. Beyond it, the cave becomes something else — smoother walls, regular angles, warm air rising from below. Something was built here.`,
+      description: `The crack in the stone. Beyond it, the cave becomes something else. Smoother walls, regular angles, warm air rising from below. Something was built here.`,
 
       examineTargets: {
-        'walls': 'Smooth. The tooling marks — if there were any — have been worn away by time. But the surfaces are too flat, the corners too consistent. This is architecture, not geology.',
+        'walls': 'Smooth. The tooling marks, if there were any, have been worn away by time. But the surfaces are too flat, the corners too consistent. This is architecture, not geology.',
         'air': 'Warm. Rising. It carries the smell of old dust and something underneath the dust that you can\'t name.',
         'dust': 'Fine. Grey. It covers everything in a thin layer. No footprints but yours. No one has been here in a very long time.'
       },
@@ -1383,7 +1383,7 @@ Whatever wore this path did not wear it on two legs.`,
       zone: 'forest',
       descriptionFirst: `The path opens into a space that was made.
 
-Not by hands. Roots have grown into the shape of an alcove, and at the centre of the alcove a basin formed from the same material — root grown thick and bowled and fused. The basin is empty. Something used to be left here. The forest accepted it.
+Not by hands. Roots have grown into the shape of an alcove, and at the centre of the alcove a basin formed from the same material. Root grown thick and bowled and fused. The basin is empty. Something used to be left here. The forest accepted it.
 
 A circle of smaller bowls surrounds the central one. Each tilted slightly toward the centre.
 
@@ -1412,7 +1412,7 @@ and neither is written.`
 
       hints: [
         'The forest left bowls here for a reason. They are empty for a reason too.',
-        'What you give to the forest, the forest may protect you with later — somewhere else.',
+        'What you give to the forest, the forest may protect you with later. Somewhere else.',
         'Leave the bone knife in the basin. The forest will recognise the offering at the Feeding Ground.'
       ],
 
@@ -1603,7 +1603,7 @@ The forest knows what you became. The face has nothing more to ask of you. Whate
       id: 'crystal_grove',
       name: 'Crystal Grove',
       zone: 'forest',
-      descriptionFirst: `The roots in this part of the forest have grown around — or perhaps grown through — clusters of crystal that should not be here.
+      descriptionFirst: `The roots in this part of the forest have grown around, or perhaps grown through, clusters of crystal that should not be here.
 
 The crystals are pale, milky, faceted. They catch the bioluminescence and split it. The whole grove glows in overlapping shades of light. Each colour settles on a different surface. You stand in a space where light has learned where to land.
 
@@ -1626,7 +1626,7 @@ that broke.`
         'tree': 'The central trunk. The crystal has burst from inside the wood and the wood has scarred over the wound.',
         'words': 'The same hand wrote at the Etching, at the Weeping Wall. Older here. Or trying to be.',
         'light': 'Split into colours by the crystal. The forest below this grove is striped in red, blue, gold.',
-        'pair': 'Each crystal cluster shows the same form — one cleaved in two, halves still joined. Whatever made them broke them at birth.',
+        'pair': 'Each crystal cluster shows the same form. One cleaved in two, halves still joined. Whatever made them broke them at birth.',
         'lintel': 'Where the path enters the grove, at a place between two roots that arch into a kind of doorway, a letter has been cut into the bark and the wood has grown around it without closing. **E**. The cut is deep. The wood agreed to remember.'
       },
 
@@ -1634,7 +1634,7 @@ that broke.`
         north: { roomId: 'tangled_path', label: 'North to the tangled path' },
         west: { roomId: 'root_cathedral', label: 'West to the cathedral' },
         south: { roomId: 'clearing', label: 'South where the canopy opens' },
-        east: { roomId: 'canopy', label: 'East and up — the canopy rises' }
+        east: { roomId: 'canopy', label: 'East and up, the canopy rises' }
       }
     },
 
@@ -1659,9 +1659,9 @@ There is a path up. Several paths. Not all of them go where they seem.`,
         'sunlight': 'Thin and grey. The sun above this place is also the sun you fell from. You did not know how much you missed it.',
         'paths': 'Three obvious routes. The central trunk rises straight. The eastern branch reaches out broad. The western root hooks back on itself.',
         'central trunk': 'Thick and steady. The bark is worn smooth where hands have climbed before yours.',
-        'eastern branch': 'Solid. The branch holds weight without bowing. The bark is rough where something has gripped it — repeatedly, in the same places.',
+        'eastern branch': 'Solid. The branch holds weight without bowing. The bark is rough where something has gripped it. Repeatedly, in the same places.',
         'western root': 'It curls back into the canopy and disappears. Where it goes is not the surface.',
-        'canopy': 'Dense above. Higher up, the green opens out into something paler — vines woven into a hollow, big enough to hold a body.'
+        'canopy': 'Dense above. Higher up, the green opens out into something paler. Vines woven into a hollow, big enough to hold a body.'
       },
 
       hints: [
@@ -1738,7 +1738,7 @@ Now it sits where any hand can take it.`,
       description: `The Hollow Tree. A trunk made into a chamber. A pulsing fragment in a depression in the floor.`,
 
       examineTargets: {
-        'tree': 'The trunk is wider than three of you with arms outstretched. The wood is older than any cycle you can name. A great hollow tree — the only one of its kind in this forest.',
+        'tree': 'The trunk is wider than three of you with arms outstretched. The wood is older than any cycle you can name. A great hollow tree. The only one of its kind in this forest.',
         'walls': 'Smooth. Worn. Whatever lived here kept the walls clean.',
         'fragment': 'Pale. Pulsing. Warm even at a distance. It feels less like an object than a piece of something larger that wants to find the rest.',
         'depression': 'A hollow worn into the wood by a long act of holding. Something rested here for centuries.',
@@ -1813,7 +1813,7 @@ You realize, slow, that the rest the clearing offered was a question. You had be
       zone: 'forest',
       descriptionFirst: `Where the forest ends, it does not end peacefully.
 
-Something tore through here. The roots are not arranged but ripped — thick limbs of growth sundered along their grain, exposing pale interior wood that has never been pale, never been interior, never been seen. The ground beneath is split. A chasm runs across the southern edge of the clearing. The chasm goes down.
+Something tore through here. The roots are not arranged but ripped. Thick limbs of growth sundered along their grain, exposing pale interior wood that has never been pale, never been interior, never been seen. The ground beneath is split. A chasm runs across the southern edge of the clearing. The chasm goes down.
 
 The wound is old. The forest has not healed it.
 
@@ -1861,7 +1861,7 @@ You climb. The forest does not resist your ascent. It does not assist it either.
       zone: 'forest',
       descriptionFirst: `The descent from the Fungal Hollow opens into a chamber that is not a chamber. It is a curtain.
 
-Spores drift here in such density the air is white-blue with them. They part in front of your face and close behind you. You can see only a few feet in any direction. Sound does not carry. Whatever is making noise — and something is — sounds like it is making the noise from a great distance, even when you can feel it on your skin.
+Spores drift here in such density the air is white-blue with them. They part in front of your face and close behind you. You can see only a few feet in any direction. Sound does not carry. Whatever is making noise, and something is, sounds like it is making the noise from a great distance, even when you can feel it on your skin.
 
 If you stay here, the spores will do something. You can feel that. They are negotiating with you already. You are losing.`,
 
@@ -1872,7 +1872,7 @@ If you stay here, the spores will do something. You can feel that. They are nego
         'sound': 'Comes from the south. Or the spores. The veil refuses to commit.',
         'veil': 'There is no edge to it. The curtain hangs in the air without anything to hang from. Parallel sheets of suspended drift, blurring into each other.',
         'curtain': 'The veil is a curtain in everything but name. Parallel sheets of suspended drift, blurring into each other.',
-        'lintel': 'Above the descent — where the passage from the Fungal Hollow opens into this chamber — a letter has been pressed into the soft soil at the edge of the threshold. The mark is faint but legible. **S**.'
+        'lintel': 'Above the descent, where the passage from the Fungal Hollow opens into this chamber, a letter has been pressed into the soft soil at the edge of the threshold. The mark is faint but legible. **S**.'
       },
 
       timer: {
@@ -1948,7 +1948,7 @@ It is not unpleasant. That is the worst of it.`,
       zone: 'forest',
       descriptionFirst: `The fungus has been at work here longer than anywhere else.
 
-The chamber is a bone garden. Skulls — human, you think, or close to it — nest in the soft floor. Mushrooms grow from the eye sockets in tidy clusters. Larger growths erupt from rib cages. Some bones are old and picked clean. Others are fresher. The fungus has not had time to take all of them.
+The chamber is a bone garden. Skulls nest in the soft floor. Human, you think, or close to it. Mushrooms grow from the eye sockets in tidy clusters. Larger growths erupt from rib cages. Some bones are old and picked clean. Others are fresher. The fungus has not had time to take all of them.
 
 These were not buried. They were placed.
 
@@ -1982,7 +1982,7 @@ The chamber at its centre is round, low-ceilinged, walled in by a single mass of
 
 In the middle of the floor, a depression. A bed of softer fungus. Something has slept here. Slept, not died. You can see the impression of a body still warming the moss.
 
-The walls are written on. Not by a hand — the threads themselves have grown into the shape of words. The script is the same you found at the Etching, the Weeping Wall, the Scriptorium. The fungus has read those places. It remembers what was written there. It has copied a passage you have not yet found.`,
+The walls are written on. Not by a hand. The threads themselves have grown into the shape of words. The script is the same you found at the Etching, the Weeping Wall, the Scriptorium. The fungus has read those places. It remembers what was written there. It has copied a passage you have not yet found.`,
 
       description: `The Mother Tangle. A living chamber. A bed where something slept. Fungal walls quoting the prophecy.`,
 
@@ -2004,7 +2004,7 @@ What it takes it does not return.`
       },
 
       examineTargets: {
-        'walls': 'One organism. The whole chamber is one growth. It is paying attention to you. The threads spiral inward toward the centre — every wall is a coil that does not stop.',
+        'walls': 'One organism. The whole chamber is one growth. It is paying attention to you. The threads spiral inward toward the centre. Every wall is a coil that does not stop.',
         'spiral': 'The whole chamber is a coil. The walls spiral inward and inward, threads tightening toward where the body sleeps.',
         'coil': 'The walls coil inward. The pattern repeats at every scale you look at it.',
         'bed': 'Recent. Whatever sleeps here has slept here for a long time and slept here this week.',
@@ -2025,7 +2025,7 @@ What it takes it does not return.`
       id: 'inverted_grove',
       name: 'Inverted Grove',
       zone: 'forest',
-      descriptionFirst: `The chamber slopes downward but the fungus grows upward — from the ceiling.
+      descriptionFirst: `The chamber slopes downward but the fungus grows upward. From the ceiling.
 
 Caps the size of small shields hang above you, their stems reaching down toward your head. Some brush your hair as you pass. The light comes from below your feet, from a layer of moss carpeting the floor like dropped sky.
 
@@ -2034,7 +2034,7 @@ Your inner ear protests. The forest's gravity does not match the chamber's. You 
       description: `The Inverted Grove. Mushrooms grow from the ceiling. Light from the floor. Gravity does not negotiate.`,
 
       examineTargets: {
-        'ceiling': 'Soil. The fungus has rooted into it from below — or above, if you let yourself believe what your eyes are telling you.',
+        'ceiling': 'Soil. The fungus has rooted into it from below. Or above, if you let yourself believe what your eyes are telling you.',
         'floor': 'Moss. Glowing. The light is meant to belong to a sky.',
         'mushrooms': 'The stems reach down. The caps face you. They are listening.',
         'gravity': 'Honest in this room. Wrong everywhere else. Or the other way.'
@@ -2056,7 +2056,7 @@ Your inner ear protests. The forest's gravity does not match the chamber's. You 
       zone: 'forest',
       descriptionFirst: `There is a chamber here the forest has not touched.
 
-The walls are the same packed soil as the rest of the network, but no fungus grows on them. No spores drift. The bioluminescent threads end at the threshold and do not enter. There is no sound. Not the absence of sound — the prevention of it. You speak and your voice does not arrive in your own ears.
+The walls are the same packed soil as the rest of the network, but no fungus grows on them. No spores drift. The bioluminescent threads end at the threshold and do not enter. There is no sound. Not the absence of sound. The prevention of it. You speak and your voice does not arrive in your own ears.
 
 In the centre of the room, on a low stone that does not belong to any layer of the forest, sits something small and grey. A stone. Round. Smooth. It does not glow. It does not pulse.
 
@@ -2090,7 +2090,7 @@ It is the only thing in the world right now that is not trying to be heard.`,
       zone: 'ruins1',
       descriptionFirst: `You step through an archway that was old when the world above was young.
 
-The hall beyond is wide enough for twenty people to walk abreast. The ceiling arches overhead in a style you almost recognize — not your people's work, but not alien either. Close. Like a word in a language you nearly speak.
+The hall beyond is wide enough for twenty people to walk abreast. The ceiling arches overhead in a style you almost recognize. Not your people's work, but not alien either. Close. Like a word in a language you nearly speak.
 
 Columns line both sides, carved with patterns that repeat and vary. Dust lies thick on the floor. Your footprints are the first in centuries.
 
@@ -2101,9 +2101,9 @@ These people built well. They built to last. It wasn't enough.`,
       description: `Threshold Hall. A wide corridor lined with carved columns. Dust on the floor. Passages branch east and west. A stairway descends.`,
 
       examineTargets: {
-        'columns': 'Carved with repeating patterns — geometric at first glance, but the more you look, the more they suggest something organic. Growth, maybe. Or consumption.',
+        'columns': 'Carved with repeating patterns. Geometric at first glance, but the more you look, the more they suggest something organic. Growth, maybe. Or consumption.',
         'dust': 'Centuries deep. Fine as powder. Your footprints in it feel like vandalism.',
-        'archway': 'The entrance behind you. The keystone is carved with a symbol you\'ve never seen — a circle inside a circle, with lines radiating outward. Or inward.',
+        'archway': 'The entrance behind you. The keystone is carved with a symbol you\'ve never seen. A circle inside a circle, with lines radiating outward. Or inward.',
         'stairway': 'Wide. The steps are shallow, built for a procession. Whatever happened down there, people went to it in numbers.',
         'lintel': 'Above the entry from the wound, scratched into the cycle-old stone in a hand that did not match the architects: a single letter. **X**. The mark is large, almost defiant. Whoever made it wanted no confusion about which place this was.'
       },
@@ -2125,7 +2125,7 @@ These people built well. They built to last. It wasn't enough.`,
       zone: 'ruins1',
       descriptionFirst: `A room built for keeping words.
 
-Stone shelves line every wall, carved directly from the rock. Most are empty — whatever they held has crumbled or been taken. But the walls themselves are covered in text, floor to ceiling, in a careful hand that must have taken years to complete.
+Stone shelves line every wall, carved directly from the rock. Most are empty. Whatever they held has crumbled or been taken. But the walls themselves are covered in text, floor to ceiling, in a careful hand that must have taken years to complete.
 
 Most of the writing has faded or been damaged by moisture seeping through the stone. But one section, protected by an overhang in the rock, remains legible. The script is old but you can read it. The words settle into you like something you already knew but had forgotten.`,
 
@@ -2142,7 +2142,7 @@ and found only the turning.`
       },
 
       examineTargets: {
-        'shelves': 'Empty. Whatever they held — scrolls, tablets, books made from materials you can\'t guess — is gone. Only the stone remains.',
+        'shelves': 'Empty. Whatever they held is gone. Scrolls, tablets, books made from materials you can\'t guess. Only the stone remains.',
         'text': 'Floor to ceiling. Thousands of words. Most damaged beyond reading. The hand that wrote this spent years here.',
         'overhang': 'A natural feature in the stone that the builders incorporated. The text beneath it has been protected from moisture for centuries. Lucky. Or planned.'
       },
@@ -2159,7 +2159,7 @@ and found only the turning.`
       zone: 'ruins1',
       descriptionFirst: `The west passage opens into what was once a large room, now half-filled with rubble from a ceiling collapse. Stone shelves have been crushed. Fragments of carved tablets litter the floor, their text broken mid-sentence.
 
-The collapse happened long ago — the edges of the broken stone have softened with time. But it wasn't natural. The pattern of the fall suggests something struck from above with tremendous force.
+The collapse happened long ago. The edges of the broken stone have softened with time. But it wasn't natural. The pattern of the fall suggests something struck from above with tremendous force.
 
 Through the rubble, you can see the edge of another room beyond. Inaccessible, unless you can clear a path.`,
 
@@ -2175,7 +2175,7 @@ Through the rubble, you can see the edge of another room beyond. Inaccessible, u
         {
           itemId: 'pry_bar',
           label: 'Clear rubble with the pry bar',
-          text: 'You work the iron bar between the stones at the top of the pile, levering them aside one by one. It takes time and sweat, but a gap opens. Beyond it, a smaller room — intact, sealed by the collapse for centuries.',
+          text: 'You work the iron bar between the stones at the top of the pile, levering them aside one by one. It takes time and sweat, but a gap opens. Beyond it, a smaller room. Intact, sealed by the collapse for centuries.',
           setFlag: { archive_cleared: true },
           revealExit: 'sealed_vault',
           revealText: 'A gap opens into the sealed room beyond.'
@@ -2208,13 +2208,13 @@ Through the rubble, you can see the edge of another room beyond. Inaccessible, u
       id: 'ventilation_shaft',
       name: 'Ventilation Shaft',
       zone: 'ruins1',
-      descriptionFirst: `Above the cleared rubble, the shaft cuts straight up through the bones of the ruined city. The stonework is precise — the builders meant for someone to use this.
+      descriptionFirst: `Above the cleared rubble, the shaft cuts straight up through the bones of the ruined city. The stonework is precise. The builders meant for someone to use this.
 
 It is narrow enough to brace against. It is long enough that you will not see the top until you are most of the way there.
 
-You climb. The carved walls grip your palms — every grip cut at a thumb's reach, every step set where a tired foot would set itself. Whatever blade or rope you brought tells you which method you trust most.
+You climb. The carved walls grip your palms. Every grip cut at a thumb's reach, every step set where a tired foot would set itself. Whatever blade or rope you brought tells you which method you trust most.
 
-Halfway up, the shaft passes a small alcove — a cell in the stone, too small to be a room, where the air stops smelling of dust.`,
+Halfway up, the shaft passes a small alcove. A cell in the stone, too small to be a room, where the air stops smelling of dust.`,
 
       description: `The ventilation shaft. Carved stone. A long, careful climb. Halfway up, an alcove.`,
 
@@ -2222,20 +2222,20 @@ Halfway up, the shaft passes a small alcove — a cell in the stone, too small t
         'shaft': 'Cut by hand, by craftsmen who knew air. The walls are textured precisely enough to grip.',
         'walls': 'Stone the colour of old bread. Carved by the people who built this city before the cycle ate them.',
         'alcove': 'A small cut in the wall halfway up. Just deep enough for one person to sit in. Whoever cut it intended it to be sat in.',
-        'air': 'Cleaner than the air below. The shaft works — it is doing what its makers built it to do.'
+        'air': 'Cleaner than the air below. The shaft works. It is doing what its makers built it to do.'
       },
 
       hints: [
         'The shaft is climbable. The alcove halfway up is worth a second look.',
-        'Examine the alcove. Builders cut spaces into vertical climbs for a reason — to rest, or to leave something for whoever climbed after them.',
-        'In the alcove halfway up, you find a small bone fragment carved with prophecy script — and the climb continues to the surface.'
+        'Examine the alcove. Builders cut spaces into vertical climbs for a reason. To rest, or to leave something for whoever climbed after them.',
+        'In the alcove halfway up, you find a small bone fragment carved with prophecy script, and the climb continues to the surface.'
       ],
 
       actions: [
         {
           id: 'continue_climb',
           label: 'Continue up to the surface',
-          text: `You leave the alcove and continue up. The shaft narrows near the top — barely wide enough — and then opens onto a flat stone, in a stand of grey grass, in the wind.
+          text: `You leave the alcove and continue up. The shaft narrows near the top, barely wide enough, and then opens onto a flat stone, in a stand of grey grass, in the wind.
 
 You are out.`,
           setFlag: { escape_route: 'archive_shaft' },
@@ -2255,18 +2255,18 @@ You are out.`,
       zone: 'ruins1',
       descriptionFirst: `The grand stairway ends in a circular chamber. The walls are covered in names.
 
-Thousands of them. Cut into the stone in rows so straight they must have used a guide. Each name has a small symbol beside it — different for each, though some symbols repeat. A system you don't understand. A record of people who lived and were worth recording.
+Thousands of them. Cut into the stone in rows so straight they must have used a guide. Each name has a small symbol beside it. Different for each, though some symbols repeat. A system you don't understand. A record of people who lived and were worth recording.
 
-The newest names — the ones nearest the door, carved last — have a different quality. The letters are less certain. The hand that made them was shakier, or in more of a hurry.
+The newest names, the ones nearest the door, carved last, have a different quality. The letters are less certain. The hand that made them was shakier, or in more of a hurry.
 
 At the center of the chamber, a stone plinth. On it, nothing. A space where something was meant to go but never did, or was taken.`,
 
       description: `The Hall of Names. A circular chamber. Thousands of names carved in rows on every wall. A stone plinth at the center, empty.`,
 
       examineTargets: {
-        'names': 'Thousands. Each one a person. Some of the symbols beside them repeat — ranks, maybe, or roles. The earliest names are cut deep and clean. The latest are shallow and hurried.',
-        'plinth': 'Stone. The top surface has an indentation — something was meant to sit here. The shape is circular, about the size of a fist. It has been empty for a very long time.',
-        'symbols': 'You can\'t read them. But some appear more often than others. One symbol — a vertical line bisected by a curve — appears beside the last dozen names. Whatever it meant, it was common at the end.',
+        'names': 'Thousands. Each one a person. Some of the symbols beside them repeat. Ranks, maybe, or roles. The earliest names are cut deep and clean. The latest are shallow and hurried.',
+        'plinth': 'Stone. The top surface has an indentation. Something was meant to sit here. The shape is circular, about the size of a fist. It has been empty for a very long time.',
+        'symbols': 'You can\'t read them. But some appear more often than others. One symbol, a vertical line bisected by a curve, appears beside the last dozen names. Whatever it meant, it was common at the end.',
         'lintel': 'Above the stairway down from the threshold, scratched in the same hand as the marks elsewhere: a letter. **N**. Whoever was mapping had been here. Whoever was mapping died before completing their map.'
       },
 
@@ -2275,7 +2275,7 @@ At the center of the chamber, a stone plinth. On it, nothing. A space where some
           id: 'choose_scholar',
           label: 'Find a bare space and pick up the sharp stone',
           requires: { noIdentity: true },
-          text: `You pick up a sharp stone from the floor and find a bare space near the newest names. You carve your name — your real name, the one you carried down here from the surface — into the wall beside theirs.
+          text: `You pick up a sharp stone from the floor and find a bare space near the newest names. You carve your name, your real name, the one you carried down here from the surface, into the wall beside theirs.
 
 The symbol you draw beside it is the vertical line bisected by a curve. You don't know what it means. But it felt right.
 
@@ -2308,7 +2308,7 @@ Your hand finds the chisel-weight of the air, and lets it go. Your name is not f
       id: 'sealed_vault',
       name: 'Sealed Vault',
       zone: 'ruins1',
-      descriptionFirst: `The room beyond the collapse is small and perfectly preserved. The air is different here — dry, still, untouched for centuries. Dust lies in an even layer over everything, and everything is very little.
+      descriptionFirst: `The room beyond the collapse is small and perfectly preserved. The air is different here. Dry, still, untouched for centuries. Dust lies in an even layer over everything, and everything is very little.
 
 A single stone shelf. On it, a flat disc of dark stone and a cloth bundle, the fabric so old it crumbles at the edges but intact at the center.
 
@@ -2320,7 +2320,7 @@ The walls here have no text. No names. No decoration. This room was meant to hol
         'disc': 'Heavy. Dark stone, almost black. Symbols on both faces, too precise to be decorative. The stone is warmer than the room.',
         'bundle': 'Old cloth wrapped around something that pulses faintly when you hold it. Like a heartbeat. The cloth crumbles as you unwrap it, revealing a fragment of crystal that glows with its own dim light.',
         'shelf': 'The only furniture. Built into the wall. Whoever placed these things here expected them to wait.',
-        'lintel': 'Above the gap that was cleared from the archive, scratched into the broken edge of the wall: a letter. **V**. The mark is fresh — newer than the rest of the marks in this place. The mapper who came down here came down here recently.'
+        'lintel': 'Above the gap that was cleared from the archive, scratched into the broken edge of the wall: a letter. **V**. The mark is fresh. Newer than the rest of the marks in this place. The mapper who came down here came down here recently.'
       },
 
       items: ['seal_stone'],
@@ -2329,7 +2329,7 @@ The walls here have no text. No names. No decoration. This room was meant to hol
         {
           id: 'take_shard',
           label: 'Unwrap the cloth bundle',
-          text: `The fabric crumbles in your hands. Inside, a fragment of crystal — no, not crystal. Something that looks like crystal but isn't. It pulses with a light that has no source, and when you hold it, you feel a warmth that travels up your arm and settles behind your eyes.
+          text: `The fabric crumbles in your hands. Inside, a fragment of crystal. No, not crystal. Something that looks like crystal but isn't. It pulses with a light that has no source, and when you hold it, you feel a warmth that travels up your arm and settles behind your eyes.
 
 A relic shard. A piece of something much larger, much older. You don't know what it was part of. But your hands don't want to let go.`,
           once: true,
@@ -2369,7 +2369,7 @@ Something has begun. The forest will know it. The deeper places will not.`,
       zone: 'ruins1',
       descriptionFirst: `The chamber south of the Threshold Hall opens wide.
 
-Every wall is painted. Not carved — painted. The pigments are dull where moisture has reached them, bright where the stone has held. Whatever ground them did so a long time ago, and whatever applied them did not expect the work to last forever. The work has lasted anyway.
+Every wall is painted. Not carved. Painted. The pigments are dull where moisture has reached them, bright where the stone has held. Whatever ground them did so a long time ago, and whatever applied them did not expect the work to last forever. The work has lasted anyway.
 
 The murals show a sky. Not your sky. A sky with too many lights in it, falling in long grey lines toward a horizon that is also a wall. Figures kneel below. Figures stand on a higher ground and watch them kneel. None of the figures have faces. The faces have been left blank on purpose.
 
@@ -2391,7 +2391,7 @@ and calls it beautiful.`
       examineTargets: {
         'murals': 'Painted, not carved. The pigment is older than any tooled stone you have seen.',
         'sky': 'Wrong. There are too many lights and they are all falling at once.',
-        'figures': 'No faces. The faces were left blank on purpose. Five of them stand below the falling lights, each in a different posture. The postures are precise — chosen, not random.',
+        'figures': 'No faces. The faces were left blank on purpose. Five of them stand below the falling lights, each in a different posture. The postures are precise. Chosen, not random.',
         'lights': 'Falling in long grey lines. The lines move when you do not look at them.',
         'horizon': 'A wall. The painted sky ends at a painted wall. The world the murals remember had edges.',
         'symbol': 'In the lower-left corner of the largest mural, a small mark that resembles the script you have been finding. A circle with three lines through it. You count the lines twice. You begin to count them a third time and the lines look different. You are sure they have not moved.',
@@ -2445,7 +2445,7 @@ They believe they choose.`
         'walls': 'Plated. Riveted. Re-riveted. Whatever is in this room was meant to stay here.',
         'pedestal': 'Stone. Lower than waist height. A circle of carved letters runs around its base.',
         'relic': 'Bone, you think. White. Twisted in a way bone does not twist on its own. Something has been added. You do not know what was added or by whom.',
-        'cloth': 'Rotted to lace. The pattern of the rot is too even — it rotted from the inside.',
+        'cloth': 'Rotted to lace. The pattern of the rot is too even. It rotted from the inside.',
         'cold': 'Coming from the relic. The further you stand, the warmer the room becomes.'
       },
 
@@ -2459,7 +2459,7 @@ They believe they choose.`
           label: 'Reach for it',
           text: `You reach for the bone-white shape on the pedestal.
 
-The cold finds your hand before your hand finds the relic. You hear something behind your teeth — a vocabulary not your own, the same grammar that spoke to you in the Mycelium Web. Louder here. Closer.
+The cold finds your hand before your hand finds the relic. You hear something behind your teeth. A vocabulary not your own, the same grammar that spoke to you in the Mycelium Web. Louder here. Closer.
 
 You forget your name. You forget you had one.`,
           requires: { not: { hasItem: 'decay_token' } },
@@ -2470,7 +2470,7 @@ You forget your name. You forget you had one.`,
           label: 'Reach for it',
           text: `You reach for the bone-white shape on the pedestal.
 
-The cold finds your pocket first. Something there drinks it before it finds your hand. Whatever the relic was about to do passes through the dark thing in your pocket instead and goes nowhere — the dark thing has somewhere it has been keeping cold for a long time.
+The cold finds your pocket first. Something there drinks it before it finds your hand. Whatever the relic was about to do passes through the dark thing in your pocket instead and goes nowhere. The dark thing has somewhere it has been keeping cold for a long time.
 
 The room dims. The relic dims with it. You feel the attention let go of you.
 
@@ -2518,7 +2518,7 @@ Above the shelf, in a hand that wrote without care, a single line. Carved in has
           requires: { hasItem: 'decay_token' },
           text: `You set the Black Token on the shelf where the dust waited for it.
 
-The dust does not shift. The token does. It sinks into the shelf the way a stone sinks into still water, and the stone takes it without resistance. The drain in the floor stirs. Something black runs the channel from the shelf to the drain — not the token; the token is gone — but what the token was made of. What remains, after the cold thing has been spent.
+The dust does not shift. The token does. It sinks into the shelf the way a stone sinks into still water, and the stone takes it without resistance. The drain in the floor stirs. Something black runs the channel from the shelf to the drain. Not the token; the token is gone. What runs is what the token was made of. What remains, after the cold thing has been spent.
 
 The shelf is dust again. The drain is wet.
 
@@ -2581,7 +2581,7 @@ You stop speaking. The room takes a long time to stop speaking with you.`,
 
 The first echo is yours. The second is yours. The third is yours.
 
-The fourth is something else. It speaks a sound that is almost a word — vorthen-li-aerix — and then the fourth echo collapses back into the third, which collapses back into yours, which fades.
+The fourth is something else. It speaks a sound that is almost a word, vorthen-li-aerix, and then the fourth echo collapses back into the third, which collapses back into yours, which fades.
 
 The sound stays. The other echoes finished. This one does not. Whether it was meant for you, you cannot say.`,
           once: false,
@@ -2604,7 +2604,7 @@ The sound stays. The other echoes finished. This one does not. Whether it was me
       zone: 'ruins1',
       descriptionFirst: `The stairway from the Hall of Names ends at a wall.
 
-The wall is a record. From floor to ceiling, the makers of this place set down what they thought the world was. A circle for the world they lived on. Smaller circles around it for the lights they could see. A larger circle around all of them — a wall painted around the whole arrangement. The wall a child draws to keep a story inside.
+The wall is a record. From floor to ceiling, the makers of this place set down what they thought the world was. A circle for the world they lived on. Smaller circles around it for the lights they could see. A larger circle around all of them. A wall painted around the whole arrangement. The wall a child draws to keep a story inside.
 
 At the centre of the largest circle, a brighter mark. Not a star. A different shape. The shape has been re-cut several times. The latest cutting is the shape of a keyhole.
 
@@ -2625,7 +2625,7 @@ The lock remembers.`
       },
 
       hints: [
-        'The wall is a record. The carvers were writing for someone who would come after them. Look low — at the margin where the cosmology drawing ends and the bare stone begins.'
+        'The wall is a record. The carvers were writing for someone who would come after them. Look low, at the margin where the cosmology drawing ends and the bare stone begins.'
       ],
 
       examineTargets: {
@@ -2642,7 +2642,7 @@ The lock remembers.`
   3. A tree with a hollow at its base.
   4. A network of fine threads radiating from a central knot.
   5. A single crystal, cleaved into a pair, the two halves still joined.
-  6. A curtain or veil — parallel lines suggesting drift.
+  6. A curtain or veil, parallel lines suggesting drift.
   7. A spiral, coiling inward.
 
 Whoever set them here was telling another reader something. The reader was meant to know that these places, in this order, could be read.`,
@@ -2652,11 +2652,11 @@ Whoever set them here was telling another reader something. The reader was meant
       },
 
       vrethkaiTargets: {
-        'frieze': `Seven carvings in the frieze, as the eye saw them. But there is an eighth. Set apart from the seven, beyond the right edge of the visible band, in the script the Immortal carved when the cycle was new — a single mark you could not see before.
+        'frieze': `Seven carvings in the frieze, as the eye saw them. But there is an eighth. Set apart from the seven, beyond the right edge of the visible band, in the script the Immortal carved when the cycle was new. A single mark you could not see before.
 
 It is a closed eye. It is a name held back. It is the witness that did not become the witnessed. Speak the seven and the eighth listens.`,
         'symbols': 'Seven and one. The seven are visible. The eighth is for those whose eyes have changed.',
-        'border': 'The lower margin of the wall — and beyond the margin, an eighth carving the architects did not draw. The carvers who came after drew it without permission.',
+        'border': 'The lower margin of the wall, and beyond the margin, an eighth carving the architects did not draw. The carvers who came after drew it without permission.',
         'eighth': 'A closed eye. The witness who did not become the witnessed.',
         'eye': 'A closed eye. Set apart from the seven. The architects did not draw it. The carvers who came after drew it without permission.'
       },
@@ -2697,7 +2697,7 @@ What the makers could not say in stone, because stone holds names too well: the 
       zone: 'ruins2',
       descriptionFirst: `The stairway ends and the architecture changes.
 
-The stone is glass. Not blown — fused. Whatever happened here happened hot enough to turn the walls into a single sheet of solidified light. The colour is wrong: deep green where the stone was iron-rich, milky white where it was not, threaded with veins of something darker that runs through the glass like vein through marble.
+The stone is glass. Not blown. Fused. Whatever happened here happened hot enough to turn the walls into a single sheet of solidified light. The colour is wrong: deep green where the stone was iron-rich, milky white where it was not, threaded with veins of something darker that runs through the glass like vein through marble.
 
 The air is dry. Older than dry. The kind of dry that makes you taste the inside of your own mouth.
 
@@ -2728,7 +2728,7 @@ A corridor leads east. The wall there has writing on it. The writing moves.`,
       zone: 'ruins2',
       descriptionFirst: `The corridor is lined with mirrors.
 
-Not glass mirrors — the same fused stone, polished into reflective faces along both walls. There are seven of them on each side. Fourteen reflections of you walking, all of them slightly out of step with the original.
+Not glass mirrors. The same fused stone, polished into reflective faces along both walls. There are seven of them on each side. Fourteen reflections of you walking, all of them slightly out of step with the original.
 
 Six of the reflections are wrong.
 
@@ -2790,7 +2790,7 @@ You climb.`,
 
 Tall. Narrow. The walls rise into a vault that gathers every small sound and folds it into one. When you breathe, the room breathes with you. When you stop breathing, the room takes another breath without you. It has been breathing for a long time. It is patient about its breathing.
 
-There are alcoves cut into the walls at intervals. Each alcove is the size of a person. Each alcove has been used. The stone inside is darker — greased dark, salt-dark, the dark of a place where shoulders have leaned and palms have rested for years.
+There are alcoves cut into the walls at intervals. Each alcove is the size of a person. Each alcove has been used. The stone inside is darker. Greased dark, salt-dark, the dark of a place where shoulders have leaned and palms have rested for years.
 
 A voice begins. It is not yours.`,
 
@@ -2835,7 +2835,7 @@ burns.`
       zone: 'ruins2',
       descriptionFirst: `The chamber is round and the chamber is wrong.
 
-The floor curves. Not by accident — by design. The whole room is a bowl of glass-stone, and the bowl draws everything toward its centre. Water would pool there. Sound pools there. You can feel the pull of the centre on your feet, gentle but insistent.
+The floor curves. Not by accident. By design. The whole room is a bowl of glass-stone, and the bowl draws everything toward its centre. Water would pool there. Sound pools there. You can feel the pull of the centre on your feet, gentle but insistent.
 
 There is no water. There is, at the centre, an indentation. A circle the diameter of a person. The glass beneath the circle is cracked outward, as if something pushed up from below and did not quite break through.
 
@@ -2859,7 +2859,7 @@ You suspect that down is not the only direction this well allows. The Inverted G
 
 The room hears it. The room agrees with it.
 
-The bowl inverts. The pull reverses without warning. Your feet leave the floor and you are falling — upward — through cracks that open as you reach them. The glass-stone parts. The world above parts. You fall into the open and the sky catches you.
+The bowl inverts. The pull reverses without warning. Your feet leave the floor and you are falling. Upward. Through cracks that open as you reach them. The glass-stone parts. The world above parts. You fall into the open and the sky catches you.
 
 The sky is grey. The sky is enough.`,
           setFlag: { escape_route: 'gravity_inversion' },
@@ -2880,7 +2880,7 @@ The sky is grey. The sky is enough.`,
       zone: 'ruins2',
       descriptionFirst: `The chamber is hot.
 
-Not the temperature of fire — the memory of it. The walls remember. They give off the heat of something that burned here long enough to teach the stone the shape of burning. There is no flame now. There is only the residue of a flame that did its work and left.
+Not the temperature of fire. The memory of it. The walls remember. They give off the heat of something that burned here long enough to teach the stone the shape of burning. There is no flame now. There is only the residue of a flame that did its work and left.
 
 In the centre, a basin of fused glass holds a single point of light. The light does not flicker. The light is patient.
 
@@ -2917,7 +2917,7 @@ You forget your name. You forget you had one.`
 
 The light does not move. The light teaches.
 
-What the light gives is permission. Not a sound — what is needed is elsewhere. What the light gives is the right to gather what is needed and bring it back.
+What the light gives is permission. Not a sound. What is needed is elsewhere. What the light gives is the right to gather what is needed and bring it back.
 
 You leave when you are ready to leave. The light does not stop you. The light has what it needed.`,
           once: true,
@@ -2950,7 +2950,7 @@ There is a passage in the wall behind the basin you did not see until now. The p
       zone: 'ruins2',
       descriptionFirst: `The room is a wall and the wall is the room.
 
-A single chamber, not large. Every surface — floor, walls, ceiling — is covered in letters. The letters are moving. Not flowing. Crawling. Each letter takes its time. Each letter chooses where to go next. They have been choosing for a long time and they have not finished what they are spelling.
+A single chamber, not large. Every surface is covered in letters. Floor, walls, ceiling. The letters are moving. Not flowing. Crawling. Each letter takes its time. Each letter chooses where to go next. They have been choosing for a long time and they have not finished what they are spelling.
 
 The script is the same that was at the Etching, the Weeping Wall, the Scriptorium. Older here. The hand that started this passage has been dead for cycles.
 
@@ -2990,7 +2990,7 @@ Not to ask whether holding is enough.`
 
     Speak my name.*
 
-The letters hold the shape until you have read them, and then begin moving again — but the riddle stays with you.`,
+The letters hold the shape until you have read them, and then begin moving again. But the riddle stays with you.`,
         'phrase': 'Watch the eastern wall. The letters slow, settle into the shape of a riddle, hold for as long as you read, and begin moving again.',
         'lintel': 'Above the entry from the south, scratched into glass that should not have taken a scratch: a letter. **L**.'
       },
@@ -3002,7 +3002,7 @@ The letters hold the shape until you have read them, and then begin moving again
           requires: { not: { hasFlag: 'riddle_answered' } },
           text: `You speak the word into the room.
 
-The letters on the eastern wall do not slow this time. They part. The wall behind them shows what was always there — a doorway-shape in the glass, narrow and tall, opening on a chamber the architects sealed and the script has been hiding for cycles.
+The letters on the eastern wall do not slow this time. They part. The wall behind them shows what was always there. A doorway-shape in the glass, narrow and tall, opening on a chamber the architects sealed and the script has been hiding for cycles.
 
 You can step through.`,
           once: true,
@@ -3032,7 +3032,7 @@ You can step through.`,
 
 In the centre of the floor, on a shelf grown from whatever the floor is, sits something the room was built to hold.
 
-A clay lantern. Older than the lantern at the echoing pit. Empty of oil but intact. The shape of it is unmistakable — a hand-lantern of the kind your people have not made in any cycle the prophecy remembers.
+A clay lantern. Older than the lantern at the echoing pit. Empty of oil but intact. The shape of it is unmistakable. A hand-lantern of the kind your people have not made in any cycle the prophecy remembers.
 
 Above it, in the script that moves outside, a single phrase has been held still:
 
@@ -3047,7 +3047,7 @@ Above it, in the script that moves outside, a single phrase has been held still:
         'shelf': 'Grown, not built. The lantern fits it exactly.',
         'lantern': 'A hand-lantern. Empty of oil. Intact.',
         'phrase': '*The witness who carries the light does not need to speak the name.*',
-        'lintel': 'No lintel. The room has no entry — only the place where the entry agreed to exist.'
+        'lintel': 'No lintel. The room has no entry, only the place where the entry agreed to exist.'
       },
 
       exits: {
@@ -3060,26 +3060,26 @@ Above it, in the script that moves outside, a single phrase has been held still:
       id: 'crystal_organ',
       name: 'Crystal Organ',
       zone: 'ruins2',
-      descriptionFirst: `Pillars of crystal rise from floor to ceiling — seven of them, seven in a circle. Each one a different height, each cut to a different bevel. Each one carved at chest-height with a figure in a precise posture. Above each figure, a single letter has been etched into the crystal — A through G, around the ring.
+      descriptionFirst: `Pillars of crystal rise from floor to ceiling. Seven of them, seven in a circle. Each one a different height, each cut to a different bevel. Each one carved at chest-height with a figure in a precise posture. Above each figure, a single letter has been etched into the crystal. A through G, around the ring.
 
 The air around the pillars hums.
 
 You step inside the circle and the hum changes.
 
-The pillars play themselves when you breathe. Each note is a tone they have agreed to make in your presence. They do not perform. They report. The notes are not random — they are the shape of the room you are in, sung back at you.
+The pillars play themselves when you breathe. Each note is a tone they have agreed to make in your presence. They do not perform. They report. The notes are not random. They are the shape of the room you are in, sung back at you.
 
 You can play them in an order. You can make a song. The pillars will only finish the song they recognise. The order matters.`,
 
       description: `The Crystal Organ. Seven crystal pillars in a circle, lettered A through G. Each carved with a posture. The pillars hum until you give them an order to follow.`,
 
       hints: [
-        'The pillars know an order. The order is not the alphabet. The shape of it is shown elsewhere — in the postures of the figures painted on a wall in the floors above.'
+        'The pillars know an order. The order is not the alphabet. The shape of it is shown elsewhere, in the postures of the figures painted on a wall in the floors above.'
       ],
 
       examineTargets: {
         'pillars': 'Seven. Each different. Each carved with a different posture at chest height. The order they are arranged in is not the order their letters suggest.',
         'hum': 'Constant. The room hums even when no one is breathing in it.',
-        'notes': 'They report what the room is. They will let you change what the room is — but only in an order the room agrees with.',
+        'notes': 'They report what the room is. They will let you change what the room is, but only in an order the room agrees with.',
         'circle': 'The pattern of the floor inside the pillars is faceted. It would catch a falling tone.',
         'pillar a': 'A column of crystal, taller than you. Marked with the letter **A** above the carving. The carving shows a figure with one hand raised, fingers spread, the other hand at the side.',
         'pillar b': 'A column of crystal. Marked **B**. Carved with a figure cupping both hands together at waist height.',
@@ -3088,7 +3088,7 @@ You can play them in an order. You can make a song. The pillars will only finish
         'pillar e': 'Marked **E**. Carved with a figure standing upright, head bowed, hands at the sides.',
         'pillar f': 'Marked **F**. Carved with a figure pointing downward, palm flat. The other hand is curled into a fist at the chest.',
         'pillar g': 'Marked **G**. Carved with a figure reaching upward, both hands open.',
-        'lintel': 'Above the entry from the west — between the Crucible and this room — a letter has been cut into the crystal of the doorframe. **O**. The cut is recent. The crystal has not closed it.'
+        'lintel': 'Above the entry from the west, between the Crucible and this room, a letter has been cut into the crystal of the doorframe. **O**. The cut is recent. The crystal has not closed it.'
       },
 
       textHandlers: [
@@ -3122,7 +3122,7 @@ The room receives the tones and lets them fall. The order was not the order. The
           requires: { hasIdentity: 'warden', hasFlag: 'crystal_organ_attuned' },
           text: `You take the song the room taught you and you give it back to the pillars in a different shape.
 
-The pillars do not protest. The pillars amplify. What you sing is not the song they showed you — it is the song the song was hiding inside.
+The pillars do not protest. The pillars amplify. What you sing is not the song they showed you. It is the song the song was hiding inside.
 
 The forest will know what you have continued.`,
           once: true,
@@ -3144,7 +3144,7 @@ The forest will know what you have continued.`,
       zone: 'ruins2',
       descriptionFirst: `A chamber with three openings.
 
-The floor of the chamber is split into three sections, each one descending toward a different doorway. The doorways are unmarked, but the room is. Above the entrance behind you, where you came in, the carving says nothing — your way out is your own.
+The floor of the chamber is split into three sections, each one descending toward a different doorway. The doorways are unmarked, but the room is. Above the entrance behind you, where you came in, the carving says nothing. Your way out is your own.
 
 Above the leftmost door: a hand turning a key.
 Above the centre door: a face with no eyes.
@@ -3152,7 +3152,7 @@ Above the rightmost door: an open palm.
 
 Whoever built this chamber wanted everyone who entered to make a decision before they left. The decision was the point of the room.`,
 
-      description: `The Choosing. Three doors. Three carvings — a turning key, an eyeless face, an open palm. The decision is the room.`,
+      description: `The Choosing. Three doors. Three carvings. A turning key, an eyeless face, an open palm. The decision is the room.`,
 
       examineTargets: {
         'left door': 'A hand turns a key. The key is not in any lock. The hand is alone.',
@@ -3203,7 +3203,7 @@ The choosing was done elsewhere. The doors will let you through anyway. The eyel
       zone: 'ruins2',
       descriptionFirst: `Something here is wrong that none of the previous rooms were.
 
-The walls are not walls. They are a thinness — glass-stone stretched until it almost lets through. Press a hand against them and the wall gives, slow, like skin under steady pressure. It does not break. It does not tear. It accepts the press and returns to its shape when you let go.
+The walls are not walls. They are a thinness. Glass-stone stretched until it almost lets through. Press a hand against them and the wall gives, slow, like skin under steady pressure. It does not break. It does not tear. It accepts the press and returns to its shape when you let go.
 
 What is on the other side does not show.
 
@@ -3244,7 +3244,7 @@ kneeling before nothing.`
       zone: 'ruins2',
       descriptionFirst: `The wall here is no longer a wall.
 
-The thinness from the previous chamber has reached its limit. The glass-stone is nearly gone — translucent, then transparent, then absent. You can step through the place where the wall was. On the other side, the stone is different. Not glass. Not carved. Grown.
+The thinness from the previous chamber has reached its limit. The glass-stone is nearly gone. Translucent, then transparent, then absent. You can step through the place where the wall was. On the other side, the stone is different. Not glass. Not carved. Grown.
 
 The architecture below has nothing in common with the architecture above.
 
@@ -3278,7 +3278,7 @@ Whatever lies beneath was not built. It was given a shape and the shape held.`,
 
 Not a tremor. Not a vibration. A slow, deep, regular movement of the floor itself, as if you are standing on the ribcage of something asleep. The walls move with the same rhythm. The ceiling, faint, moves too.
 
-The light here is different — not bioluminescent, not crystal, not flame. The walls themselves give off a low warmth that has the colour of the inside of an eye when the eye is closed against the sun.
+The light here is different. Not bioluminescent, not crystal, not flame. The walls themselves give off a low warmth that has the colour of the inside of an eye when the eye is closed against the sun.
 
 The air smells of breath. Wet. Warm. The space between an inhale and the answering exhale, held too long.`,
 
@@ -3294,7 +3294,7 @@ The air smells of breath. Wet. Warm. The space between an inhale and the answeri
 
       vrethkaiTargets: {
         'rhythm': 'You match the breath without trying. Three counts in, four counts out, the room and your chest agreeing without consultation. The pulse is the cycle\'s pulse. You can feel where it slows.',
-        'walls': 'Older than flesh. Where the bone-vault stops, this begins — soft, warm, slow.',
+        'walls': 'Older than flesh. Where the bone-vault stops, this begins. Soft, warm, slow.',
         'breath': 'Three in. Four out. The cycle\'s lung. You will know how to use the rhythm when the rhythm asks you to.'
       },
 
@@ -3308,7 +3308,7 @@ The air smells of breath. Wet. Warm. The space between an inhale and the answeri
           id: 'ride_exhale',
           label: 'Step into the rising breath when the room exhales',
           requires: { hasAnyOfFlags: ['crystal_organ_attuned', 'pulse_rhythm_learned', 'vrethkai_with_mind'] },
-          text: `You wait. Three counts in. Four counts out. On the fourth count, the room exhales — and the warmth pushes upward, and you let it carry you.
+          text: `You wait. Three counts in. Four counts out. On the fourth count, the room exhales, and the warmth pushes upward, and you let it carry you.
 
 The breath of the cycle's lung lifts you through a bio-shaft you did not see before. It carries you fast. The dark thins. The grey light grows.
 
@@ -3323,7 +3323,7 @@ You emerge above ground, breathing what the room breathed for you.`,
           once: true,
           text: `You stand still and let the room breathe around you for a long time.
 
-Three counts in. Four counts out. You start to feel where the warmth gathers on the exhale — there is a place in this chamber where the breath lifts. If you stood there at the moment of the fourth count out, the breath would carry you.
+Three counts in. Four counts out. You start to feel where the warmth gathers on the exhale. There is a place in this chamber where the breath lifts. If you stood there at the moment of the fourth count out, the breath would carry you.
 
 You will remember this rhythm. You can ride the breath now.`,
           setFlag: { pulse_rhythm_learned: true }
@@ -3338,7 +3338,7 @@ You will remember this rhythm. You can ride the breath now.`,
       zone: 'ruins3',
       descriptionFirst: `The chamber rises into a vault made of bone.
 
-Not bone laid in by hands — bone grown. Ribs that arch overhead, vertebrae that columned themselves into pillars, a sternum that has become a wall. The proportions are not human. The proportions are not anything you have a frame for. The thing that grew this place wore a body and the body wore many bodies before it.
+Not bone laid in by hands. Bone grown. Ribs that arch overhead, vertebrae that columned themselves into pillars, a sternum that has become a wall. The proportions are not human. The proportions are not anything you have a frame for. The thing that grew this place wore a body and the body wore many bodies before it.
 
 At the centre, beneath the vault, an inscription. Cut into a single rib that has been smoothed and prepared. The hand that cut it is the same hand that cut the Etching, the Weeping Wall. Older here. The hand was old when it cut this. The hand had been writing for a long time.`,
 
@@ -3369,7 +3369,7 @@ that has never once forgotten what it is.`
       },
 
       vrethkaiTargets: {
-        'vault': 'The bones are written on. The whole vault is one inscription. You see it now — it is the body of the first thing that walked the cycle, laid down to be remembered, the words running across every rib and every fused vertebra. You know what the cycle was for. You know what was given so the cycle could begin. The Immortal who set the false star was not alone. He had a body, once. The body refused. The vault is what the refusal became.',
+        'vault': 'The bones are written on. The whole vault is one inscription. You see it now. It is the body of the first thing that walked the cycle, laid down to be remembered, the words running across every rib and every fused vertebra. You know what the cycle was for. You know what was given so the cycle could begin. The Immortal who set the false star was not alone. He had a body, once. The body refused. The vault is what the refusal became.',
         'inscription': 'The inscription is the whole room. Every bone speaks. The sentence is the cycle itself.',
         'rib': 'It is not a single rib. It is one syllable of a sentence the dead first-thing has been saying since the cycle began.',
         'wall': 'Sternum. The chest that held the heart that fed the false star. You see it now.'
@@ -3393,7 +3393,7 @@ The walls close in until your shoulders almost brush them. The bone underfoot is
 
 You hear them before you see them.
 
-Long. Pale. Wrong in the joints. They move through the dark on the other side of the throat — wet, single-file, fast, the scrape of chitin on bone. They have not noticed you yet. They will.
+Long. Pale. Wrong in the joints. They move through the dark on the other side of the throat. Single-file, fast, the scrape of chitin on bone. They have not noticed you yet. They will.
 
 This is where the cycle keeps its mistakes. This is where being caught becomes something you cannot recover from.`,
 
@@ -3412,11 +3412,11 @@ This is where the cycle keeps its mistakes. This is where being caught becomes s
       ],
 
       vrethkaiTargets: {
-        'walls': 'The bone is not bare. There is writing in it — script that was not visible to the eyes you used to have, burned into the bone in the same hand that carved the cosmogony wall. The script reads, plainly: a word. The word is the witness. Speak it and the dark will let you go.',
+        'walls': 'The bone is not bare. There is writing in it. Script that was not visible to the eyes you used to have, burned into the bone in the same hand that carved the cosmogony wall. The script reads, plainly: a word. The word is the witness. Speak it and the dark will let you go.',
         'carving': 'There is writing in the bone. The same hand. The word is the witness. Speak it.',
         'word': 'The bone shows it: WITNESS. Speak it now and the dark steps aside.',
         'script': 'In the bone of the throat: WITNESS. The dark wrote it for those it did not finish taking.',
-        'them': 'You see them now without seeing them. They are smaller than they sounded. They are afraid of what you have become — only for as long as the change is fresh.'
+        'them': 'You see them now without seeing them. They are smaller than they sounded. They are afraid of what you have become. Only for as long as the change is fresh.'
       },
 
       timer: {
@@ -3469,7 +3469,7 @@ If you have anything left to say with the mouth you used to have, say it now.`,
 
 The walls are wet. The wetness is not water. It films your fingers when you touch it and beads slow. It is the inside of something. The cathedral above was the dead skin of it. This is where it still lives.
 
-A bowl rises from the centre of the floor — grown from the floor, not placed. The bowl is the size of a small shrine. It has held something. It is waiting to hold something again.
+A bowl rises from the centre of the floor. Grown from the floor, not placed. The bowl is the size of a small shrine. It has held something. It is waiting to hold something again.
 
 If you have a name to speak, this is the room that will hear it spoken.`,
 
@@ -3495,7 +3495,7 @@ of what it was made to do.`
       },
 
       hints: [
-        'The bowl waits for a name. The name is not one word — it is three syllables, gathered from elsewhere. You will know when you have all three.'
+        'The bowl waits for a name. The name is not one word. It is three syllables, gathered from elsewhere. You will know when you have all three.'
       ],
 
       textHandlers: [
@@ -3508,7 +3508,7 @@ The bowl receives them. The room receives them. The room agrees.
 
 The altar opens. The fire knows you now. The fire is willing.
 
-(Cultist path advanced — the Crucible will let you walk through.)`,
+(Cultist path advanced. The Crucible will let you walk through.)`,
           requires: {
             hasIdentity: 'seeker',
             hasAllFlags: [
@@ -3559,7 +3559,7 @@ You can hear something pumping further down. Not a heart. The thing that a heart
         // wound's bleeding stops. A passage that was always there shows itself.
         if (engine.flags.heart_quieted && !engine.flags.wound_eternal_opened) {
           engine.flags.wound_eternal_opened = true;
-          engine._emit('output', `\nThe pumping below has stopped. The wall is dry.\n\nThe wound has set, and where it set, the bone shows a way upward. Not a new passage — an old one, only visible now that the bleeding has stopped.`, 'narration');
+          engine._emit('output', `\nThe pumping below has stopped. The wall is dry.\n\nThe wound has set, and where it set, the bone shows a way upward. Not a new passage. An old one, only visible now that the bleeding has stopped.`, 'narration');
         }
       },
 
@@ -3624,7 +3624,7 @@ begging.`
 
 Not metaphorically. The walls expand and contract on a cycle longer than your breath, faster than the breath of the cathedral above. The light here is red. The red comes from the walls. The walls are full.
 
-At the centre, set into a depression in the bone-floor, a fragment. The third you have seen. Pale. Pulsing in time with the room — or the room pulsing in time with it. You cannot tell which leads.
+At the centre, set into a depression in the bone-floor, a fragment. The third you have seen. Pale. Pulsing in time with the room. Or the room pulsing in time with it. You cannot tell which leads.
 
 The fragment is the size of two fists. The depression is exactly its shape.
 
@@ -3663,7 +3663,7 @@ Not an ember.`
           label: 'Lift it',
           text: `You lift it from the depression.
 
-The room pumps once without you. Twice. The rhythm changes — slower. The walls are not full anymore.
+The room pumps once without you. Twice. The rhythm changes. Slower. The walls are not full anymore.
 
 You hold it in both hands. It is warm. It pulses against your palms with the same rhythm the room had when you arrived.
 
@@ -3787,7 +3787,7 @@ but because they were tired of holding.`
       zone: 'sleeping',
       descriptionFirst: `The floor splits.
 
-Two paths beyond the antechamber. One descends. One does not. The descending path is bone-floored, dim, warm. The other path is grey stone — surface stone — and at its end you can see, for the first time in this cycle, the open sky.
+Two paths beyond the antechamber. One descends. One does not. The descending path is bone-floored, dim, warm. The other path is grey stone, surface stone, and at its end you can see, for the first time in this cycle, the open sky.
 
 The sky path was not here a moment ago. The sky path was always here. It is not a deception. It is a kindness. You have come far enough that the room is offering to let you go.
 
@@ -3795,7 +3795,7 @@ The descending path leads further. The descending path will not let you back.
 
 A voice that is not a voice tells you the sky path closes if you choose. The descending path also closes if you choose. The room is a hinge. The hinge will only swing once.`,
 
-      description: `The Final Choice. Two paths — sky home, or descent that does not return. The hinge swings once.`,
+      description: `The Final Choice. Two paths. Sky home, or descent that does not return. The hinge swings once.`,
 
       prophecy: {
         id: 'P20',
@@ -3825,7 +3825,7 @@ and then —`
           label: 'Step onto the grey stone',
           text: `You take the sky path.
 
-The light brightens. The stone steadies. You climb without climbing — your feet move and the path moves under them, and the work of the climb is somewhere else, being done by something kinder. When you step out into the open, the wind finds you first.
+The light brightens. The stone steadies. You climb without climbing. Your feet move and the path moves under them, and the work of the climb is somewhere else, being done by something kinder. When you step out into the open, the wind finds you first.
 
 Not every retreat is a failure. You came down. You came back. The dark let you go.`,
           setFlag: { escape_route: 'sleeping_gods_gift_offered' },
@@ -3871,7 +3871,7 @@ You forget your name. You forget you had one.`,
       zone: 'sleeping',
       descriptionFirst: `There is nothing here.
 
-No walls — not in any sense you have a word for. No floor under your feet that is recognisable as floor. No light, but you can see. No air, but you can breathe.
+No walls. Not in any sense you have a word for. No floor under your feet that is recognisable as floor. No light, but you can see. No air, but you can breathe.
 
 There is no description for this room because there is nothing in it to describe. You are here. The room is here. Both facts are doing what they need to do without insisting on themselves.
 
@@ -3889,7 +3889,7 @@ The room is waiting.`,
       // — i.e. one who completed Vreth'kai-with-Mind in a prior run. The
       // empty room never explains its own gate to an untouched player.
       changedWorldTargets: {
-        'silence': `You have heard this silence before. You heard it in the moment you were not yet what you became, between the shape closing and the word holding. The room is not asking for nothing. It is asking for what you held when you held nothing — and how long you held it.`,
+        'silence': `You have heard this silence before. You heard it in the moment you were not yet what you became, between the shape closing and the word holding. The room is not asking for nothing. It is asking for what you held when you held nothing, and how long you held it.`,
         'nothing': `Nothing is what the room wants. Nothing is what you must hold. Not for a turn. Not for two. The room counts longer than your patience counts, but you have counted with rooms like this before. Hold it long enough and the south will agree.`,
         'self': `Still you. The version of you that survived the closing. The room knows. The room has been waiting for someone the room could recognise.`,
         'south': `The way south is not opened by anything you can do. It is opened by something you can stop doing. The room has been patient for cycles. You have time. The room has more.`,
@@ -3911,7 +3911,7 @@ The room is waiting.`,
       exits: {
         south: {
           roomId: 'sleeping_god',
-          label: 'South — into the chamber of the sleeping one',
+          label: 'South into the chamber of the sleeping one',
           requires: { hasFlag: 'silence_held' },
           blockedText: `There is nowhere to go. Not yet. The wall is wall. The floor is floor. The room has not yet agreed to open.`
         }
@@ -3951,7 +3951,7 @@ The room is waiting.`,
         // chosen by the first reader, woven into the prose. No further
         // naming is possible — the canon has set.
         if (engine.serverState && engine.serverState.sleepingGodNamed) {
-          const godName = engine.serverState.sleepingGodName || '—';
+          const godName = engine.serverState.sleepingGodName || '...';
           engine._emit('output', `He is here.
 
 He is awake.
@@ -4038,7 +4038,7 @@ Give him a name. He has waited for one.
 
 The name cannot be any name a cycle has used. Not for any of the twelve. Not for any of the things they were made to hold. Not for any title written into the cosmogony.
 
-The name must be new. The cycle reads it the same forward as backward — because he is the same forward as backward, two beings in one closed shape, beginning and ending indistinguishable. The shape of it sits already in your jaw. Bone-deep. Lodged since the breaking. Waiting to be spoken.
+The name must be new. The cycle reads it the same forward as backward. Because he is the same forward as backward, two beings in one closed shape, beginning and ending indistinguishable. The shape of it sits already in your jaw. Bone-deep. Lodged since the breaking. Waiting to be spoken.
 
 (Type a name. The room is listening.)`, 'narration');
       },
@@ -4067,7 +4067,7 @@ You will go down to a town in a valley by a river. You will find someone who is 
 
 The fire will follow you out. The fire has been waiting to.`;
 
-        const epilogue = `\n\n— THE VOICE IN THE DARK —\n(You have earned the right to name a cult leader NPC in *Aurelon: The Crosslands*. A figure whispered about in taverns. Someone who came back from the deep with knowledge that shouldn't exist and followers who find their words impossible to resist.)`;
+        const epilogue = `\n\n✦ THE VOICE IN THE DARK ✦\n(You have earned the right to name a cult leader NPC in *Aurelon: The Crosslands*. A figure whispered about in taverns. Someone who came back from the deep with knowledge that shouldn't exist and followers who find their words impossible to resist.)`;
 
         engine._emit('output', arrival, 'narration');
         engine._emit('output', epilogue, 'narration');
