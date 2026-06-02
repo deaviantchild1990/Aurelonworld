@@ -40,6 +40,14 @@
   <!-- Favicon: stylised circle-with-keyhole, the cosmogony-wall mark, in gold on black -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230a0a0a' rx='8'/><circle cx='32' cy='32' r='22' fill='none' stroke='%23c9a84c' stroke-width='2'/><circle cx='32' cy='27' r='5' fill='%23c9a84c'/><rect x='29.5' y='29' width='5' height='12' fill='%23c9a84c'/></svg>">
 
+  <!-- PWA: web app manifest (installable + Play Store TWA) -->
+  <link rel="manifest" href="manifest.json">
+  <!-- iOS home-screen fallbacks (Apple ignores most of the manifest) -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="The Descent">
+
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
@@ -138,7 +146,7 @@
       <p class="intro-section-label">— What to expect —</p>
       <p><em>You will die more than once.</em> Death is permadeath. Every turn auto-saves. You can always undo the last one. Closing the page does not lose your progress.</p>
       <p><em>Read carefully.</em> The prose is most of the reward. Almost everything you find is canonical text from <em>The Breaking</em> — the prophecy fragments most of all. Twenty are scattered through the dark.</p>
-      <p><em>There are many ways out.</em> Some are easier. Some you will need many runs to find. The four hardest will earn you a place in the unpublished books. The first reader to reach each one names a character.</p>
+      <p><em>There are many ways out.</em> Some are easier. Some you will need many runs to find. The four hardest will earn you a free copy of <em>A Breaking: of Ashes and Light</em> and first pre-read of book two. The first reader to reach each one names a character in the books.</p>
       <p>Type <code>intro</code> at any time to read this again, or <code>tutorial</code> for a quick command reference.</p>
     </div>
     <footer class="tutorial-modal-footer">
@@ -227,6 +235,16 @@
 
   // boot() handles tutorial-on-first-run, then resume-or-start.
   ui.boot();
+</script>
+
+<!-- Service worker — caches the game shell so it runs offline (PWA / TWA).
+     Best-effort: if registration fails, the game still works online. -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
 </script>
 
 </body>
