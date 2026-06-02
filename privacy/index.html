@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy · Aurelon</title>
+<meta name="description" content="What the Aurelon website and The Descent collect, and what we do with it. Written to be read, not to hide things.">
+<meta name="theme-color" content="#0d0b09">
+<meta name="robots" content="all">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4985a;
+  --gold-light: #d4a847;
+  --gold-dim: #8a6d3b;
+  --bone: #e8dcc8;
+  --dark: #0d0b09;
+  --text-primary: #d4c8b4;
+  --text-secondary: #9a8e7e;
+  --text-faint: #6a604f;
+}
+
+html { background: var(--dark); }
+body {
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(196,152,90,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(107,32,32,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 28px 100px;
+}
+
+header.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(196,152,90,0.15);
+}
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow a { color: var(--gold-dim); text-decoration: none; transition: color 0.2s; }
+.eyebrow a:hover { color: var(--gold); }
+h1.page-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.updated {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.policy-body h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin: 2em 0 0.6em;
+}
+.policy-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--bone);
+  margin: 1.2em 0 0.3em;
+}
+.policy-body p { margin-bottom: 1.1em; color: var(--text-primary); }
+.policy-body ul { margin: 0 0 1.1em 1.4em; }
+.policy-body li { margin-bottom: 0.5em; }
+.policy-body strong { color: var(--bone); }
+.policy-body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196,152,90,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.policy-body a:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+.tldr {
+  border: 1px solid rgba(196,152,90,0.2);
+  background: rgba(13,11,9,0.6);
+  padding: 22px 26px;
+  margin-bottom: 1.4em;
+}
+.tldr .tldr-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.tldr ul { margin-bottom: 0; }
+
+footer.page-footer {
+  text-align: center;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(196,152,90,0.1);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+footer.page-footer a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin: 0 14px;
+  transition: color 0.2s;
+}
+footer.page-footer a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .container { padding: 40px 20px 60px; }
+  h1.page-title { font-size: 1.7rem; }
+  footer.page-footer a { display: block; margin: 8px 0; }
+}
+</style>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c6b10b9c22674a1fa83ea88372c5a3a4"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="container">
+
+  <header class="page-header">
+    <div class="eyebrow"><a href="/">Aurelon</a></div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <div class="updated">Last updated: May 2026</div>
+  </header>
+
+  <div class="policy-body">
+
+    <p>This policy explains what <strong>aurelonuniverse.com</strong> and its free text adventure, <em>The Descent</em>, collect, and what we do with it. It is written to be read, not to hide things.</p>
+
+    <div class="tldr">
+      <div class="tldr-label">The short version</div>
+      <ul>
+        <li>The game runs in your browser. Your progress is saved on your own device and never sent to us.</li>
+        <li>We only receive information when you <em>choose</em> to claim an ending or submit the witness form.</li>
+        <li>We never collect your IP address or precise location, and we use no advertising or tracking cookies.</li>
+        <li>We do not sell your data. Ever.</li>
+      </ul>
+    </div>
+
+    <h2>What we collect, and when</h2>
+
+    <h3>While you play</h3>
+    <p>Your game progress is stored locally in your browser (localStorage): the current room, inventory, prophecy fragments, and which endings you have seen. It stays on your device. We cannot see it.</p>
+
+    <h3>When you claim an ending</h3>
+    <p>If you reach one of the game's endings and choose to submit a claim, our server records:</p>
+    <ul>
+      <li>the ending you reached and your rank for it;</li>
+      <li>basic run statistics (turn count, prophecy fragments found, shards, and whether certain endings were completed);</li>
+      <li>your country, an approximate region derived by our infrastructure provider, never your precise location or IP address;</li>
+      <li>your browser's user-agent string (the standard identifier browsers send with every request);</li>
+      <li>the time of the claim;</li>
+      <li>if you reach the Sleeping God ending, the name you typed for it.</li>
+    </ul>
+
+    <h3>When you submit the witness form</h3>
+    <p>If you choose to join the witness circle, we collect:</p>
+    <ul>
+      <li>your email address, so we can contact you about preread access;</li>
+      <li>your Discord handle, a proposed character name, and a message, all optional;</li>
+      <li>the claim it is attached to.</li>
+    </ul>
+
+    <h3>Analytics</h3>
+    <p>We use Cloudflare Web Analytics, which is privacy-first: it uses no cookies, does not fingerprint visitors, and reports only aggregate page statistics.</p>
+
+    <h2>What we do not collect</h2>
+    <ul>
+      <li>No IP addresses are stored.</li>
+      <li>No precise or GPS location.</li>
+      <li>No tracking or advertising cookies.</li>
+      <li>No third-party ad networks.</li>
+      <li>We never sell, rent, or trade your information.</li>
+    </ul>
+
+    <h2>How we use what we collect</h2>
+    <ul>
+      <li>To rank ending claims and run the witness / preread program.</li>
+      <li>To contact witnesses about prereleasing the novels.</li>
+      <li>To understand, in aggregate, how the game is played so we can improve it.</li>
+    </ul>
+
+    <h2>Who processes your data</h2>
+    <p>We keep things minimal. Your data may pass through:</p>
+    <ul>
+      <li><strong>GitHub Pages</strong>: hosts the website's files.</li>
+      <li><strong>Cloudflare</strong>: runs the claim/state server (a Worker and key-value store) and the privacy-first analytics.</li>
+      <li><strong>Discord</strong>: claim and witness notifications are sent to a private channel the author monitors.</li>
+    </ul>
+    <p>These providers process data on our behalf. We do not share it with anyone else.</p>
+
+    <h2>How long we keep it</h2>
+    <p>Claim and witness records are kept for as long as the witness program runs. You can ask us to delete yours at any time (see Contact).</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>To play without sending anything, simply don't submit a claim or the witness form. The game is fully playable, offline and anonymously.</li>
+      <li>To clear your local progress, use the in-game "new game" button or clear your browser's site data.</li>
+      <li>To request deletion of a claim or witness submission, contact us with your claim ID.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>The Descent contains dark themes and is not directed at children under 13. We do not knowingly collect information from children under 13.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we will update the date at the top. Material changes will be noted on the site.</p>
+
+    <h2>Contact</h2>
+    <p>Questions, or want your data deleted? Reach the author on our <a href="https://discord.gg/WdqrJRg4Qn">Discord</a>, or email <a href="mailto:privacy@aurelonuniverse.com">privacy@aurelonuniverse.com</a>.</p>
+
+  </div>
+
+  <footer class="page-footer">
+    <a href="/">Aurelon</a>
+    <a href="/the-descent">Play The Descent</a>
+    <a href="/stories">Stories</a>
+    <a href="/witness">Witness</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
