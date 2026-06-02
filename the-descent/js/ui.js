@@ -723,7 +723,7 @@ class GameUI {
       const found = frags.has(id);
       const meta = index[id];
       const title = found && meta ? this._escapeHtml(meta.title) : '';
-      const tooltip = found && meta ? `${id} — ${title} (click to read)` : 'Not yet found';
+      const tooltip = found && meta ? `${id} · ${title} (click to read)` : 'Not yet found';
       const dataAttr = found ? ` data-frag-id="${id}"` : '';
       html += `<div class="frag-slot ${found ? 'frag-found' : 'frag-empty'}" title="${tooltip}"${dataAttr}>${found ? id : '?'}</div>`;
     }
@@ -758,7 +758,7 @@ class GameUI {
     for (const slot of slots) {
       const found = caught.has(slot.catchId);
       const display = found ? this._escapeHtml(slot.name) : '?';
-      const tooltip = found ? `${slot.name} — pulled from the dark water.` : 'Not yet caught.';
+      const tooltip = found ? `${slot.name}, pulled from the dark water.` : 'Not yet caught.';
       html += `<div class="catch-slot ${found ? 'catch-found' : 'catch-empty'}" title="${tooltip}">${display}</div>`;
     }
     this.catchesEl.innerHTML = html;
