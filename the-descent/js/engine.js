@@ -267,7 +267,7 @@ class GameEngine {
     if (room.prophecy && !this.prophecyFragments.has(room.prophecy.id)) {
       this.prophecyFragments.add(room.prophecy.id);
       this.prophecyOrder.push(room.prophecy.id);
-      this._emit('output', `\n— Fragment discovered: ${room.prophecy.title} —\n\n${room.prophecy.text}`, 'prophecy');
+      this._emit('output', `\n✦ Fragment discovered: ${room.prophecy.title} ✦\n\n${room.prophecy.text}`, 'prophecy');
     }
 
     // --- Room items (first visit only) ---
@@ -338,7 +338,7 @@ class GameEngine {
           if (exit.blockedText) {
             choices.push({
               id: `exit_blocked_${direction}`,
-              label: `${this._directionLabel(direction)} — ${exit.blockedLabel || 'Blocked'}`,
+              label: `${this._directionLabel(direction)} · ${exit.blockedLabel || 'Blocked'}`,
               action: () => this._emit('output', exit.blockedText, 'narration'),
               disabled: false  // show it but it just describes the block
             });
@@ -463,12 +463,12 @@ class GameEngine {
     if (action.setIdentity) {
       this.identity = action.setIdentity;
       this.flags.identity_chosen = true;
-      this._emit('output', `\n— Identity chosen: ${action.setIdentity.toUpperCase()} —`, 'identity');
+      this._emit('output', `\n✦ Identity chosen: ${action.setIdentity.toUpperCase()} ✦`, 'identity');
     }
 
     if (action.giveRelic) {
       this.relicShards.add(action.giveRelic);
-      this._emit('output', `\n— Relic Shard acquired (${this.relicShards.size}/${this.totalShards}) —`, 'system');
+      this._emit('output', `\n✦ Relic Shard acquired (${this.relicShards.size}/${this.totalShards}) ✦`, 'system');
     }
 
     if (action.death) {
@@ -949,7 +949,7 @@ The walls look different. The light tastes different. The light has a taste now.
       return;
     }
     if (/^(?:quit|exit game)$/.test(trimmed)) {
-      this._emit('output', `There is no quitting from inside the dark. Close the page when you have had enough — what is here will wait.`, 'system');
+      this._emit('output', `There is no quitting from inside the dark. Close the page when you have had enough. What is here will wait.`, 'system');
       this._presentRoomChoices(room);
       return;
     }
@@ -1095,7 +1095,7 @@ The walls hear it. The floor hears it. He hears it.
 
 He stirs. He does not yet wake. Whether the cycle accepts the name is not yet known. The cycle takes its time. The cycle has time. But you have done what you came to do. The sound has been made. The shape has been spoken.
 
-— THE SLEEPING GOD —
+✦ THE SLEEPING GOD ✦
 (First-player completion: your name will be carried out of the dark and weighed against the cosmology of *Aurelon: The Crosslands*. If it holds, it becomes the deity's true name in canon. The author will be in touch.)`, 'narration');
         this.escape('sleeping_god', '');
         return true;
@@ -1114,7 +1114,7 @@ The chamber accepts the pause. The walls do not forget what you almost said. The
 
 You return to the surface with the name unfinished. The cycle will keep waiting. So will he.
 
-— THE DESCENT (paused at naming) —
+✦ THE DESCENT (paused at naming) ✦
 You have reached the deepest gate and chosen to ask before answering. To complete the naming, write to the author about the cycle. The conversation is the rest of the puzzle.
 
 Reach out: ${this.authorContact}
@@ -1181,14 +1181,14 @@ When you and the author have agreed on a name, it will be canonized on your beha
     if (!this._isAlternatingCase(trimmed)) {
       this._emit('output', `Your jaw will not shape that name.
 
-The shape that shaped you taught you how a name like his must be spoken — every syllable a turning, every letter a refusal of the one before. The room does not punish the attempt. The room is still listening.`, 'narration');
+The shape that shaped you taught you how a name like his must be spoken. Every syllable a turning, every letter a refusal of the one before. The room does not punish the attempt. The room is still listening.`, 'narration');
       return true;
     }
     const lower = trimmed.toLowerCase();
     if (lower !== lower.split('').reverse().join('')) {
       this._emit('output', `The name does not turn back upon itself.
 
-He is the one who held what should not have been held. What names him must reflect what he is — two beings in one closed shape, ending and beginning indistinguishable, the name folded back on itself the way he folded her into him. The room does not punish the attempt. The room is still listening.`, 'narration');
+He is the one who held what should not have been held. What names him must reflect what he is. Two beings in one closed shape, ending and beginning indistinguishable, the name folded back on itself the way he folded her into him. The room does not punish the attempt. The room is still listening.`, 'narration');
       return true;
     }
 
@@ -1473,7 +1473,7 @@ Both paths end at the same gate. The second one ends with a conversation.
     const remainingNote = remaining > 0
       ? ` (${remaining} hint${remaining === 1 ? '' : 's'} remain for this place.)`
       : ' (No more hints for this place.)';
-    this._emit('output', `Hint — ${hint}${remainingNote}`, 'system');
+    this._emit('output', `Hint: ${hint}${remainingNote}`, 'system');
     this._emit('stateChange');
     return true;
   }
@@ -1488,7 +1488,7 @@ Both paths end at the same gate. The second one ends with a conversation.
     if (this.currentRoom !== 'empty_room') return;
     if (this.flags.silence_held) return;
     this.flags.silence_held = true;
-    this._emit('output', `\nThe silence holds. The room agrees.\n\nThe way south opens — not as a passage that was always there, but as a passage the room decides to admit because you did not insist on filling it.`, 'narration');
+    this._emit('output', `\nThe silence holds. The room agrees.\n\nThe way south opens. Not as a passage that was always there, but as a passage the room decides to admit because you did not insist on filling it.`, 'narration');
     this._presentRoomChoices(this.rooms[this.currentRoom]);
   }
 
@@ -1723,7 +1723,7 @@ Both paths end at the same gate. The second one ends with a conversation.
 
   _showHelp() {
     this._emit('output', [
-      '— Full command reference —',
+      '✦ Full command reference ✦',
       '',
       'LOOK AROUND',
       '  look (l)             re-show this room',
@@ -1766,7 +1766,7 @@ Both paths end at the same gate. The second one ends with a conversation.
       '  pull                 try to land the catch (or commit during the fight)',
       '  release              abandon the cast (or let line out during the fight)',
       '',
-      '— The parser is forgiving. Articles (the/a/an) are stripped.',
+      'The parser is forgiving. Articles (the/a/an) are stripped.',
       'Partial item names work (drop fish → drops Old Fishing Rod).',
       'Capitalisation does not matter, except for one moment',
       'the dark will explain when it comes.'
@@ -2034,18 +2034,18 @@ Both paths end at the same gate. The second one ends with a conversation.
           : '';
         const inPrereadCircle = result.rank <= 10;
         const line = result.isFirst
-          ? `\n— You are the first reader to reach this ending. —
+          ? `\n✦ You are the first reader to reach this ending. ✦
 
 The cycle has carved your name into the right of naming. You may give a character in the books a name of your choosing, and that name will hold.
 
-The first ten readers of each ending preread the unpublished cycle in a private circle the author keeps for those who descended far enough to be owed the rest of the story. Submit your claim at https://aurelonuniverse.com/witness.${claimIdLine}${contactLine}`
+The first ten readers of each ending join the witness circle, a private group the author keeps for those who descended far enough to be owed the rest of the story. Witnesses receive a free copy of *A Breaking: of Ashes and Light* (book one, out now on Amazon) and first pre-read of book two before its release. Submit your claim at https://aurelonuniverse.com/witness.${claimIdLine}${contactLine}`
           : inPrereadCircle
-          ? `\n— You are claim #${result.rank} of those who reached this ending. —
+          ? `\n✦ You are claim #${result.rank} of those who reached this ending. ✦
 
-The first ten readers of each ending preread the unpublished cycle in a private circle the author keeps. You are well within that count. Submit your claim at https://aurelonuniverse.com/witness.${claimIdLine}${contactLine}`
-          : `\n— You are claim #${result.rank} of those who reached this ending. —
+The first ten readers of each ending join the witness circle, a private group the author keeps. Witnesses receive a free copy of *A Breaking: of Ashes and Light* (book one, out now on Amazon) and first pre-read of book two before its release. You are well within that count. Submit your claim at https://aurelonuniverse.com/witness.${claimIdLine}${contactLine}`
+          : `\n✦ You are claim #${result.rank} of those who reached this ending. ✦
 
-The first ten preread spots are taken, but the descent itself is its own reward — and the cycle remembers everyone who reached this far. Submit your claim at https://aurelonuniverse.com/witness if you'd like the author to know who you are.${claimIdLine}${contactLine}`;
+The first ten witness spots are taken, but the descent itself is its own reward, and the cycle remembers everyone who reached this far. Submit your claim at https://aurelonuniverse.com/witness if you'd like the author to know who you are.${claimIdLine}${contactLine}`;
         this._emit('output', line, 'system');
       }
       return result;
@@ -2218,7 +2218,7 @@ The first ten preread spots are taken, but the descent itself is its own reward 
         if (oneShotSpecial || normalRoomSpecial) {
           this._emit('output', roomCfg.special.text, 'narration');
           this.fisherCatches.add(roomCfg.special.catchId);
-          this._emit('output', `\n— Catch: ${roomCfg.special.name} (${this.fisherCatches.size}/${this.totalFisherCatches}) —`, 'system');
+          this._emit('output', `\n✦ Catch: ${roomCfg.special.name} (${this.fisherCatches.size}/${this.totalFisherCatches}) ✦`, 'system');
           this.flags.fishing = null;
           this._checkFisherProgress();
         } else if (roomCfg.oneShot && roomCfg.special && this.fisherCatches.has(roomCfg.special.catchId)) {
@@ -2439,23 +2439,23 @@ The first ten preread spots are taken, but the descent itself is its own reward 
     if (named) {
       funnel = `
 
-— What you have done is not common —
+✦ What you have done is not common ✦
 
-If you are among the first ten readers to reach this ending, you will read the book before anyone else. The first to arrive names the character — written into Aurelon canon permanently, in *The Breaking* novels and the *Aurelon: The Crosslands* campaign setting.
+If you are among the first ten readers to reach this ending, you receive a free copy of *A Breaking: of Ashes and Light* (book one of *The Breaking*, out now on Amazon) and the first pre-read of book two before its release. The first to arrive names the character, written into Aurelon canon permanently across *The Breaking* novels and the *Aurelon: The Crosslands* campaign setting.
 
 Claim your place at https://aurelonuniverse.com/witness.
 
-Or join the newsletter to know when the cycle is told in full: https://aurelonuniverse.com.`;
+Read book one now: https://www.amazon.com/dp/B0H24B14KS`;
     } else {
       funnel = `
 
-— Back to the world —
+✦ Back to the world ✦
 
-*The Breaking* — the first cycle of novels in the Aurelon universe — is coming. The cycle this prophecy belongs to is the world the books are set in. Be there when they are published.
+Book one of *The Breaking* is out: *A Breaking: of Ashes and Light*. The cycle this prophecy belongs to is the world the book is set in.
 
-Newsletter: https://aurelonuniverse.com.
+Read it on Amazon: https://www.amazon.com/dp/B0H24B14KS
 
-(For those who reach the harder endings: the first ten readers of each ending pre-read the book. The first to arrive names a character in it.)`;
+(For those who reach the harder endings: the first ten readers of each ending receive a free copy and pre-read the next book. The first to arrive names a character.)`;
     }
     this._emit('output', funnel, 'system');
   }
@@ -2656,7 +2656,7 @@ Newsletter: https://aurelonuniverse.com.
     const room = this.rooms[this.currentRoom];
     if (room) {
       if (fromUndo) {
-        this._emit('output', '\n— You step back. The choice unmakes itself. —', 'system');
+        this._emit('output', '\n✦ You step back. The choice unmakes itself. ✦', 'system');
       }
       const desc = (this.isChangedWorld && room.descriptionChanged)
         ? room.descriptionChanged
